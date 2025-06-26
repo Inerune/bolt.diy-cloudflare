@@ -4,6 +4,9 @@ import type { KeyboardEvent } from 'react';
 import type { ModelInfo } from '~/lib/modules/llm/types';
 import { classNames } from '~/utils/classNames';
 
+// shadCn
+import { HoverEffectDiv } from '../ui/HoverEffectDiv';
+
 interface ModelSelectorProps {
   model?: string;
   setModel?: (model: string) => void;
@@ -218,7 +221,7 @@ export const ModelSelector = ({
   return (
     <div className="flex gap-2 flex-col sm:flex-row">
       {/* Provider Combobox */}
-      <div className="relative flex w-full" onKeyDown={handleProviderKeyDown} ref={providerDropdownRef}>
+      <HoverEffectDiv className="relative flex w-full" onKeyDown={handleProviderKeyDown} ref={providerDropdownRef}>
         <div
           className={classNames(
             'w-full p-2 rounded-lg border border-bolt-elements-borderColor',
@@ -342,10 +345,10 @@ export const ModelSelector = ({
             </div>
           </div>
         )}
-      </div>
+      </HoverEffectDiv>
 
       {/* Model Combobox */}
-      <div className="relative flex w-full min-w-[70%]" onKeyDown={handleModelKeyDown} ref={modelDropdownRef}>
+      <HoverEffectDiv className="relative flex w-full min-w-[70%]" onKeyDown={handleModelKeyDown} ref={modelDropdownRef}>
         <div
           className={classNames(
             'w-full p-2 rounded-lg border border-bolt-elements-borderColor',
@@ -461,7 +464,7 @@ export const ModelSelector = ({
             </div>
           </div>
         )}
-      </div>
+      </HoverEffectDiv>
     </div>
   );
 };

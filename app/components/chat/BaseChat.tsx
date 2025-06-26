@@ -44,6 +44,11 @@ import { expoUrlAtom } from '~/lib/stores/qrCodeStore';
 import { useStore } from '@nanostores/react';
 import { StickToBottom, useStickToBottomContext } from '~/lib/hooks';
 
+// shadCN
+import { ShootingStars } from '../ui/ShootingStar';
+import { StarsBackground } from '../ui/StarBackground';
+import { HoverEffectDiv } from '../ui/HoverEffectDiv';
+
 const TEXTAREA_MIN_HEIGHT = 76;
 
 interface BaseChatProps {
@@ -345,6 +350,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 <p className="text-md lg:text-xl mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
                   Bring ideas to life in seconds or get help on existing projects.
                 </p>
+                <StarsBackground />
+                <ShootingStars />
               </div>
             )}
             <StickToBottom
@@ -491,7 +498,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       />
                     )}
                   </ClientOnly>
-                  <div
+                  <HoverEffectDiv
                     className={classNames(
                       'relative shadow-xs border border-bolt-elements-borderColor backdrop-blur rounded-lg',
                     )}
@@ -638,7 +645,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       <SupabaseConnection />
                       <ExpoQrModal open={qrModalOpen} onClose={() => setQrModalOpen(false)} />
                     </div>
-                  </div>
+                  </HoverEffectDiv>
                 </div>
               </div>
             </StickToBottom>
