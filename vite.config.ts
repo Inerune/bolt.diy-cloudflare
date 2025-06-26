@@ -1,5 +1,6 @@
 import { cloudflareDevProxyVitePlugin as remixCloudflareDevProxy, vitePlugin as remixVitePlugin } from '@remix-run/dev';
 import UnoCSS from 'unocss/vite';
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig, type ViteDevServer } from 'vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import { optimizeCssModules } from 'vite-plugin-optimize-css-modules';
@@ -8,7 +9,6 @@ import * as dotenv from 'dotenv';
 import { execSync } from 'child_process';
 import { readFileSync } from 'fs';
 import { join } from 'path';
-
 dotenv.config();
 
 // Get detailed git info with fallbacks
@@ -95,6 +95,7 @@ export default defineConfig((config) => {
       target: 'esnext',
     },
     plugins: [
+      // tailwindcss(),
       nodePolyfills({
         include: ['buffer', 'process', 'util', 'stream'],
         globals: {
