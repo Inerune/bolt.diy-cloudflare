@@ -5,6 +5,9 @@ import { Chat } from '~/components/chat/Chat.client';
 import { Header } from '~/components/header/Header';
 import BackgroundRays from '~/components/ui/BackgroundRays';
 
+// shadCN
+import { BackgroundLines } from '~/components/ui/background-lines';
+
 export const meta: MetaFunction = () => {
   return [{ title: 'AskBlake' }, { name: 'description', content: 'Talk with askblake, an AI assistant' }];
 };
@@ -19,10 +22,10 @@ export const loader = () => json({});
  */
 export default function Index() {
   return (
-    <div className="flex flex-col h-full w-full dark:bg-[#1d2125]">
+    <BackgroundLines className="flex flex-col h-full w-full dark:bg-[#1d2125]">
       <BackgroundRays />
       <Header />
       <ClientOnly fallback={<BaseChat />}>{() => <Chat />}</ClientOnly>
-    </div>
+    </BackgroundLines>
   );
 }

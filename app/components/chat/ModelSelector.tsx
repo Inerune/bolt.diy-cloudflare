@@ -4,8 +4,6 @@ import type { KeyboardEvent } from 'react';
 import type { ModelInfo } from '~/lib/modules/llm/types';
 import { classNames } from '~/utils/classNames';
 
-// shadCn
-import { HoverEffectDiv } from '../ui/HoverEffectDiv';
 
 interface ModelSelectorProps {
   model?: string;
@@ -39,6 +37,20 @@ export const ModelSelector = ({
   const providerSearchInputRef = useRef<HTMLInputElement>(null);
   const providerOptionsRef = useRef<(HTMLDivElement | null)[]>([]);
   const providerDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!provider || !modelList.length) return;
+
+    const firstModel = modelList.find(
+      (m) => m.provider === provider.name,
+    );
+
+    // ① make sure we *have* a firstModel
+    // ② make sure setModel exists before calling
+    if (firstModel && setModel && model !== firstModel.name) {
+      setModel(firstModel.name);
+    }
+  }, [provider, modelList, model, setModel]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -195,6 +207,7 @@ export const ModelSelector = ({
       return;
     }
 
+
     if (provider && !providerList.some((p) => p.name === provider.name)) {
       const firstEnabledProvider = providerList[0];
       setProvider?.(firstEnabledProvider);
@@ -218,7 +231,9 @@ export const ModelSelector = ({
   }
 
   // pre select gpt4.1
-  
+  if (!model || !modelList.some((m) => m.name === model)) {
+    return null; // or loading spinner
+  }
 
   return (
     <div className="flex gap-2 flex-col sm:flex-row">

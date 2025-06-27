@@ -6,13 +6,29 @@
 @use 'components/code.scss';
 @use 'components/editor.scss';
 @use 'components/toast.scss';
-
 html,
 body {
   height: 100%;
   width: 100%;
 }
+@font-face {
+  font-family: 'Fraine';
+  src: url('/assets/fonts/Franie-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
+@layer base {
+  html, body {
+    @apply font-sans;          
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  .chng-f {                     
+    @apply font-heading;       
+  }
+}
 :root {
   // --gradient-opacity: 0.8;
   --primary-color: rgba(158, 117, 240, var(--gradient-opacity));

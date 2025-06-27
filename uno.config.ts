@@ -113,6 +113,10 @@ export default defineConfig({
     ['b', {}],
   ],
   theme: {
+    fontFamily: {
+      sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      heading: ['Fraine', 'Inter', 'ui-sans-serif', 'system-ui'],
+    },
     colors: {
       ...COLOR_PRIMITIVES,
       bolt: {
@@ -245,6 +249,7 @@ export default defineConfig({
       unit: 'em',
     }),
   ],
+
 });
 
 /**

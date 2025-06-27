@@ -36,6 +36,13 @@ export const links: LinksFunction = () => [
     crossOrigin: 'anonymous',
   },
   {
+    rel: 'preload',
+    as: 'font',
+    type: 'font/otf',
+    href: '../assets/fonts/Franie-Regular.otf',
+    crossOrigin: 'anonymous',
+  },
+  {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap',
   },
