@@ -39,7 +39,7 @@ export const links: LinksFunction = () => [
     rel: 'preload',
     as: 'font',
     type: 'font/otf',
-    href: '../assets/fonts/Franie-Regular.otf',
+    href: '../assets/fonts/Pranie.otf',
     crossOrigin: 'anonymous',
   },
   {

@@ -349,7 +349,8 @@ export const Menu = () => {
                 href="/"
                 className="flex-1 flex gap-2 items-center bg-[#FFD6A7] text-[#9f2d00] dark:bg-[#00D5BF] dark:text-black rounded-lg px-4 py-2 transition-colors justify-center"
               >
-                <span className="inline-block i-ph:plus-circle h-4 w-4" />
+                {/* <span className="inline-block i-ph:plus-circle h-4 w-4" /> */}
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM40,224h0ZM216,192H80a8,8,0,0,0-5.23,1.95L40,224V64H216Z"></path></svg>
                 <span className="text-sm font-medium">Start new chat</span>
               </a>
               {/* <button
@@ -412,6 +413,7 @@ export const Menu = () => {
                     {items.map((item) => (
                       <HistoryItem
                         key={item.id}
+                        isSideBarOpen={open}
                         item={item}
                         exportChat={exportChat}
                         onDelete={(event) => {
@@ -432,7 +434,7 @@ export const Menu = () => {
               <Dialog onBackdrop={closeDialog} onClose={closeDialog}>
                 {dialogContent?.type === 'delete' && (
                   <>
-                    <div className="p-6 bg-white dark:bg-gray-950">
+                    <div className="p-6 bg-[#EFEAE6] dark:bg-[#1D2125]">
                       <DialogTitle className="text-gray-900 dark:text-white">Delete Chat?</DialogTitle>
                       <DialogDescription className="mt-2 text-gray-600 dark:text-gray-400">
                         <p>
@@ -444,7 +446,7 @@ export const Menu = () => {
                         <p className="mt-2">Are you sure you want to delete this chat?</p>
                       </DialogDescription>
                     </div>
-                    <div className="flex justify-end gap-3 px-6 py-4 bg-gray-50 dark:bg-gray-900 border-t border-gray-100 dark:border-gray-800">
+                    <div className="flex justify-end gap-3 px-6 py-4 bg-[#ddd8d5] dark:bg-[#14171a] border-t border-gray-100 dark:border-gray-800">
                       <DialogButton type="secondary" onClick={closeDialog}>
                         Cancel
                       </DialogButton>
@@ -508,7 +510,7 @@ export const Menu = () => {
             </DialogRoot>
           </div>
           <div className="flex items-center justify-between border-t border-gray-200 dark:border-gray-800 px-4 py-3">
-            <div className=" flex items-center justify-between px-0 border-b border-gray-100 dark:border-gray-800/50 bg-gray-50/50 dark:bg-[#292F35]">
+            <div className=" flex items-center justify-between px-0 dark:border-gray-800/50 dark:bg-[#292F35]">
               <div className="text-gray-900 dark:text-white font-medium"></div>
               <div className="flex items-center gap-3">
                 <div className="flex items-center justify-center w-[32px] h-[32px] overflow-hidden bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-500 rounded-full shrink-0">
