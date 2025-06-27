@@ -426,7 +426,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                 <div
                   className={classNames(
-                    'relative bg-[#292e35] p-0 rounded-lg border border-bolt-elements-borderColor relative w-full max-w-chat mx-auto z-prompt',
+                    'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0 rounded-lg border border-bolt-elements-borderColor relative w-full max-w-chat mx-auto z-prompt',
 
                     /*
                      * {

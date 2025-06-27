@@ -332,7 +332,7 @@ export const Menu = () => {
         style={{ width: '340px' }}
         className={classNames(
           'flex selection-accent flex-col side-menu fixed top-0 h-full',
-          'bg-white dark:bg-[#292F35] border-r border-gray-100 dark:border-gray-800/50',
+          'bg-[#E7E2E0] dark:bg-[#292F35] border-r border-gray-100 dark:border-gray-800/50',
           'shadow-sm text-sm',
           isSettingsOpen ? 'z-40' : 'z-sidebar',
         )}
@@ -347,7 +347,7 @@ export const Menu = () => {
             <div className="flex gap-2">
               <a
                 href="/"
-                className="flex-1 flex gap-2 items-center bg-purple-50 dark:bg-[#00D5BF] text-purple-700 dark:text-black rounded-lg px-4 py-2 transition-colors justify-center"
+                className="flex-1 flex gap-2 items-center bg-[#FFD6A7] text-[#9f2d00] dark:bg-[#00D5BF] dark:text-black rounded-lg px-4 py-2 transition-colors justify-center"
               >
                 <span className="inline-block i-ph:plus-circle h-4 w-4" />
                 <span className="text-sm font-medium">Start new chat</span>
@@ -405,7 +405,7 @@ export const Menu = () => {
             <DialogRoot open={dialogContent !== null}>
               {binDates(filteredList).map(({ category, items }) => (
                 <div key={category} className="mt-2 first:mt-0 space-y-1">
-                  <div className="text-xs font-medium text-gray-500 dark:text-gray-400 sticky top-0 z-1 bg-white dark:bg-transparent px-4 py-1">
+                  <div className="text-xs font-medium text-gray-500 dark:text-gray-400 sticky top-0 z-1 dark:bg-transparent px-4 py-1">
                     {category}
                   </div>
                   <div className="space-y-0.5 pr-1">
