@@ -344,14 +344,14 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
             {!chatStarted && (
               <div id="intro" className="mt-[16vh] max-w-chat mx-auto text-center px-4 lg:px-0">
-                <h1 className="text-3xl lg:text-6xl font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in">
-                  Where ideas begin
+                <h1 className="text-3xl lg:text-4xl font-bold text-bolt-elements-textPrimary mb-4 animate-fade-in">
+                  What can i make for you?
                 </h1>
-                <p className="text-md lg:text-xl mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
+                <p className="text-md lg:text-lg mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
                   Bring ideas to life in seconds or get help on existing projects.
                 </p>
-                <StarsBackground />
-                <ShootingStars />
+                {/* <StarsBackground /> */}
+                {/* <ShootingStars /> */}
               </div>
             )}
             <StickToBottom
@@ -415,7 +415,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                 <div
                   className={classNames(
-                    'relative bg-bolt-elements-background-depth-2 p-3 rounded-lg border border-bolt-elements-borderColor relative w-full max-w-chat mx-auto z-prompt',
+                    'relative bg-[#292e35] p-0 rounded-lg border border-bolt-elements-borderColor relative w-full max-w-chat mx-auto z-prompt',
 
                     /*
                      * {
@@ -424,7 +424,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                      */
                   )}
                 >
-                  <svg className={classNames(styles.PromptEffectContainer)}>
+                  {/* <svg className={classNames(styles.PromptEffectContainer)}>
                     <defs>
                       <linearGradient
                         id="line-gradient"
@@ -449,7 +449,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     </defs>
                     <rect className={classNames(styles.PromptEffectLine)} pathLength="100" strokeLinecap="round"></rect>
                     <rect className={classNames(styles.PromptShine)} x="48" y="24" width="70" height="1"></rect>
-                  </svg>
+                  </svg> */}
                   <div>
                     <ClientOnly>
                       {() => (
@@ -498,9 +498,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       />
                     )}
                   </ClientOnly>
-                  <HoverEffectDiv
+                  <div
                     className={classNames(
-                      'relative shadow-xs border border-bolt-elements-borderColor backdrop-blur rounded-lg',
+                      'relative shadow-xs backdrop-blur rounded-lg',
                     )}
                   >
                     <textarea
@@ -570,13 +570,13 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         minHeight: TEXTAREA_MIN_HEIGHT,
                         maxHeight: TEXTAREA_MAX_HEIGHT,
                       }}
-                      placeholder="How can Bolt help you today?"
+                      placeholder="Ask blake to build your enterprise app, data dashboard, or a saas landing page..."
                       translate="no"
                     />
-                    <ClientOnly>
+                    {/* <ClientOnly>
                       {() => (
                         <SendButton
-                          show={input.length > 0 || isStreaming || uploadedFiles.length > 0}
+                          show={input.length >= 0 || isStreaming || uploadedFiles.length > 0}
                           isStreaming={isStreaming}
                           disabled={!providerList || providerList.length === 0}
                           onClick={(event) => {
@@ -591,7 +591,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           }}
                         />
                       )}
-                    </ClientOnly>
+                    </ClientOnly> */}
                     <div className="flex justify-between items-center text-sm p-4 pt-2">
                       <div className="flex gap-1 items-center">
                         <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
@@ -634,28 +634,48 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           <div className={`i-ph:caret-${isModelSettingsCollapsed ? 'right' : 'down'} text-lg`} />
                           {isModelSettingsCollapsed ? <span className="text-xs">{model}</span> : <span />}
                         </IconButton>
+                        
                       </div>
-                      {input.length > 3 ? (
+                      {/* {input.length > 3 ? (
                         <div className="text-xs text-bolt-elements-textTertiary">
                           Use <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Shift</kbd>{' '}
                           + <kbd className="kdb px-1.5 py-0.5 rounded bg-bolt-elements-background-depth-2">Return</kbd>{' '}
                           a new line
                         </div>
-                      ) : null}
-                      <SupabaseConnection />
+                      ) : null} */}
+                      {/* <SupabaseConnection /> */}
+                      <ClientOnly>
+                      {() => (
+                        <SendButton
+                          show={input.length >= 0 || isStreaming || uploadedFiles.length > 0}
+                          isStreaming={isStreaming}
+                          disabled={!providerList || providerList.length === 0}
+                          onClick={(event) => {
+                            if (isStreaming) {
+                              handleStop?.();
+                              return;
+                            }
+
+                            if (input.length > 0 || uploadedFiles.length > 0) {
+                              handleSendMessage?.(event);
+                            }
+                          }}
+                        />
+                      )}
+                    </ClientOnly>
                       <ExpoQrModal open={qrModalOpen} onClose={() => setQrModalOpen(false)} />
                     </div>
-                  </HoverEffectDiv>
+                  </div>
                 </div>
               </div>
             </StickToBottom>
             <div className="flex flex-col justify-center">
-              {!chatStarted && (
+              {/* {!chatStarted && (
                 <div className="flex justify-center gap-2">
                   {ImportButtons(importChat)}
                   <GitCloneButton importChat={importChat} />
                 </div>
-              )}
+              )} */}
               <div className="flex flex-col gap-5">
                 {!chatStarted &&
                   ExamplePrompts((event, messageInput) => {
@@ -666,7 +686,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
                     handleSendMessage?.(event, messageInput);
                   })}
-                {!chatStarted && <StarterTemplates />}
+                {/* {!chatStarted && <StarterTemplates />} */}
               </div>
             </div>
           </div>

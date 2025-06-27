@@ -150,6 +150,7 @@ export function HistoryItem({
                 onClick={handleDeleteClick}
               />
             </div>
+            <h3>...</h3>
           </div>
         </a>
       )}
