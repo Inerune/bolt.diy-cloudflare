@@ -87,8 +87,8 @@ const TAB_DESCRIPTIONS: Record<TabType, string> = {
 const BETA_TABS = new Set<TabType>(['task-manager', 'service-status', 'update', 'local-providers']);
 
 const BetaLabel = () => (
-  <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded-full bg-purple-500/10 dark:bg-purple-500/20">
-    <span className="text-[10px] font-medium text-purple-600 dark:text-purple-400">BETA</span>
+  <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded-full bg-orange-500/10 dark:bg-teal-500/20">
+    <span className="text-[10px] font-medium text-orange-500 dark:text-teal-400">BETA</span>
   </div>
 );
 
@@ -103,8 +103,8 @@ const AnimatedSwitch = ({ checked, onCheckedChange, id, label }: AnimatedSwitchP
           'relative inline-flex h-6 w-11 items-center rounded-full',
           'transition-all duration-300 ease-[cubic-bezier(0.87,_0,_0.13,_1)]',
           'bg-gray-200 dark:bg-gray-700',
-          'data-[state=checked]:bg-purple-500',
-          'focus:outline-none focus:ring-2 focus:ring-purple-500/20',
+          'data-[state=checked]:bg-[#FFD6A7] dark:data-[state=checked]:bg-teal-400',
+          'focus:outline-none focus:ring-2 focus:ring-orange-400/20 dark:focus:ring-teal-400/20',
           'cursor-pointer',
           'group',
         )}
@@ -433,7 +433,7 @@ export const ControlPanel = ({ open, onClose }: ControlPanelProps) => {
             <motion.div
               className={classNames(
                 'w-[1200px] h-[90vh]',
-                'bg-[#FAFAFA] dark:bg-[#0A0A0A]',
+                'bg-[#EFEAE6] dark:bg-[#1D2125]',
                 'rounded-2xl shadow-2xl',
                 'border border-[#E5E5E5] dark:border-[#1A1A1A]',
                 'flex flex-col overflow-hidden',

@@ -6,7 +6,7 @@ import { useEditChatDescription } from '~/lib/hooks';
 import { useCallback, useEffect, useState } from 'react';
 import { Checkbox } from '~/components/ui/Checkbox';
 import { Dropdown, DropdownItem } from '~/components/ui/Dropdown';
-import { DotsThree } from '@phosphor-icons/react';
+import { CopySimple, DotsThree, DownloadSimple, PencilSimpleLine, Trash, UploadSimple } from '@phosphor-icons/react';
 
 interface HistoryItemProps {
   item: ChatHistoryItem;
@@ -138,25 +138,24 @@ export function HistoryItem({
               }
             >
               <DropdownItem onSelect={() => exportChat(item.id)}>
-                Download
+               <DownloadSimple size={20} /> Download
               </DropdownItem>
               <DropdownItem onSelect={() => alert('Share clicked!')}>
-                Share
+               <UploadSimple size={20} /> Share
               </DropdownItem>
               {onDuplicate && (
                 <DropdownItem onSelect={() => onDuplicate(item.id)}>
-                  Duplicate
+                 <CopySimple size={20} /> Duplicate
                 </DropdownItem>
               )}
               <DropdownItem onSelect={() => toggleEditMode()}>
-                Rename
+               <PencilSimpleLine size={20} /> Rename
               </DropdownItem>
               <DropdownItem
-                onSelect={() => {
-                  onDelete?.({} as React.UIEvent);
-                }}
-                className="text-red-500 hover:bg-red-50 dark:hover:bg-red-900"
+                onSelect={handleDeleteClick}
+                className="text-red-500 hover:bg-red-200 dark:hover:bg-red-900"
               >
+                <Trash size={20} />
                 Delete
               </DropdownItem>
             </Dropdown>

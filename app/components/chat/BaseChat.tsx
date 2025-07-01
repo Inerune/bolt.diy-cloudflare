@@ -48,6 +48,8 @@ import { StickToBottom, useStickToBottomContext } from '~/lib/hooks';
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
 import { GlowingEffect } from '../ui/glowing-effect';
 
+
+
 const words = [
   {
     text: "What",
@@ -360,7 +362,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
               <div id="intro" className="mt-[20vh] max-w-chat mx-auto text-center px-4 lg:px-0">
                 <TypewriterEffectSmooth words={words} />
 
-                <p className="text-md lg:text-lg mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
+                <p className="text-md lg:text-lg mb-8 text-bolt-elements-textSecondary font-light animate-fade-in animation-delay-200">
                   Bring ideas to life in seconds or get help on existing projects.
                 </p>
               </div>
@@ -615,6 +617,12 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
                           <div className="i-ph:paperclip text-xl"></div>
                         </IconButton>
+                        <SpeechRecognitionButton
+                          isListening={isListening}
+                          onStart={startListening}
+                          onStop={stopListening}
+                          disabled={isStreaming}
+                        />
                         <IconButton
                           title="Enhance prompt"
                           disabled={input.length === 0 || enhancingPrompt}
@@ -631,12 +639,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           )}
                         </IconButton>
 
-                        <SpeechRecognitionButton
-                          isListening={isListening}
-                          onStart={startListening}
-                          onStop={stopListening}
-                          disabled={isStreaming}
-                        />
+                        
                         {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>}
                         {/* <IconButton
                           title="Model Settings"
@@ -731,11 +734,10 @@ function ScrollToBottom() {
   return (
     !isAtBottom && (
       <button
-        className="absolute z-50 top-[0%] translate-y-[-100%] text-4xl rounded-lg left-[50%] translate-x-[-50%] px-1.5 py-0.5 flex items-center gap-2 bg-bolt-elements-background-depth-3 border border-bolt-elements-borderColor text-bolt-elements-textPrimary text-sm"
+        className="absolute z-50 top-[0%] translate-y-[-100%]  rounded-full left-[50%] translate-x-[-50%] px-1.5 py-1.5 flex items-center gap-2 bg-transparent border-2 border-[#00D5BF] text-bolt-elements-textPrimary text-sm"
         onClick={() => scrollToBottom()}
       >
-        Go to last message
-        <span className="i-ph:arrow-down animate-bounce" />
+        <span className="i-ph:arrow-down animate-bounce text-[#00D5BF]" />
       </button>
     )
   );

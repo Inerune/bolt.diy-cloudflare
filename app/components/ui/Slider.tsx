@@ -1,4 +1,6 @@
+import { GitDiff, ImageSquare } from '@phosphor-icons/react';
 import { motion } from 'framer-motion';
+import { Code } from 'lucide-react';
 import { memo } from 'react';
 import { classNames } from '~/utils/classNames';
 import { cubicEasingFn } from '~/utils/easings';
@@ -22,14 +24,15 @@ export const Slider = genericMemo(<T,>({ selected, options, setSelected }: Slide
   const isMiddleSelected = hasMiddle && options.middle ? selected === options.middle.value : false;
 
   return (
-    <div className="flex items-center flex-wrap shrink-0 gap-1 bg-bolt-elements-background-depth-1 overflow-hidden rounded-full p-1">
+    <div className="flex items-center flex-wrap shrink-0 gap-1 overflow-hidden rounded-md p-1">
       <SliderButton selected={isLeftSelected} setSelected={() => setSelected?.(options.left.value)}>
-        {options.left.text}
+        {/* {options.left.text} */}
+        <Code size={20} />
       </SliderButton>
 
       {options.middle && (
         <SliderButton selected={isMiddleSelected} setSelected={() => setSelected?.(options.middle!.value)}>
-          {options.middle.text}
+          <GitDiff size={20} />
         </SliderButton>
       )}
 
@@ -37,7 +40,7 @@ export const Slider = genericMemo(<T,>({ selected, options, setSelected }: Slide
         selected={!isLeftSelected && !isMiddleSelected}
         setSelected={() => setSelected?.(options.right.value)}
       >
-        {options.right.text}
+        <ImageSquare size={20} />
       </SliderButton>
     </div>
   );
@@ -54,9 +57,9 @@ const SliderButton = memo(({ selected, children, setSelected }: SliderButtonProp
     <button
       onClick={setSelected}
       className={classNames(
-        'bg-transparent text-sm px-2.5 py-0.5 rounded-full relative',
+        'bg-transparent text-sm px-2.5 py-0.5 rounded-sm relative',
         selected
-          ? 'text-bolt-elements-item-contentAccent'
+          ? 'text-[#545a63]'
           : 'text-bolt-elements-item-contentDefault hover:text-bolt-elements-item-contentActive',
       )}
     >

@@ -111,7 +111,7 @@ export const AssistantMessage = memo(({ content, annotations, messageId, onRewin
               </div>
             )}
             {(onRewind || onFork) && messageId && (
-              <div className="flex gap-2 flex-col lg:flex-row ml-auto">
+              <div className="hidden gap-2 flex-col lg:flex-row ml-auto">
                 {onRewind && (
                   <WithTooltip tooltip="Revert to this message">
                     <button

@@ -81,7 +81,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
       <div className="artifact border border-bolt-elements-borderColor flex flex-col overflow-hidden rounded-lg w-full transition-border duration-150">
         <div className="flex">
           <button
-            className="flex items-stretch bg-bolt-elements-artifacts-background hover:bg-bolt-elements-artifacts-backgroundHover w-full overflow-hidden"
+            className="flex items-stretch dark:bg-[#292F35] dark:hover:bg-[#2e353b] w-full overflow-hidden"
             onClick={() => {
               const showWorkbench = workbenchStore.showWorkbench.get();
               workbenchStore.showWorkbench.set(!showWorkbench);
@@ -105,7 +105,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
                 animate={{ width: 'auto' }}
                 exit={{ width: 0 }}
                 transition={{ duration: 0.15, ease: cubicEasingFn }}
-                className="bg-bolt-elements-artifacts-background hover:bg-bolt-elements-artifacts-backgroundHover"
+                className="dark:bg-[#292F35] hover:bg-bolt-elements-artifacts-backgroundHover"
                 onClick={toggleActions}
               >
                 <div className="p-4">
@@ -116,7 +116,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
           </AnimatePresence>
         </div>
         {artifact.type === 'bundled' && (
-          <div className="flex items-center gap-1.5 p-5 bg-bolt-elements-actions-background border-t border-bolt-elements-artifacts-borderColor">
+          <div className="flex items-center gap-1.5 p-5 dark:bg-[#292F35] border-t border-bolt-elements-artifacts-borderColor">
             <div className={classNames('text-lg', getIconColor(allActionFinished ? 'complete' : 'running'))}>
               {allActionFinished ? (
                 <div className="i-ph:check"></div>
@@ -145,7 +145,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
             >
               <div className="bg-bolt-elements-artifacts-borderColor h-[1px]" />
 
-              <div className="p-5 text-left bg-bolt-elements-actions-background">
+              <div className="p-5 text-left bg-[#292F35]">
                 <ActionList actions={actions} />
               </div>
             </motion.div>

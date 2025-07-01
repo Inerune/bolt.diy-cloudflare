@@ -370,13 +370,17 @@ export const Menu = () => {
               <div className="absolute left-3 top-1/2 -translate-y-1/2">
                 <span className="i-ph:magnifying-glass h-4 w-4 text-gray-400 dark:text-gray-500" />
               </div>
-              <input
-                className="w-full bg-gray-50 dark:bg-[#292F35] relative pl-5 pr-3 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-zinc-500/50 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-500 border border-gray-200 dark:border-[#474E57]"
-                type="search"
-                placeholder="Search"
-                onChange={handleSearchChange}
-                aria-label="Search chats"
-              />
+              <div className='flex items-center gap-2 w-full bg-gray-50 dark:bg-[#292F35] relative pl-5 pr-2 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-zinc-500/50 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-500 border border-gray-200 dark:border-[#474E57]'>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" className='invert-0 dark:invert-100' viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
+                <input
+                  className="bg-transparent focus:outline-none w-full"
+                  type="search"
+                  placeholder="Search"
+                  onChange={handleSearchChange}
+                  aria-label="Search chats"
+                />
+              </div>
+
             </div>
           </div>
           <div className="flex items-center justify-between text-sm px-4 py-2">

@@ -8,7 +8,7 @@ export const SettingsButton = memo(({ onClick }: SettingsButtonProps) => {
   return (
     <IconButton
       onClick={onClick}
-      icon="i-ph:gear"
+      icon="i-ph:gear-six"
       size="xl"
       title="Settings"
       data-testid="settings-button"
