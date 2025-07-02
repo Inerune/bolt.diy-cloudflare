@@ -85,7 +85,7 @@ export const TerminalTabs = memo(() => {
       }}
     >
       {
-        !showTerminal && <div onClick={() => workbenchStore.toggleTerminal(true)} className='py-2 px-4 dark:bg-[#1D2125] w-full border-y border-[#34383B] absolute bottom-0 z-9 text-white cursor-pointer flex items-center gap-1 '>
+        !showTerminal && <div onClick={() => workbenchStore.toggleTerminal(true)} className='py-2 px-4 dark:bg-[#1D2125] bg-[#FAFAFA] dark:text-white text-black w-full border-y dark:border-[#34383B] absolute bottom-0 z-9  cursor-pointer border-[#e2ddd8] flex items-center gap-1 '>
           <i className="ph ph-terminal"></i>
           <p className='text-sm'>Console</p>
         </div>

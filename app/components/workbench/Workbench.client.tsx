@@ -464,7 +464,7 @@ export const Workbench = memo(
                       workbenchStore.showWorkbench.set(false);
                     }}
                   /> */}
-                  <div className='px-4 py-1 border border-[#34383B] rounded-md flex items-center gap-2 cursor-pointer text-white'>
+                  <div className='px-4 py-1 border border-[#D8D8D8] dark:border-[#34383B] rounded-md flex items-center gap-2 cursor-pointer dark:text-white'>
                     <p className='text-sm'>V1</p> <CaretDown size={16} /></div>
                 </div>
                 <div className="relative flex-1 overflow-hidden">

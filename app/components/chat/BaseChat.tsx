@@ -53,6 +53,7 @@ import { GlowingEffect } from '../ui/glowing-effect';
 import chatLine from '../../../icons/chat-1-line.svg'
 import { SidebarSimple } from '@phosphor-icons/react';
 import  paintBrush from  '../../../icons/paint-brush-line.svg'
+import { ChatDescription } from '~/lib/persistence/ChatDescription.client';
 
 
 const words = [
@@ -383,15 +384,18 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
               initial="smooth"
             >
               {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
-                <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md'>
+                <div className='cursor-pointer px-2 py-1 hover:bg-[#dacec4] dark:hover:bg-[#4B525B] rounded-md'>
                 <SidebarSimple size={20} color='#fff'/>
                 </div>
-                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
+                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={chatLine} alt="chat-line" />
                 </div>
-                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
+                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={paintBrush} alt="paint-brush" />
                 </div>
+              </div>}
+              {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm'>
+                <ClientOnly>{() => <ChatDescription />}</ClientOnly>
               </div>}
               
               <StickToBottom.Content className="flex flex-col gap-4">

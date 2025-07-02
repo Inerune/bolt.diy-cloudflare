@@ -78,9 +78,9 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
             active
             disabled={isDeploying || !activePreview || isStreaming}
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="px-4 text-white hover:bg-bolt-elements-item-backgroundActive flex items-center gap-1"
+            className="px-4 text-black dark:text-white hover:bg-bolt-elements-item-backgroundActive flex items-center gap-1"
           >
-            <img src={puzzleIcon} alt="depoly-icon" className='w-5'/>
+            <img src={puzzleIcon} alt="depoly-icon" className='w-5 invert-50 dark:invert-0'/>
             {isDeploying ? `Deploying to ${deployingTo}...` : 'Deploy'}
             <div
               className={classNames('i-ph:caret-down w-4 h-4 transition-transform', isDropdownOpen ? 'rotate-180' : '')}
