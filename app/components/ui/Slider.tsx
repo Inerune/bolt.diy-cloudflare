@@ -24,7 +24,7 @@ export const Slider = genericMemo(<T,>({ selected, options, setSelected }: Slide
   const isMiddleSelected = hasMiddle && options.middle ? selected === options.middle.value : false;
 
   return (
-    <div className="flex items-center flex-wrap shrink-0 gap-1 overflow-hidden rounded-md p-1">
+    <div className="flex items-center flex-wrap shrink-0 gap-1 overflow-hidden rounded-sm p-1">
       <SliderButton selected={isLeftSelected} setSelected={() => setSelected?.(options.left.value)}>
         {/* {options.left.text} */}
         <Code size={20} />

@@ -84,6 +84,12 @@ export const TerminalTabs = memo(() => {
         }
       }}
     >
+      {
+        !showTerminal && <div onClick={() => workbenchStore.toggleTerminal(true)} className='py-2 px-4 dark:bg-[#1D2125] w-full border-y border-[#34383B] absolute bottom-0 z-9 text-white cursor-pointer flex items-center gap-1 '>
+          <i className="ph ph-terminal"></i>
+          <p className='text-sm'>Console</p>
+        </div>
+      }
       <div className="h-full">
         <div className="bg-bolt-elements-terminals-background h-full flex flex-col">
           <div className="flex items-center bg-bolt-elements-background-depth-2 border-y border-bolt-elements-borderColor gap-1.5 min-h-[34px] p-2">
@@ -107,7 +113,7 @@ export const TerminalTabs = memo(() => {
                       onClick={() => setActiveTerminal(index)}
                     >
                       <div className="i-ph:terminal-window-duotone text-lg" />
-                      Bolt Terminal
+                      Askblake Terminal
                     </button>
                   ) : (
                     <React.Fragment>

@@ -379,14 +379,14 @@ export const Workbench = memo(
               },
             )}
           >
-            <div className="absolute inset-0 px-2 lg:px-2">
+            <div className="absolute inset-0 px-2 lg:px-0">
               <div className="h-full flex flex-col bg-bolt-elements-background-depth-2 border-l border-bolt-elements-borderColor shadow-sm overflow-hidden">
                 <div className="flex items-center px-3 py-1 border-b border-bolt-elements-borderColor gap-1">
                   <Slider selected={selectedView} options={sliderOptions} setSelected={setSelectedView} />
                   <div className="ml-auto" />
                   {selectedView === 'code' && (
                     <div className="flex overflow-y-auto">
-                      <PanelHeaderButton
+                      {/* <PanelHeaderButton
                         className="mr-1 text-sm"
                         onClick={() => {
                           workbenchStore.toggleTerminal(!workbenchStore.showTerminal.get());
@@ -394,7 +394,7 @@ export const Workbench = memo(
                       >
                         <div className="i-ph:terminal" />
                         Toggle Terminal
-                      </PanelHeaderButton>
+                      </PanelHeaderButton> */}
                       <DropdownMenu.Root>
                         <DropdownMenu.Trigger className="text-sm flex items-center gap-1 text-bolt-elements-item-contentDefault bg-transparent enabled:hover:text-bolt-elements-item-contentActive rounded-md p-1 enabled:hover:bg-bolt-elements-item-backgroundActive disabled:cursor-not-allowed">
                           <div className="i-ph:box-arrow-up" />
