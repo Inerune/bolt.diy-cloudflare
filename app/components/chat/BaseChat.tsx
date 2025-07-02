@@ -47,6 +47,11 @@ import { StickToBottom, useStickToBottomContext } from '~/lib/hooks';
 // shadCN
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
 import { GlowingEffect } from '../ui/glowing-effect';
+import { SidebarSimple } from '@phosphor-icons/react';
+
+// images
+import chatLine from '../../../icons/chat-1-line.svg';
+import paintBrush from '../../../icons/paint-brush-line.svg';
 
 
 
@@ -374,6 +379,17 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
               resize="smooth"
               initial="smooth"
             >
+            {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
+                <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md'>
+                <SidebarSimple size={20} color='#fff'/>
+                </div>
+                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
+                  <img src={chatLine} alt="chat-line" />
+                </div>
+                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
+                  <img src={paintBrush} alt="paint-brush" />
+                </div>
+              </div>}
               <StickToBottom.Content className="flex flex-col gap-4">
                 <ClientOnly>
                   {() => {
