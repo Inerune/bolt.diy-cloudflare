@@ -26,6 +26,7 @@ import useViewport from '~/lib/hooks';
 import { PushToGitHubDialog } from '~/components/@settings/tabs/connections/components/PushToGitHubDialog';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { usePreviewStore } from '~/lib/stores/previews';
+import { CaretDown, DotsThree } from '@phosphor-icons/react';
 
 interface WorkspaceProps {
   chatStarted?: boolean;
@@ -397,13 +398,12 @@ export const Workbench = memo(
                       </PanelHeaderButton> */}
                       <DropdownMenu.Root>
                         <DropdownMenu.Trigger className="text-sm flex items-center gap-1 text-bolt-elements-item-contentDefault bg-transparent enabled:hover:text-bolt-elements-item-contentActive rounded-md p-1 enabled:hover:bg-bolt-elements-item-backgroundActive disabled:cursor-not-allowed">
-                          <div className="i-ph:box-arrow-up" />
-                          Sync & Export
+                          <DotsThree size={22} />
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content
                           className={classNames(
                             'min-w-[240px] z-[250]',
-                            'bg-white dark:bg-[#141414]',
+                            'bg-white dark:bg-[#282d33]',
                             'rounded-lg shadow-lg',
                             'border border-gray-200/50 dark:border-gray-800/50',
                             'animate-in fade-in-0 zoom-in-95',
@@ -456,14 +456,16 @@ export const Workbench = memo(
                   {selectedView === 'diff' && (
                     <FileModifiedDropdown fileHistory={fileHistory} onSelectFile={handleSelectFile} />
                   )}
-                  <IconButton
+                  {/* <IconButton
                     icon="i-ph:x-circle"
                     className="-mr-1"
                     size="xl"
                     onClick={() => {
                       workbenchStore.showWorkbench.set(false);
                     }}
-                  />
+                  /> */}
+                  <div className='px-4 py-1 border border-[#34383B] rounded-md flex items-center gap-2 cursor-pointer text-gray-400'>
+                    <p className='text-sm'>V1</p> <CaretDown size={16} /></div>
                 </div>
                 <div className="relative flex-1 overflow-hidden">
                   <View initial={{ x: '0%' }} animate={{ x: selectedView === 'code' ? '0%' : '-100%' }}>

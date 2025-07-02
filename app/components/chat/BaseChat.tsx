@@ -52,6 +52,7 @@ import { SidebarSimple } from '@phosphor-icons/react';
 // images
 import chatLine from '../../../icons/chat-1-line.svg';
 import paintBrush from '../../../icons/paint-brush-line.svg';
+import { workbenchStore } from '~/lib/stores/workbench';
 
 
 
@@ -160,6 +161,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const [progressAnnotations, setProgressAnnotations] = useState<ProgressAnnotation[]>([]);
     const expoUrl = useStore(expoUrlAtom);
     const [qrModalOpen, setQrModalOpen] = useState(false);
+    const showWorkbench = useStore(workbenchStore.showWorkbench);
 
     useEffect(() => {
       if (expoUrl) {
@@ -383,7 +385,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md'>
                 <SidebarSimple size={20} color='#fff'/>
                 </div>
-                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
+                <div onClick={() => {
+                      workbenchStore.showWorkbench.set(!showWorkbench);
+                    }} className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
                   <img src={chatLine} alt="chat-line" />
                 </div>
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
