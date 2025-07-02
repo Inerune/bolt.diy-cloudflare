@@ -84,11 +84,21 @@ export const TerminalTabs = memo(() => {
         }
       }}
     >
+      {
+        !showTerminal && <div onClick={() => workbenchStore.toggleTerminal(true)} className='py-2 px-4 dark:bg-[#1D2125] w-full border-y border-[#34383B] absolute bottom-0 z-9 text-white cursor-pointer flex items-center gap-1 '>
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#ffff" viewBox="0 0 256 256"><path d="M117.31,134l-72,64a8,8,0,1,1-10.63-12L100,128,34.69,70A8,8,0,1,1,45.32,58l72,64a8,8,0,0,1,0,12ZM216,184H120a8,8,0,0,0,0,16h96a8,8,0,0,0,0-16Z"></path></svg>
+          <p className='text-sm'>Console</p>
+        </div>
+      }
       <div className="h-full">
         <div className="bg-bolt-elements-terminals-background h-full flex flex-col">
           <div className="flex items-center bg-bolt-elements-background-depth-2 border-y border-bolt-elements-borderColor gap-1.5 min-h-[34px] p-2">
             {Array.from({ length: terminalCount + 1 }, (_, index) => {
               const isActive = activeTerminal === index;
+
+
+
+
 
               return (
                 <React.Fragment key={index}>
@@ -107,7 +117,7 @@ export const TerminalTabs = memo(() => {
                       onClick={() => setActiveTerminal(index)}
                     >
                       <div className="i-ph:terminal-window-duotone text-lg" />
-                      Bolt Terminal
+                      Askblake Terminal
                     </button>
                   ) : (
                     <React.Fragment>

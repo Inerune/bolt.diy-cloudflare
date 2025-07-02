@@ -808,11 +808,11 @@ export function EventLogsTab() {
             'text-sm text-gray-900 dark:text-white',
             'bg-[#FAFAFA] dark:bg-[#0A0A0A]',
             'border border-[#E5E5E5] dark:border-[#1A1A1A]',
-            'hover:bg-purple-500/10 dark:hover:bg-purple-500/20',
+            'dark:hover:bg-teal-500/10 hover:bg-orange-500/10',
             'transition-all duration-200',
           )}
         >
-          <span className="i-ph:download text-lg text-gray-500 dark:text-gray-400 group-hover:text-purple-500 transition-colors" />
+          <span className="i-ph:download text-lg text-gray-500 dark:text-gray-400 dark:group-hover:text-teal-500 group-hover:text-orange-500 transition-colors" />
           Export
         </button>
 

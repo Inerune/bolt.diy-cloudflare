@@ -1,7 +1,3 @@
-/*
- * @ts-nocheck
- * Preventing TS checks with files presented in the video for a better presentation.
- */
 import type { JSONValue, Message } from 'ai';
 import React, { type RefCallback, useEffect, useState } from 'react';
 import { ClientOnly } from 'remix-utils/client-only';
@@ -48,6 +44,11 @@ import { StickToBottom, useStickToBottomContext } from '~/lib/hooks';
 import { TypewriterEffectSmooth } from '../ui/typewriter-effect';
 import { GlowingEffect } from '../ui/glowing-effect';
 
+// icons
+import chatLine from '../../../icons/chat-1-line.svg'
+import { SidebarSimple } from '@phosphor-icons/react';
+import  paintBrush from  '../../../icons/paint-brush-line.svg'
+import { workbenchStore } from '~/lib/stores/workbench';
 
 
 const words = [
@@ -155,6 +156,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const [progressAnnotations, setProgressAnnotations] = useState<ProgressAnnotation[]>([]);
     const expoUrl = useStore(expoUrlAtom);
     const [qrModalOpen, setQrModalOpen] = useState(false);
+
+    // me
+    const showWorkbench = useStore(workbenchStore.showWorkbench);
 
     useEffect(() => {
       if (expoUrl) {
@@ -355,6 +359,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         className={classNames(styles.BaseChat, 'relative flex h-full w-full overflow-hidden')}
         data-chat-visible={showChat}
       >
+
         <ClientOnly>{() => <Menu />}</ClientOnly>
         <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full">
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
@@ -369,11 +374,23 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             )}
             <StickToBottom
               className={classNames('pt-0 px-2 sm:px-6 relative', {
-                'h-full flex flex-col modern-scrollbar': chatStarted,
+                'h-full flex flex-col modern-scrollbar  relative': chatStarted,
               })}
               resize="smooth"
               initial="smooth"
             >
+              {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
+                <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md'>
+                <SidebarSimple size={20} color='#fff'/>
+                </div>
+                <div onClick={() => {workbenchStore.showWorkbench.set(!showWorkbench); }} className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
+                  <img src={chatLine} alt="chat-line" />
+                </div>
+                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
+                  <img src={paintBrush} alt="paint-brush" />
+                </div>
+              </div>}
+              
               <StickToBottom.Content className="flex flex-col gap-4">
                 <ClientOnly>
                   {() => {
@@ -639,7 +656,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           )}
                         </IconButton>
 
-                        
+
                         {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>}
                         {/* <IconButton
                           title="Model Settings"

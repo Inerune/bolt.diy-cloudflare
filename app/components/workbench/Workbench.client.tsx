@@ -26,6 +26,7 @@ import useViewport from '~/lib/hooks';
 import { PushToGitHubDialog } from '~/components/@settings/tabs/connections/components/PushToGitHubDialog';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { usePreviewStore } from '~/lib/stores/previews';
+import { CaretDown, DotsThree } from '@phosphor-icons/react';
 
 interface WorkspaceProps {
   chatStarted?: boolean;
@@ -370,7 +371,7 @@ export const Workbench = memo(
         >
           <div
             className={classNames(
-              'fixed top-[calc(var(--header-height)+1.5rem)] bottom-6 w-[var(--workbench-inner-width)] mr-4 z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
+              'fixed top-[calc(var(--header-height))] bottom-6 w-[var(--workbench-inner-width)] mr-4 z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
               {
                 'w-full': isSmallViewport,
                 'left-0': showWorkbench && isSmallViewport,
@@ -379,14 +380,14 @@ export const Workbench = memo(
               },
             )}
           >
-            <div className="absolute inset-0 px-2 lg:px-2">
+            <div className="absolute inset-0 px-2 lg:px-0">
               <div className="h-full flex flex-col bg-bolt-elements-background-depth-2 border-l border-bolt-elements-borderColor shadow-sm overflow-hidden">
-                <div className="flex items-center px-3 py-2 border-b border-bolt-elements-borderColor gap-1">
+                <div className="flex items-center px-3 py-1 border-b border-bolt-elements-borderColor gap-1">
                   <Slider selected={selectedView} options={sliderOptions} setSelected={setSelectedView} />
                   <div className="ml-auto" />
                   {selectedView === 'code' && (
                     <div className="flex overflow-y-auto">
-                      <PanelHeaderButton
+                      {/* <PanelHeaderButton
                         className="mr-1 text-sm"
                         onClick={() => {
                           workbenchStore.toggleTerminal(!workbenchStore.showTerminal.get());
@@ -394,16 +395,15 @@ export const Workbench = memo(
                       >
                         <div className="i-ph:terminal" />
                         Toggle Terminal
-                      </PanelHeaderButton>
+                      </PanelHeaderButton> */}
                       <DropdownMenu.Root>
                         <DropdownMenu.Trigger className="text-sm flex items-center gap-1 text-bolt-elements-item-contentDefault bg-transparent enabled:hover:text-bolt-elements-item-contentActive rounded-md p-1 enabled:hover:bg-bolt-elements-item-backgroundActive disabled:cursor-not-allowed">
-                          <div className="i-ph:box-arrow-up" />
-                          Sync & Export
+                          <DotsThree size={22} />
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content
                           className={classNames(
                             'min-w-[240px] z-[250]',
-                            'bg-white dark:bg-[#141414]',
+                            'bg-white dark:bg-[#282d33]',
                             'rounded-lg shadow-lg',
                             'border border-gray-200/50 dark:border-gray-800/50',
                             'animate-in fade-in-0 zoom-in-95',
@@ -456,14 +456,16 @@ export const Workbench = memo(
                   {selectedView === 'diff' && (
                     <FileModifiedDropdown fileHistory={fileHistory} onSelectFile={handleSelectFile} />
                   )}
-                  <IconButton
+                  {/* <IconButton
                     icon="i-ph:x-circle"
                     className="-mr-1"
                     size="xl"
                     onClick={() => {
                       workbenchStore.showWorkbench.set(false);
                     }}
-                  />
+                  /> */}
+                  <div className='px-4 py-1 border border-[#34383B] rounded-md flex items-center gap-2 cursor-pointer text-white'>
+                    <p className='text-sm'>V1</p> <CaretDown size={16} /></div>
                 </div>
                 <div className="relative flex-1 overflow-hidden">
                   <View initial={{ x: '0%' }} animate={{ x: selectedView === 'code' ? '0%' : '-100%' }}>
