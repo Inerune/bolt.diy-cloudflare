@@ -1,11 +1,20 @@
 // Browser-compatible path utilities
-import type { ParsedPath } from 'path';
+
 import pathBrowserify from 'path-browserify';
 
 /**
- * A browser-compatible path utility that mimics Node's path module
+ * A Browser-compatible path utility that mimics Node's path module
  * Using path-browserify for consistent behavior in browser environments
  */
+
+type ParsedPath = {
+  root: string;
+  dir: string;
+  base: string;
+  ext: string;
+  name: string;
+};
+
 export const path = {
   join: (...paths: string[]): string => pathBrowserify.join(...paths),
   dirname: (path: string): string => pathBrowserify.dirname(path),
