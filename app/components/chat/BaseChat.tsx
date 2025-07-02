@@ -53,7 +53,6 @@ import { GlowingEffect } from '../ui/glowing-effect';
 import chatLine from '../../../icons/chat-1-line.svg'
 import { SidebarSimple } from '@phosphor-icons/react';
 import  paintBrush from  '../../../icons/paint-brush-line.svg'
-import { workbenchStore } from '~/lib/stores/workbench';
 
 
 const words = [
@@ -163,7 +162,6 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const [qrModalOpen, setQrModalOpen] = useState(false);
 
     // me
-    const showWorkbench = useStore(workbenchStore.showWorkbench);
 
     useEffect(() => {
       if (expoUrl) {
@@ -388,7 +386,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md'>
                 <SidebarSimple size={20} color='#fff'/>
                 </div>
-                <div onClick={() => {workbenchStore.showWorkbench.set(!showWorkbench); }} className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
+                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
                   <img src={chatLine} alt="chat-line" />
                 </div>
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md'>
