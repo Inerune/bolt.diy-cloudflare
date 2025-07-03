@@ -78,16 +78,16 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
 
   return (
     <>
-      <div className="artifact border border-bolt-elements-borderColor flex flex-col overflow-hidden rounded-lg w-full transition-border duration-150">
+      <div className="artifact flex flex-col overflow-hidden rounded-lg w-full transition-border duration-150">
         <div className="flex">
           <button
-            className="flex items-stretch dark:bg-[#292F35] dark:hover:bg-[#2e353b] w-full overflow-hidden"
+            className="flex items-stretch bg-transparent w-full overflow-hidden"
             onClick={() => {
               const showWorkbench = workbenchStore.showWorkbench.get();
               workbenchStore.showWorkbench.set(!showWorkbench);
             }}
           >
-            <div className="px-5 p-3.5 w-full text-left">
+            <div className="px-2 p-2 w-full text-left">
               <div className="w-full text-bolt-elements-textPrimary font-medium leading-5 text-sm">
                 {/* Use the dynamic title here */}
                 {dynamicTitle}
@@ -105,7 +105,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
                 animate={{ width: 'auto' }}
                 exit={{ width: 0 }}
                 transition={{ duration: 0.15, ease: cubicEasingFn }}
-                className="dark:bg-[#292F35] hover:bg-bolt-elements-artifacts-backgroundHover"
+                className="hidden dark:bg-transparent hover:bg-bolt-elements-artifacts-backgroundHover"
                 onClick={toggleActions}
               >
                 <div className="p-4">
@@ -116,7 +116,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
           </AnimatePresence>
         </div>
         {artifact.type === 'bundled' && (
-          <div className="flex items-center gap-1.5 p-5 dark:bg-[#292F35] border-t border-bolt-elements-artifacts-borderColor">
+          <div className="flex items-center gap-1.5 px-1 p-4 bg-transparent">
             <div className={classNames('text-lg', getIconColor(allActionFinished ? 'complete' : 'running'))}>
               {allActionFinished ? (
                 <div className="i-ph:check"></div>
@@ -145,7 +145,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
             >
               <div className="bg-bolt-elements-artifacts-borderColor h-[1px]" />
 
-              <div className="p-5 text-left bg-[#292F35]">
+              <div className="px-1 py-4 text-left bg-transparent">
                 <ActionList actions={actions} />
               </div>
             </motion.div>
