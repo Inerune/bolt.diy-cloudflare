@@ -1,6 +1,9 @@
 import { memo, useEffect, useRef } from 'react';
 import type { PreviewInfo } from '~/lib/stores/previews';
 
+// icons
+import plugLine from '../../../icons/plug-line.svg'
+
 interface PortDropdownProps {
   activePreviewIndex: number;
   setActivePreviewIndex: (index: number) => void;
@@ -49,10 +52,11 @@ export const PortDropdown = memo(
       <div className="relative z-port-dropdown" ref={dropdownRef}>
         {/* Display the active port if available, otherwise show the plug icon */}
         <button
-          className="flex items-center group-focus-within:text-bolt-elements-preview-addressBar-text bg-white group-focus-within:bg-bolt-elements-preview-addressBar-background dark:bg-bolt-elements-preview-addressBar-backgroundHover rounded-full px-2 py-1 gap-1.5"
+          className="flex items-center group-focus-within:text-bolt-elements-preview-addressBar-text bg-white group-focus-within:bg-bolt-elements-preview-addressBar-background dark:bg-bolt-elements-preview-addressBar-backgroundHover rounded-full px-3 py-1 gap-1.5"
           onClick={() => setIsDropdownOpen(!isDropdownOpen)}
         >
-          <span className="i-ph:plug text-base"></span>
+          {/* <span className="i-ph:plug text-base"></span> */}
+          <img src={plugLine} alt="plug-line" className='w-4 invert-50 dark:invert-50' />
           {previews.length > 0 && activePreviewIndex >= 0 && activePreviewIndex < previews.length ? (
             <span className="text-xs font-medium">{previews[activePreviewIndex].port}</span>
           ) : null}

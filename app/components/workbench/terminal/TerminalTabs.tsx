@@ -8,7 +8,9 @@ import { workbenchStore } from '~/lib/stores/workbench';
 import { classNames } from '~/utils/classNames';
 import { Terminal, type TerminalRef } from './Terminal';
 import { createScopedLogger } from '~/utils/logger';
-
+// icon
+import terminalLine from '../../../../icons/terminal-line.svg'
+import { CaretDoubleUp } from '@phosphor-icons/react';
 const logger = createScopedLogger('Terminal');
 
 const MAX_TERMINALS = 3;
@@ -85,9 +87,12 @@ export const TerminalTabs = memo(() => {
       }}
     >
       {
-        !showTerminal && <div onClick={() => workbenchStore.toggleTerminal(true)} className='py-2 px-4 dark:bg-[#1D2125] bg-[#FAFAFA] dark:text-white text-black w-full border-y dark:border-[#34383B] absolute bottom-0 z-9  cursor-pointer border-[#e2ddd8] flex items-center gap-1 '>
-          <i className="ph ph-terminal"></i>
+        !showTerminal && <div onClick={() => workbenchStore.toggleTerminal(true)} className='py-2 px-4 dark:bg-[#1D2125] bg-[#FAFAFA] dark:text-white text-black w-full border-y dark:border-[#34383B] absolute bottom-0 z-9  cursor-pointer border-[#e2ddd8] flex items-center justify-between '>
+          <div className='flex items-center gap-2'>
+          <img src={terminalLine} alt="termial-line" className="invert-100 dark:invert-0" />
           <p className='text-sm'>Console</p>
+          </div>
+          <CaretDoubleUp size={16} />
         </div>
       }
       <div className="h-full">

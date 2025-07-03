@@ -7,6 +7,12 @@ import { ScreenshotSelector } from './ScreenshotSelector';
 import { expoUrlAtom } from '~/lib/stores/qrCodeStore';
 import { ExpoQrModal } from '~/components/workbench/ExpoQrModal';
 
+// icons
+import refreshIcon from '../../../icons/refresh-line.svg'
+import computerIcon from '../../../icons/computer-line.svg'
+import resizeIcon from '../../../icons/expand-diagonal-2-line.svg'
+
+
 type ResizeSide = 'left' | 'right' | null;
 
 interface WindowSize {
@@ -625,9 +631,10 @@ export const Preview = memo(() => {
       )}
       <div className="bg-bolt-elements-background-depth-2 p-2 flex items-center gap-2">
         <div className="flex items-center gap-2">
-          <IconButton icon="i-ph:arrow-clockwise" onClick={reloadPreview} />
+          {/* <IconButton icon="i-ph:arrow-clockwise" onClick={reloadPreview} /> */}
+          <img src={refreshIcon} alt="refresh_icon" onClick={reloadPreview}  className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/>
           <IconButton
-            icon="i-ph:selection"
+            icon="i-ph:corners-out"
             onClick={() => setIsSelectionMode(!isSelectionMode)}
             className={isSelectionMode ? 'bg-bolt-elements-background-depth-3' : ''}
           />
@@ -673,11 +680,12 @@ export const Preview = memo(() => {
         </div>
 
         <div className="flex items-center gap-2">
-          <IconButton
+          {/* <IconButton
             icon="i-ph:devices"
             onClick={toggleDeviceMode}
             title={isDeviceModeOn ? 'Switch to Responsive Mode' : 'Switch to Device Mode'}
-          />
+          /> */}
+          <img src={computerIcon} title={isDeviceModeOn ? 'Switch to Responsive Mode' : 'Switch to Device Mode'} alt="computerIcon" onClick={toggleDeviceMode} className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/>
 
           {expoUrl && <IconButton icon="i-ph:qr-code" onClick={() => setIsExpoQrModalOpen(true)} title="Show QR" />}
 
@@ -698,11 +706,12 @@ export const Preview = memo(() => {
             </>
           )}
 
-          <IconButton
+          {/* <IconButton
             icon={isFullscreen ? 'i-ph:arrows-in' : 'i-ph:arrows-out'}
             onClick={toggleFullscreen}
             title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'}
-          />
+          /> */}
+          <img src={resizeIcon} title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'} onClick={toggleFullscreen} alt="resize-icon" className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/>
 
           <div className="flex items-center relative">
             <IconButton
@@ -714,7 +723,7 @@ export const Preview = memo(() => {
             {isWindowSizeDropdownOpen && (
               <>
                 <div className="fixed inset-0 z-50" onClick={() => setIsWindowSizeDropdownOpen(false)} />
-                <div className="absolute right-0 top-full mt-2 z-50 min-w-[240px] max-h-[400px] overflow-y-auto bg-white dark:bg-black rounded-xl shadow-2xl border border-[#E5E7EB] dark:border-[rgba(255,255,255,0.1)] overflow-hidden">
+                <div className="absolute right-0 top-full mt-2 z-50 min-w-[240px] max-h-[400px] overflow-y-auto bg-[#EFEAE6] dark:bg-[#1D2125] rounded-xl shadow-2xl border border-[#E5E7EB] dark:border-[rgba(255,255,255,0.1)] overflow-hidden">
                   <div className="p-3 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.1)]">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium text-[#111827] dark:text-gray-300">Window Options</span>
@@ -764,7 +773,7 @@ export const Preview = memo(() => {
                         <span className="text-xs text-bolt-elements-textTertiary">Show Device Frame</span>
                         <button
                           className={`w-10 h-5 rounded-full transition-colors duration-200 ${
-                            showDeviceFrame ? 'bg-[#6D28D9]' : 'bg-gray-300 dark:bg-gray-700'
+                            showDeviceFrame ? 'bg-orange-400 dark:bg-teal-400' : 'bg-gray-300 dark:bg-gray-700'
                           } relative`}
                           onClick={(e) => {
                             e.stopPropagation();
@@ -782,7 +791,7 @@ export const Preview = memo(() => {
                         <span className="text-xs text-bolt-elements-textTertiary">Landscape Mode</span>
                         <button
                           className={`w-10 h-5 rounded-full transition-colors duration-200 ${
-                            isLandscape ? 'bg-[#6D28D9]' : 'bg-gray-300 dark:bg-gray-700'
+                            isLandscape ? 'bg-orange-400 dark:bg-teal-400' : 'bg-gray-300 dark:bg-gray-700'
                           } relative`}
                           onClick={(e) => {
                             e.stopPropagation();
@@ -801,7 +810,7 @@ export const Preview = memo(() => {
                   {WINDOW_SIZES.map((size) => (
                     <button
                       key={size.name}
-                      className="w-full px-4 py-3.5 text-left text-[#111827] dark:text-gray-300 text-sm whitespace-nowrap flex items-center gap-3 group hover:bg-[#F5EEFF] dark:hover:bg-gray-900 bg-white dark:bg-black"
+                      className="w-full px-4 py-3.5 text-left text-[#111827] dark:text-gray-300 text-sm whitespace-nowrap flex items-center gap-3 group hover:bg-[#F5EEFF] dark:hover:bg-gray-900 bg-[#EFEAE6] dark:bg-[#1d2125]"
                       onClick={() => {
                         setSelectedWindowSize(size);
                         setIsWindowSizeDropdownOpen(false);
@@ -809,13 +818,13 @@ export const Preview = memo(() => {
                       }}
                     >
                       <div
-                        className={`${size.icon} w-5 h-5 text-[#6B7280] dark:text-gray-400 group-hover:text-[#6D28D9] dark:group-hover:text-[#6D28D9] transition-colors duration-200`}
+                        className={`${size.icon} w-5 h-5 text-[#6B7280] dark:text-gray-400 group-hover:text-orange-400 dark:group-hover:text-[#00d5bf] transition-colors duration-200`}
                       />
                       <div className="flex-grow flex flex-col">
-                        <span className="font-medium group-hover:text-[#6D28D9] dark:group-hover:text-[#6D28D9] transition-colors duration-200">
+                        <span className="font-medium group-hover:text-orange-400 dark:group-hover:text-[#00d5bf] transition-colors duration-200">
                           {size.name}
                         </span>
-                        <span className="text-xs text-[#6B7280] dark:text-gray-400 group-hover:text-[#6D28D9] dark:group-hover:text-[#6D28D9] transition-colors duration-200">
+                        <span className="text-xs text-[#6B7280] dark:text-gray-400 group-hover:text-orange-400 dark:group-hover:text-[#00d5bf] transition-colors duration-200">
                           {isLandscape && (size.frameType === 'mobile' || size.frameType === 'tablet')
                             ? `${size.height} × ${size.width}`
                             : `${size.width} × ${size.height}`}
@@ -823,7 +832,7 @@ export const Preview = memo(() => {
                         </span>
                       </div>
                       {selectedWindowSize.name === size.name && (
-                        <div className="text-[#6D28D9] dark:text-[#6D28D9]">
+                        <div className="text-orange-400 dark:text-[#00d5bf]">
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="16"
