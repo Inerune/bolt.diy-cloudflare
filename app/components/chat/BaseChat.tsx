@@ -51,10 +51,12 @@ import { GlowingEffect } from '../ui/glowing-effect';
 
 // icons
 import chatLine from '../../../icons/chat-1-line.svg'
-import { SidebarSimple } from '@phosphor-icons/react';
 import  paintBrush from  '../../../icons/paint-brush-line.svg'
 import { ChatDescription } from '~/lib/persistence/ChatDescription.client';
+import layoutLine from '../../../icons/layout-left-2-line.svg'
 
+// unsupportedBrowsers
+import BrowserUnsupportedPopup from './BrowserUnsupportedPopup';
 
 const words = [
   {
@@ -374,6 +376,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 <p className="text-md lg:text-lg mb-8 text-bolt-elements-textSecondary font-light animate-fade-in animation-delay-200">
                   Bring ideas to life in seconds or get help on existing projects.
                 </p>
+                <BrowserUnsupportedPopup />
               </div>
             )}
             <StickToBottom
@@ -384,8 +387,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
               initial="smooth"
             >
               {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
-                <div className='cursor-pointer px-2 py-1 hover:bg-[#dacec4] dark:hover:bg-[#4B525B] rounded-md'>
-                <SidebarSimple size={20} color='#fff'/>
+                <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0'>
+                <img src={layoutLine} alt="layoutLine" />
                 </div>
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={chatLine} alt="chat-line" />
