@@ -15,20 +15,30 @@ import { classNames } from '~/utils/classNames';
 import { useStore } from '@nanostores/react';
 import { profileStore } from '~/lib/stores/profile';
 
+
+// icons
+import chatStartIcon from '../../../icons/chat-new-fill.png'
+import searchIcon from '../../../icons/search-2-line.png'
+import guestUser from '../../../icons/user-6-line.svg'
+
 const menuVariants = {
   closed: {
-    opacity: 0,
-    visibility: 'hidden',
-    left: '-340px',
+    opacity: 1,
+    // visibility: 'hidden',
+    // left: '-340px',
+    position: 'fixed',
+    transform: `translateX(-100%)`,
     transition: {
-      duration: 0.2,
+      duration: 0.1,
       ease: cubicEasingFn,
     },
   },
   open: {
     opacity: 1,
+    position: 'static',
     visibility: 'initial',
-    left: 0,
+    transform: `translateX(0%)`,
+    // left: 0,
     transition: {
       duration: 0.2,
       ease: cubicEasingFn,
@@ -326,19 +336,19 @@ export const Menu = () => {
     <>
       <motion.div
         ref={menuRef}
-        initial="closed"
+        initial="open"
         animate={open ? 'open' : 'closed'}
         variants={menuVariants}
-        style={{ width: '340px' }}
+        style={{ width: '400px' }}
         className={classNames(
-          'flex selection-accent flex-col side-menu fixed top-0 h-full',
-          'bg-[#E7E2E0] dark:bg-[#292F35] border-r border-gray-100 dark:border-gray-800/50',
+          'flex selection-accent flex-col side-menu top-0 h-full',
+          'bg-[#E7E2E0] dark:bg-[#292F35] border-gray-100 dark:border-gray-800/50',
           'shadow-sm text-sm',
           isSettingsOpen ? 'z-40' : 'z-sidebar',
         )}
       >
 
-        <div className='flex justify-between p-1 mt-12'>
+        <div className='flex justify-between p-1 mt-4'>
           <CurrentDateTime />
           <ThemeSwitch />
         </div>
@@ -350,7 +360,7 @@ export const Menu = () => {
                 className="flex-1 flex gap-2 items-center bg-[#FFD6A7] text-[#9f2d00] dark:bg-[#00D5BF] dark:text-black rounded-lg px-4 py-2 transition-colors justify-center"
               >
                 {/* <span className="inline-block i-ph:plus-circle h-4 w-4" /> */}
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 256 256"><path d="M216,48H40A16,16,0,0,0,24,64V224a15.84,15.84,0,0,0,9.25,14.5A16.05,16.05,0,0,0,40,240a15.89,15.89,0,0,0,10.25-3.78l.09-.07L83,208H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM40,224h0ZM216,192H80a8,8,0,0,0-5.23,1.95L40,224V64H216Z"></path></svg>
+                <img src={chatStartIcon} alt="" />
                 <span className="text-sm font-medium">Start new chat</span>
               </a>
               {/* <button
@@ -371,7 +381,7 @@ export const Menu = () => {
                 <span className="i-ph:magnifying-glass h-4 w-4 text-gray-400 dark:text-gray-500" />
               </div>
               <div className='flex items-center gap-2 w-full bg-gray-50 dark:bg-[#292F35] relative pl-5 pr-2 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-zinc-500/50 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-500 border border-gray-200 dark:border-[#474E57]'>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" className='invert-0 dark:invert-100' viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
+                <img src={searchIcon} alt="" />
                 <input
                   className="bg-transparent focus:outline-none w-full"
                   type="search"
@@ -517,7 +527,7 @@ export const Menu = () => {
             <div className=" flex items-center justify-between px-0 dark:border-gray-800/50 dark:bg-[#292F35]">
               <div className="text-gray-900 dark:text-white font-medium"></div>
               <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-[32px] h-[32px] overflow-hidden bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-500 rounded-full shrink-0">
+                <div className="flex items-center justify-center w-[32px] h-[32px] overflow-hidden bg-white dark:bg-white text-gray-600 dark:text-gray-500 rounded-full shrink-0">
                   {profile?.avatar ? (
                     <img
                       src={profile.avatar}
@@ -527,7 +537,7 @@ export const Menu = () => {
                       decoding="sync"
                     />
                   ) : (
-                    <div className="i-ph:user-fill text-lg" />
+                    <img src={guestUser} alt="" />
                   )}
                 </div>
                 <span className="font-medium text-sm text-gray-900 dark:text-white truncate">

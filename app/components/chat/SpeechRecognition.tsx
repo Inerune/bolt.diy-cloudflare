@@ -1,6 +1,7 @@
 import { IconButton } from '~/components/ui/IconButton';
 import { classNames } from '~/utils/classNames';
 import React from 'react';
+import micIcon from '../../../icons/mic-line.svg'
 
 export const SpeechRecognitionButton = ({
   isListening,
@@ -22,7 +23,7 @@ export const SpeechRecognitionButton = ({
       })}
       onClick={isListening ? onStop : onStart}
     >
-      {isListening ? <div className="i-ph:microphone-slash text-xl" /> : <div className="i-ph:microphone text-xl" />}
+      {isListening ? <div className="i-ph:microphone-slash text-xl" /> : <img src={micIcon}  className='invert-100 dark:invert-0' />}
     </IconButton>
   );
 };

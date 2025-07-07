@@ -19,6 +19,11 @@ body {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "sf-light";
+  src: url('/assets/fonts/SF-light.otf');
+}
+
 @layer base {
   html, body {
     @apply font-sans;          

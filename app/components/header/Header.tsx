@@ -10,18 +10,18 @@ export function Header() {
 
   return (
     <header
-      className={classNames('flex items-center p-5 border-b h-[var(--header-height)]', {
+      className={classNames('flex items-center px-2.5 pt-2.8  dark:bg-[#292f35]', {
         'border-transparent': !chat.started,
-        'border-bolt-elements-borderColor': chat.started,
+        '': chat.started,
       })}
     >
       <div className="flex items-center gap-2 z-logo text-bolt-elements-textPrimary cursor-pointer">
-        {!chat.started && <div className="i-ph:sidebar-simple-duotone text-xl" />}
-        <a href="/" className="text-2xl font-semibold text-accent flex items-center">
+        {/* {!chat.started && <div className="i-ph:sidebar-simple-duotone text-xl" />} */}
+        <a href="/" className="text-accent text-center flex items-center">
           {/* <span className="i-bolt:logo-text?mask w-[46px] inline-block" /> */}
           {/* <img src="/logo-light-styled.png" alt="logo" className="w-[90px] inline-block dark:hidden" />
           <img src="/logo-dark-styled.png" alt="logo" className="w-[90px] inline-block hidden dark:block" /> */}
-          <h3>askblake.</h3>
+          <h3 className='text-[18px]'>askblake.</h3>
         </a>
       </div>
       {chat.started && ( // Display ChatDescription and HeaderActionButtons only when the chat has started.

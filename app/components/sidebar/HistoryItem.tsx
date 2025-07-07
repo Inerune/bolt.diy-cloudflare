@@ -6,8 +6,13 @@ import { useEditChatDescription } from '~/lib/hooks';
 import { useCallback, useEffect, useState } from 'react';
 import { Checkbox } from '~/components/ui/Checkbox';
 import { Dropdown, DropdownItem } from '~/components/ui/Dropdown';
-import { CopySimple, DotsThree, DownloadSimple, PencilSimpleLine, Trash, UploadSimple } from '@phosphor-icons/react';
-
+// icons
+import moreFill from '../../../icons/more-fill.svg'
+import downnloadIcon from '../../../icons/download-2-line.svg'
+import deleteIcon from '../../../icons/delete-bin-line.svg'
+import editIcon from '../../../icons/edit-line.svg'
+import duplicateIcon from '../../../icons/file-copy-line.svg'
+import shareIcon from '../../../icons/upload-2-line.svg'
 interface HistoryItemProps {
   item: ChatHistoryItem;
   onDelete?: (event: React.UIEvent) => void;
@@ -131,31 +136,39 @@ export function HistoryItem({
               align="start"
               sideOffset={8}
               trigger={
-                <DotsThree className='hover:bg-gray-400/20 rounded-md invert-100 dark:invert-0' size={22} color='#fff' onClick={(e) => {
+                <img src={moreFill} className='invert-60 dark:invert-0' onClick={(e) => {
                   e.preventDefault();
-                  e.stopPropagation();
-                }} />
+                   e.stopPropagation();
+                 }}/>
+                // <DotsThree className='hover:bg-gray-400/20 rounded-md invert-100 dark:invert-0' size={22} color='#fff' onClick={(e) => {
+                //   e.preventDefault();
+                //   e.stopPropagation();
+                // }} />
               }
             >
               <DropdownItem onSelect={() => exportChat(item.id)}>
-               <DownloadSimple size={20} /> Download
+               <img src={downnloadIcon} alt="" className='invert-60 dark:invert-0'/>
+                Download
               </DropdownItem>
               <DropdownItem onSelect={() => alert('Share clicked!')}>
-               <UploadSimple size={20} /> Share
+               <img src={shareIcon} alt="" className='invert-60 dark:invert-0'/>
+               Share
               </DropdownItem>
               {onDuplicate && (
                 <DropdownItem onSelect={() => onDuplicate(item.id)}>
-                 <CopySimple size={20} /> Duplicate
+                 <img src={duplicateIcon} alt="" className='invert-60 dark:invert-0'/>
+                 Duplicate
                 </DropdownItem>
               )}
               <DropdownItem onSelect={() => toggleEditMode()}>
-               <PencilSimpleLine size={20} /> Rename
+               <img src={editIcon} alt="" className='invert-60 dark:invert-0'/>
+               Rename
               </DropdownItem>
               <DropdownItem
                 onSelect={handleDeleteClick}
                 className="text-red-500 hover:bg-red-200 dark:hover:bg-red-900"
               >
-                <Trash size={20} />
+                <img src={deleteIcon} alt="" className='invert-60 dark:invert-0'/>
                 Delete
               </DropdownItem>
             </Dropdown>

@@ -53,7 +53,9 @@ import { GlowingEffect } from '../ui/glowing-effect';
 import chatLine from '../../../icons/chat-1-line.svg'
 import  paintBrush from  '../../../icons/paint-brush-line.svg'
 import { ChatDescription } from '~/lib/persistence/ChatDescription.client';
-import layoutLine from '../../../icons/layout-left-2-line.svg'
+import layoutLine from '../../../icons/layout-left-2-line.svg';
+import attachmentIcon from '../../../icons/attachment-2.svg'
+import sparkIcon from '../../../icons/sparkling-line.svg'
 
 // unsupportedBrowsers
 import BrowserUnsupportedPopup from './BrowserUnsupportedPopup';
@@ -367,14 +369,17 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
       >
 
         <ClientOnly>{() => <Menu />}</ClientOnly>
-        <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full">
+        <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full border-10 dark:border-[#292f35]">
+          <div className="px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute">
+            <img src={layoutLine} alt="sidebar_list" />
+          </div>
           <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
             {!chatStarted && (
-              <div id="intro" className="mt-[20vh] max-w-chat mx-auto text-center px-4 lg:px-0">
+              <div id="intro" className="mt-[24vh] max-w-chat mx-auto text-center px-4 lg:px-0">
                 <TypewriterEffectSmooth words={words} />
 
-                <p className="text-md lg:text-lg mb-8 text-bolt-elements-textSecondary font-light animate-fade-in animation-delay-200">
-                  Bring ideas to life in seconds or get help on existing projects.
+                <p className="font-[sf-light] tracking-[1px] text-md lg:text-[18px] mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
+                  bring ideas to life in seconds or get help on existing projects.
                 </p>
                 <BrowserUnsupportedPopup />
               </div>
@@ -455,7 +460,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                 <div
                   className={classNames(
-                    'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0 rounded-lg border border-bolt-elements-borderColor relative w-full max-w-chat mx-auto z-prompt',
+                    'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0 rounded-lg border border-bolt-elements-borderColor relative w-full max-w-[40rem] mx-auto z-prompt',
 
                     /*
                      * {
@@ -642,7 +647,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     <div className="flex justify-between items-center text-sm p-4 pt-2">
                       <div className="flex gap-1 items-center">
                         <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
-                          <div className="i-ph:paperclip text-xl"></div>
+                          <img src={attachmentIcon} alt=""  className='invert-100 dark:invert-0'/>
                         </IconButton>
                         <SpeechRecognitionButton
                           isListening={isListening}
@@ -662,7 +667,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           {enhancingPrompt ? (
                             <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
                           ) : (
-                            <div className="i-bolt:stars text-xl"></div>
+                            <img src={sparkIcon} alt="" />
                           )}
                         </IconButton>
 
