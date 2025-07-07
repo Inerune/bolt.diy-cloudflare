@@ -56,6 +56,7 @@ import { ChatDescription } from '~/lib/persistence/ChatDescription.client';
 import layoutLine from '../../../icons/layout-left-2-line.svg';
 import attachmentIcon from '../../../icons/attachment-2.svg'
 import sparkIcon from '../../../icons/sparkling-line.svg'
+import { BackgroundLines } from '../ui/background-lines';
 
 // unsupportedBrowsers
 import BrowserUnsupportedPopup from './BrowserUnsupportedPopup';
@@ -369,11 +370,11 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
       >
 
         <ClientOnly>{() => <Menu />}</ClientOnly>
-        <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full border-10 dark:border-[#292f35]">
+        <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] p-2.5">
           <div className="px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute">
             <img src={layoutLine} alt="sidebar_list" />
           </div>
-          <div className={classNames(styles.Chat, 'flex flex-col flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
+          <div className={classNames(styles.Chat, 'flex flex-col bg-[#EFEAE6] dark:bg-[#1d2125] border dark:border-[#4B525B] rounded-md flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
             {!chatStarted && (
               <div id="intro" className="mt-[24vh] max-w-chat mx-auto text-center px-4 lg:px-0">
                 <TypewriterEffectSmooth words={words} />

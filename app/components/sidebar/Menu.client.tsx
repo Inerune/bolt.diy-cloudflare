@@ -63,7 +63,7 @@ function CurrentDateTime() {
   }, []);
 
   return (
-    <div className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 dark:text-gray-400 border-b border-gray-100 dark:border-gray-800/50">
+    <div className="flex items-center gap-2 px-4 py-2 text-sm text-gray-600 dark:text-gray-400 ">
       <div className="h-4 w-4 i-ph:clock opacity-80" />
       <div className="flex gap-2">
         <span>{dateTime.toLocaleDateString()}</span>
@@ -341,7 +341,7 @@ export const Menu = () => {
         variants={menuVariants}
         style={{ width: '400px' }}
         className={classNames(
-          'flex selection-accent flex-col side-menu top-0 h-full',
+          'flex selection-accent flex-col side-menu top-0 h-full ',
           'bg-[#E7E2E0] dark:bg-[#292F35] border-gray-100 dark:border-gray-800/50',
           'shadow-sm text-sm',
           isSettingsOpen ? 'z-40' : 'z-sidebar',
@@ -523,7 +523,7 @@ export const Menu = () => {
               </Dialog>
             </DialogRoot>
           </div>
-          <div className="flex items-center justify-between border-t border-gray-200 dark:border-gray-800 px-4 py-3">
+          <div className="flex items-center justify-between px-4 py-3">
             <div className=" flex items-center justify-between px-0 dark:border-gray-800/50 dark:bg-[#292F35]">
               <div className="text-gray-900 dark:text-white font-medium"></div>
               <div className="flex items-center gap-3">
