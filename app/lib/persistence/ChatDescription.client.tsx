@@ -4,6 +4,9 @@ import WithTooltip from '~/components/ui/Tooltip';
 import { useEditChatDescription } from '~/lib/hooks';
 import { description as descriptionStore } from '~/lib/persistence';
 
+
+import pencilLine from '../../../icons/pencil-line.svg'
+
 export function ChatDescription() {
   const initialDescription = useStore(descriptionStore)!;
 
@@ -49,15 +52,11 @@ export function ChatDescription() {
           {currentDescription}
           <TooltipProvider>
             <WithTooltip tooltip="Rename chat">
-              <div className="flex justify-between items-center p-2 rounded-md bg-bolt-elements-item-backgroundAccent ml-2">
-                <button
-                  type="button"
-                  className="i-ph:pencil-simple scale-110 hover:text-bolt-elements-item-contentAccent"
-                  onClick={(event) => {
+              <div className="flex justify-between items-center px-2 py-1 rounded-md bg-bolt-elements-item-backgroundAccent ml-2">
+                <img src={pencilLine} alt="" className='scale-110 hover:text-bolt-elements-item-contentAccent' onClick={(event) => {
                     event.preventDefault();
                     toggleEditMode();
-                  }}
-                />
+                  }} />
               </div>
             </WithTooltip>
           </TooltipProvider>
