@@ -386,7 +386,7 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
                 <span className="i-ph:magnifying-glass h-4 w-4 text-gray-400 dark:text-gray-500" />
               </div>
               <div className='flex items-center gap-2 w-full bg-gray-50 dark:bg-[#292F35] relative pl-5 pr-2 py-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-zinc-500/50 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-500 border border-gray-200 dark:border-[#474E57]'>
-                <img src={searchIcon} alt="" />
+                <img src={searchIcon} alt="" className='invert-100 dark:invert-0' />
                 <input
                   className="bg-transparent focus:outline-none w-full"
                   type="search"
