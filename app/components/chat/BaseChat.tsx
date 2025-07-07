@@ -375,10 +375,13 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
         <ClientOnly>{() => <Menu setOpen={setOpen} open={open}/>}</ClientOnly>
         <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] p-2.5">
-          <div className={`px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}` } onClick={openSideBar}>
+          <div className={`px-2 py-1 ${!chatStarted && 'z-99'} hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}` } onClick={openSideBar}>
             <img src={layoutLine} alt="sidebar_list" />
           </div>
           <div className={classNames(styles.Chat, 'flex flex-col bg-[#EFEAE6] dark:bg-[#1d2125] border dark:border-[#4B525B] rounded-md flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
+
+            <BackgroundLines className='bg-[#EFEAE6] dark:bg-[#1d2125]'>
+
             {!chatStarted && (
               <div id="intro" className="mt-[24vh] max-w-chat mx-auto text-center px-4 lg:px-0">
                 <TypewriterEffectSmooth words={words} />
@@ -747,6 +750,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 {/* {!chatStarted && <StarterTemplates />} */}
               </div>
             </div>
+            </BackgroundLines>
+
           </div>
           <ClientOnly>
             {() => (
