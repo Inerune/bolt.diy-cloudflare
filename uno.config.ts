@@ -114,8 +114,9 @@ export default defineConfig({
   ],
   theme: {
     fontFamily: {
-      sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      sans: ['sf-regular', 'ui-sans-serif', 'system-ui', 'sans-serif'],
       heading: ['Fraine', 'Inter', 'ui-sans-serif', 'system-ui'],
+      custom: ['sf-regular', 'Inter']
     },
     colors: {
       ...COLOR_PRIMITIVES,

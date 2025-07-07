@@ -11,7 +11,7 @@ const ThoughtBox = ({ title, children }: PropsWithChildren<{ title: string }>) =
         shadow-md 
         rounded-lg 
         cursor-pointer 
-        transition-all 
+        transition-all
         duration-300
         ${isExpanded ? 'max-h-96' : 'max-h-13'}
         overflow-auto

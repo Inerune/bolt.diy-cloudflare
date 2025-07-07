@@ -21,7 +21,7 @@ export function Header() {
           {/* <span className="i-bolt:logo-text?mask w-[46px] inline-block" /> */}
           {/* <img src="/logo-light-styled.png" alt="logo" className="w-[90px] inline-block dark:hidden" />
           <img src="/logo-dark-styled.png" alt="logo" className="w-[90px] inline-block hidden dark:block" /> */}
-          <h3 className='text-[18px]'>askblake.</h3>
+          <h3 className='text-[18px] font-[franie-regular]'>askblake.</h3>
         </a>
       </div>
       {chat.started && ( // Display ChatDescription and HeaderActionButtons only when the chat has started.

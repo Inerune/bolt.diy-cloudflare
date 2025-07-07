@@ -336,7 +336,7 @@ export const Menu = () => {
     <>
       <motion.div
         ref={menuRef}
-        initial="open"
+        initial="closed"
         animate={open ? 'open' : 'closed'}
         variants={menuVariants}
         style={{ width: '400px' }}

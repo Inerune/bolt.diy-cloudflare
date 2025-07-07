@@ -64,7 +64,7 @@ export const AssistantMessage = memo(({ content, annotations, messageId, onRewin
   return (
     <div className="overflow-hidden w-full">
       <>
-        <div className=" flex gap-2 items-center text-sm text-bolt-elements-textSecondary mb-2">
+        <div className=" flex gap-2 items-center text-sm text-bolt-elements-textSecondary mb-2 font-[sf-light]">
           {(codeContext || chatSummary) && (
             <Popover side="right" align="start" trigger={<div className="i-ph:info" />}>
               {chatSummary && (
@@ -76,7 +76,7 @@ export const AssistantMessage = memo(({ content, annotations, messageId, onRewin
                     </div>
                   </div>
                   {codeContext && (
-                    <div className="code-context flex flex-col p4  rounded-md">
+                    <div className="code-context flex flex-col p4  rounded-md font-[sf-light]">
                       <h2>Context</h2>
                       <div className="flex gap-4 mt-4 bolt" style={{ zoom: 0.6 }}>
                         {codeContext.map((x) => {
