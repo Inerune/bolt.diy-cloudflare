@@ -73,11 +73,16 @@ function CurrentDateTime() {
   );
 }
 
-export const Menu = () => {
+interface menuProps {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  open: boolean
+}
+
+export const Menu = ({ setOpen, open }: menuProps ) => {
   const { duplicateCurrentChat, exportChat } = useChatHistory();
   const menuRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<ChatHistoryItem[]>([]);
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
   const [dialogContent, setDialogContent] = useState<DialogContent>(null);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const profile = useStore(profileStore);
@@ -288,30 +293,30 @@ export const Menu = () => {
     }
   }, [open, selectionMode]);
 
-  useEffect(() => {
-    const enterThreshold = 40;
-    const exitThreshold = 40;
+  // useEffect(() => {
+  //   const enterThreshold = 40;
+  //   const exitThreshold = 40;
 
-    function onMouseMove(event: MouseEvent) {
-      if (isSettingsOpen) {
-        return;
-      }
+  //   function onMouseMove(event: MouseEvent) {
+  //     if (isSettingsOpen) {
+  //       return;
+  //     }
 
-      if (event.pageX < enterThreshold) {
-        setOpen(true);
-      }
+  //     if (event.pageX < enterThreshold) {
+  //       setOpen(true);
+  //     }
 
-      if (menuRef.current && event.clientX > menuRef.current.getBoundingClientRect().right + exitThreshold) {
-        setOpen(false);
-      }
-    }
+  //     if (menuRef.current && event.clientX > menuRef.current.getBoundingClientRect().right + exitThreshold) {
+  //       setOpen(false);
+  //     }
+  //   }
 
-    window.addEventListener('mousemove', onMouseMove);
+  //   window.addEventListener('mousemove', onMouseMove);
 
-    return () => {
-      window.removeEventListener('mousemove', onMouseMove);
-    };
-  }, [isSettingsOpen]);
+  //   return () => {
+  //     window.removeEventListener('mousemove', onMouseMove);
+  //   };
+  // }, [isSettingsOpen]);
 
   const handleDuplicate = async (id: string) => {
     await duplicateCurrentChat(id);

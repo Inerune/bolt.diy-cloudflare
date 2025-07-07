@@ -166,6 +166,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const [progressAnnotations, setProgressAnnotations] = useState<ProgressAnnotation[]>([]);
     const expoUrl = useStore(expoUrlAtom);
     const [qrModalOpen, setQrModalOpen] = useState(false);
+    const [open, setOpen] = useState(false);
 
     // me
 
@@ -361,6 +362,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         }
       }
     };
+    const openSideBar = () => {
+      setOpen(!open)
+    }
 
     const baseChat = (
       <div
@@ -369,9 +373,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         data-chat-visible={showChat}
       >
 
-        <ClientOnly>{() => <Menu />}</ClientOnly>
+        <ClientOnly>{() => <Menu setOpen={setOpen} open={open}/>}</ClientOnly>
         <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] p-2.5">
-          <div className="px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute">
+          <div className={`px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}` } onClick={openSideBar}>
             <img src={layoutLine} alt="sidebar_list" />
           </div>
           <div className={classNames(styles.Chat, 'flex flex-col bg-[#EFEAE6] dark:bg-[#1d2125] border dark:border-[#4B525B] rounded-md flex-grow lg:min-w-[var(--chat-min-width)] h-full')}>
@@ -394,7 +398,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             >
               {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
                 <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0'>
-                <img src={layoutLine} alt="layoutLine" />
+                <img src={layoutLine} alt="layoutLine" onClick={openSideBar}/>
                 </div>
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={chatLine} alt="chat-line" />
