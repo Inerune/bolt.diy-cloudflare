@@ -345,7 +345,7 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
         )}
       >
 
-        <div className='flex justify-between p-1 mt-12'>
+        <div className='flex justify-between p-1 pr-3 mt-12'>
           <CurrentDateTime />
           <ThemeSwitch />
         </div>
