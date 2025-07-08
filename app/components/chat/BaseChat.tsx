@@ -780,7 +780,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   <img src={paintBrush} alt="paint-brush" />
                 </div>
               </div>}
-              {chatStarted && <div className=' px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm'>
+              {chatStarted && <div className=' px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm shadow-[0px_40px_40px_2px_#efeae6]  dark:shadow-[0px_40px_40px_2px_#1D2125]'>
                 <ClientOnly>{() => <ChatDescription />}</ClientOnly>
               </div>}
               

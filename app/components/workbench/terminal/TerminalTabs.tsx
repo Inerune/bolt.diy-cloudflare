@@ -122,14 +122,14 @@ export const TerminalTabs = memo(() => {
                       onClick={() => setActiveTerminal(index)}
                     >
                       <div className="i-ph:terminal-window-duotone text-lg" />
-                      Askblake Terminal
+                      Console
                     </button>
                   ) : (
                     <React.Fragment>
                       <button
                         key={index}
                         className={classNames(
-                          'flex items-center text-sm cursor-pointer gap-1.5 px-3 py-2 h-full whitespace-nowrap rounded-full',
+                          'hidden items-center text-sm cursor-pointer gap-1.5 px-3 py-2 h-full whitespace-nowrap rounded-full',
                           {
                             'bg-bolt-elements-terminals-buttonBackground text-bolt-elements-textPrimary': isActive,
                             'bg-bolt-elements-background-depth-2 text-bolt-elements-textSecondary hover:bg-bolt-elements-terminals-buttonBackground':
@@ -146,10 +146,10 @@ export const TerminalTabs = memo(() => {
                 </React.Fragment>
               );
             })}
-            {terminalCount < MAX_TERMINALS && <IconButton icon="i-ph:plus" size="md" onClick={addTerminal} />}
+            {/* {terminalCount < MAX_TERMINALS && <IconButton icon="i-ph:plus" size="md" onClick={addTerminal} />} */}
             <IconButton
-              className="ml-auto"
-              icon="i-ph:caret-down"
+              className="ml-auto rotate-z-[180deg]"
+              icon="i-ph:caret-double-up"
               title="Close"
               size="md"
               onClick={() => workbenchStore.toggleTerminal(false)}
