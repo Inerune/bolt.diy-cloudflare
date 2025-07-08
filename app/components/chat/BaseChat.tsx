@@ -69,7 +69,7 @@ const words = [
     text: "can i",
   },
   {
-    text: "make ",
+    text: "make",
   },
   {
     text: "for you?",
@@ -375,20 +375,20 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
         <ClientOnly>{() => <Menu setOpen={setOpen} open={open}/>}</ClientOnly>
         <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] p-2.5">
-          <div className={`px-2 py-1 ${!chatStarted && 'z-99'} hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}` } onClick={openSideBar}>
+          <div className={`px-2.6 py-1 ${!chatStarted && 'z-99'} hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}` } onClick={openSideBar}>
             <img src={layoutLine} alt="sidebar_list" />
           </div>
           <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow lg:min-w-[var(--chat-min-width)] h-full`)}>
 
            {
             !chatStarted ?
-             <BackgroundLines className='bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'>
+             <BackgroundLines className=' bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'>
 
             {!chatStarted && (
               <div id="intro" className="mt-[24vh] max-w-chat mx-auto text-center px-4 lg:px-0">
                 <TypewriterEffectSmooth words={words} />
 
-                <p className="font-[sf-light] tracking-[1px] text-md lg:text-[18px] mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
+                <p className="font-[sf-light]  text-md lg:text-[18px] mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
                   bring ideas to life in seconds or get help on existing projects.
                 </p>
                 <BrowserUnsupportedPopup />

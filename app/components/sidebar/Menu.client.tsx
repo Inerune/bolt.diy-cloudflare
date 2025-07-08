@@ -17,8 +17,8 @@ import { profileStore } from '~/lib/stores/profile';
 
 
 // icons
-import chatStartIcon from '../../../icons/chat-new-fill.png'
-import searchIcon from '../../../icons/search-2-line.png'
+import chatStartIcon from '../../../icons/chat-new-fill.svg'
+import searchIcon from '../../../icons/search-2-line.svg'
 import guestUser from '../../../icons/user-6-line.svg'
 
 const menuVariants = {
@@ -29,7 +29,7 @@ const menuVariants = {
     position: 'fixed',
     transform: `translateX(-100%)`,
     transition: {
-      duration: 0.1,
+      duration: 0.2,
       ease: cubicEasingFn,
     },
   },
@@ -348,7 +348,7 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
         className={classNames(
           'flex selection-accent flex-col side-menu top-0 h-full ',
           'bg-[#E7E2E0] dark:bg-[#292F35] border-gray-100 dark:border-gray-800/50',
-          'shadow-sm text-sm',
+          'text-sm',
           isSettingsOpen ? 'z-40' : 'z-sidebar',
         )}
       >

@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import settingIcon from '../../../icons/settings-4-line.png'
+import settingIcon from '../../../icons/settings-4-line.svg'
 
 
 interface SettingsButtonProps {
