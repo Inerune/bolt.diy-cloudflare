@@ -23,24 +23,16 @@ import guestUser from '../../../icons/user-6-line.svg'
 
 const menuVariants = {
   closed: {
-    opacity: 1,
-    // visibility: 'hidden',
-    // left: '-340px',
-    position: 'fixed',
-    transform: `translateX(-100%)`,
+    x: '-100%', // Better than using transform manually
     transition: {
-      duration: 0.2,
+      duration: .2,
       ease: cubicEasingFn,
     },
   },
   open: {
-    opacity: 1,
-    position: 'static',
-    visibility: 'initial',
-    transform: `translateX(0%)`,
-    // left: 0,
+    x: '0%',
     transition: {
-      duration: 0.2,
+      duration: .1,
       ease: cubicEasingFn,
     },
   },
@@ -344,16 +336,16 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
         initial="closed"
         animate={open ? 'open' : 'closed'}
         variants={menuVariants}
-        style={{ width: '400px' }}
+        style={{ width: '320px' }}
         className={classNames(
-          'flex selection-accent flex-col side-menu top-0 h-full ',
+          'fixed flex selection-accent flex-col side-menu top-0 h-full ',
           'bg-[#E7E2E0] dark:bg-[#292F35] border-gray-100 dark:border-gray-800/50',
           'text-sm',
           isSettingsOpen ? 'z-40' : 'z-sidebar',
         )}
       >
 
-        <div className='flex justify-between p-1 mt-4'>
+        <div className='flex justify-between p-1 mt-12'>
           <CurrentDateTime />
           <ThemeSwitch />
         </div>
