@@ -401,9 +401,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
               resize="smooth"
               initial="smooth"
             >
-              {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
-                <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0'>
-                <img src={layoutLine} alt="layoutLine" onClick={openSideBar}/>
+              {/* {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
+                <div className={`cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md ${open && 'bg-[#4B525B]'} invert-100 dark:invert-0`}>
+                <img src={layoutLine} alt="layoutLine" />
                 </div>
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={chatLine} alt="chat-line" />
@@ -411,7 +411,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={paintBrush} alt="paint-brush" />
                 </div>
-              </div>}
+              </div>} */}
               {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm'>
                 <ClientOnly>{() => <ChatDescription />}</ClientOnly>
               </div>}
@@ -763,15 +763,15 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
               </div>
             )}
             <StickToBottom
-              className={classNames('pt-0 px-2 sm:px-2 relative', {
+              className={classNames('pt-0 relative', {
                 'h-full flex flex-col modern-scrollbar  relative': chatStarted,
               })}
               resize="smooth"
               initial="smooth"
             >
-              {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
-                <div className='cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0'>
-                <img src={layoutLine} alt="layoutLine" onClick={openSideBar}/>
+              {chatStarted && <div className='px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
+                <div onClick={openSideBar} className={`cursor-pointer ${open && 'bg-[#4B525B]'} px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0`}>
+                <img src={layoutLine} alt="layoutLine" />
                 </div>
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={chatLine} alt="chat-line" />
@@ -780,11 +780,11 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   <img src={paintBrush} alt="paint-brush" />
                 </div>
               </div>}
-              {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm'>
+              {chatStarted && <div className=' px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm'>
                 <ClientOnly>{() => <ChatDescription />}</ClientOnly>
               </div>}
               
-              <StickToBottom.Content className="flex flex-col gap-4">
+              <StickToBottom.Content className="flex flex-col gap-4 mt-2">
                 <ClientOnly>
                   {() => {
                     return chatStarted ? (
@@ -798,8 +798,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 </ClientOnly>
               </StickToBottom.Content>
               <div
-                className={classNames('my-auto flex flex-col gap-2 w-full max-w-chat mx-auto z-prompt mb-0', {
-                  'sticky bottom-2': chatStarted,
+                className={classNames('my-auto flex flex-col gap-2 w-full  mx-auto z-prompt mb-0', {
+                  'sticky bottom-0': chatStarted,
                 })}
               >
                 <div className="flex flex-col gap-2">
@@ -838,7 +838,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                 {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                 <div
                   className={classNames(
-                    'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0 rounded-lg border border-bolt-elements-borderColor relative w-full max-w-[40rem] mx-auto z-prompt',
+                    'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0  border border-bolt-elements-borderColor relative w-full max-w-[40rem] mx-auto z-prompt',
 
                     /*
                      * {
