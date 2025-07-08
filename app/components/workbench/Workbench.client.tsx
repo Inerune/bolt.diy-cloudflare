@@ -27,6 +27,7 @@ import { PushToGitHubDialog } from '~/components/@settings/tabs/connections/comp
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 import { usePreviewStore } from '~/lib/stores/previews';
 import { CaretDown, DotsThree } from '@phosphor-icons/react';
+import { Tooltip } from '../ui/Tooltip';
 
 interface WorkspaceProps {
   chatStarted?: boolean;
@@ -398,7 +399,9 @@ export const Workbench = memo(
                       </PanelHeaderButton> */}
                       <DropdownMenu.Root>
                         <DropdownMenu.Trigger className="text-sm flex items-center gap-1 text-bolt-elements-item-contentDefault bg-transparent enabled:hover:text-bolt-elements-item-contentActive rounded-md p-1 enabled:hover:bg-bolt-elements-item-backgroundActive disabled:cursor-not-allowed">
+                          <Tooltip content="More Options" side='bottom'>
                           <DotsThree size={22} />
+                          </Tooltip>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content
                           className={classNames(

@@ -377,7 +377,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
         <ClientOnly>{() => <Menu setOpen={setOpen} open={open}/>}</ClientOnly>
         <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] p-2.5">
-          <SparkTooltip content="Open Sidebar" side="right">
+          <SparkTooltip content={ open ? `Close Panel` : `Open Panel`} side="right">
           <div className={`px-2.6 py-1 ${!chatStarted && 'z-99'} hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}` } onClick={openSideBar}>
             <img src={layoutLine} alt="sidebar_list" />
           </div>
@@ -661,8 +661,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     </ClientOnly> */}
                     <div className="flex justify-between items-center text-sm p-4 pt-2">
                       <div className="flex gap-1 items-center">
-                        <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
+                        <IconButton className="transition-all" onClick={() => handleFileUpload()}>
+                          <SparkTooltip content="Attach figma files, screenshots, etc." side='bottom'>
                           <img src={attachmentIcon} alt=""  className='invert-100 dark:invert-0'/>
+                          </SparkTooltip>
                         </IconButton>
                         <SpeechRecognitionButton
                           isListening={isListening}
@@ -682,7 +684,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           {enhancingPrompt ? (
                             <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
                           ) : (
-                            <SparkTooltip content="Spark icon tooltip">
+                            <SparkTooltip content="Enhance prompt" side='bottom'>
                             <img src={sparkIcon} alt="" className='invert-100 dark:invert-0'/>
                             </SparkTooltip>
                           )}
@@ -777,15 +779,21 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
               initial="smooth"
             >
               {chatStarted && <div className='px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
+                <SparkTooltip content="Open Panel">
                 <div onClick={openSideBar} className={`cursor-pointer ${open && 'bg-[#4B525B]'} px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0`}>
                 <img src={layoutLine} alt="layoutLine" />
                 </div>
+                </SparkTooltip>
+                 <SparkTooltip content="Chat Mode">
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={chatLine} alt="chat-line" />
                 </div>
+                </SparkTooltip>
+                <SparkTooltip content="Design Mode">
                 <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
                   <img src={paintBrush} alt="paint-brush" />
                 </div>
+                </SparkTooltip>
               </div>}
               {chatStarted && <div className=' px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm shadow-[0px_40px_40px_2px_#efeae6]  dark:shadow-[0px_40px_40px_2px_#1D2125]'>
                 <ClientOnly>{() => <ChatDescription />}</ClientOnly>
@@ -1152,12 +1160,14 @@ function ScrollToBottom() {
 
   return (
     !isAtBottom && (
+      <SparkTooltip content="Jump to Recent">
       <button
         className="absolute z-50 top-[0%] translate-y-[-100%]  rounded-full left-[50%] translate-x-[-50%] px-1.5 py-1.5 flex items-center gap-2 bg-transparent border-2 border-[#00D5BF] text-bolt-elements-textPrimary text-sm"
         onClick={() => scrollToBottom()}
       >
         <span className="i-ph:arrow-down animate-bounce text-[#00D5BF]" />
       </button>
+      </SparkTooltip>
     )
   );
 }

@@ -5,6 +5,7 @@ import { memo } from 'react';
 import { classNames } from '~/utils/classNames';
 import { cubicEasingFn } from '~/utils/easings';
 import { genericMemo } from '~/utils/react';
+import { Tooltip } from './Tooltip';
 
 export type SliderOptions<T> = {
   left: { value: T; text: string };
@@ -27,7 +28,9 @@ export const Slider = genericMemo(<T,>({ selected, options, setSelected }: Slide
     <div className="flex items-center flex-wrap shrink-0 gap-1 overflow-hidden rounded-md p-1">
       <SliderButton selected={isLeftSelected} setSelected={() => setSelected?.(options.left.value)}>
         {/* {options.left.text} */}
+        <Tooltip content="Code View">
         <Code size={20} />
+        </Tooltip>
       </SliderButton>
 
       {options.middle && (
@@ -40,7 +43,9 @@ export const Slider = genericMemo(<T,>({ selected, options, setSelected }: Slide
         selected={!isLeftSelected && !isMiddleSelected}
         setSelected={() => setSelected?.(options.right.value)}
       >
+        <Tooltip content="Preview">
         <ImageSquare size={20} />
+        </Tooltip>
       </SliderButton>
     </div>
   );

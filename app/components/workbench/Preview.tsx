@@ -11,6 +11,7 @@ import { ExpoQrModal } from '~/components/workbench/ExpoQrModal';
 import refreshIcon from '../../../icons/refresh-line.svg'
 import computerIcon from '../../../icons/computer-line.svg'
 import resizeIcon from '../../../icons/expand-diagonal-2-line.svg'
+import { Tooltip } from '../ui/Tooltip';
 
 
 type ResizeSide = 'left' | 'right' | null;
@@ -685,7 +686,8 @@ export const Preview = memo(() => {
             onClick={toggleDeviceMode}
             title={isDeviceModeOn ? 'Switch to Responsive Mode' : 'Switch to Device Mode'}
           /> */}
-          <img src={computerIcon} title={isDeviceModeOn ? 'Switch to Responsive Mode' : 'Switch to Device Mode'} alt="computerIcon" onClick={toggleDeviceMode} className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/>
+          <Tooltip content="View Modes" side='bottom'>
+          <img src={computerIcon} alt="computerIcon" onClick={toggleDeviceMode} className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/></Tooltip>
 
           {expoUrl && <IconButton icon="i-ph:qr-code" onClick={() => setIsExpoQrModalOpen(true)} title="Show QR" />}
 
@@ -711,9 +713,11 @@ export const Preview = memo(() => {
             onClick={toggleFullscreen}
             title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'}
           /> */}
-          <img src={resizeIcon} title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'} onClick={toggleFullscreen} alt="resize-icon" className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/>
+          <Tooltip content="New Window" side='bottom'>
+          <img src={resizeIcon} title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'} onClick={toggleFullscreen} alt="resize-icon" className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/></Tooltip>
 
           <div className="flex items-center relative">
+            
             <IconButton
               icon="i-ph:list"
               onClick={() => setIsWindowSizeDropdownOpen(!isWindowSizeDropdownOpen)}

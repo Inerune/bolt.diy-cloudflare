@@ -1,6 +1,6 @@
 import { useStore } from '@nanostores/react';
 import { TooltipProvider } from '@radix-ui/react-tooltip';
-import WithTooltip from '~/components/ui/Tooltip';
+import { Tooltip } from '~/components/ui/Tooltip';
 import { useEditChatDescription } from '~/lib/hooks';
 import { description as descriptionStore } from '~/lib/persistence';
 
@@ -35,8 +35,7 @@ export function ChatDescription() {
             onKeyDown={handleKeyDown}
             style={{ width: `${Math.max(currentDescription.length * 8, 100)}px` }}
           />
-          <TooltipProvider>
-            <WithTooltip tooltip="Save title">
+            <Tooltip content="Save title">
               <div className="flex justify-between items-center p-2 rounded-md bg-bolt-elements-item-backgroundAccent">
                 <button
                   type="submit"
@@ -44,22 +43,19 @@ export function ChatDescription() {
                   onMouseDown={handleSubmit}
                 />
               </div>
-            </WithTooltip>
-          </TooltipProvider>
+            </Tooltip>
         </form>
       ) : (
         <>
           {currentDescription}
-          <TooltipProvider>
-            <WithTooltip tooltip="Rename chat">
+            <Tooltip content="Rename chat">
               <div className="flex justify-between items-center px-2 py-1 rounded-md bg-bolt-elements-item-backgroundAccent ml-2">
-                <img src={pencilLine} alt="" className='scale-110 hover:text-bolt-elements-item-contentAccent' onClick={(event) => {
+                <img src={pencilLine} alt="" className='invert-100 dark:invert-0 scale-110 hover:text-bolt-elements-item-contentAccent' onClick={(event) => {
                     event.preventDefault();
                     toggleEditMode();
                   }} />
               </div>
-            </WithTooltip>
-          </TooltipProvider>
+            </Tooltip>
         </>
       )}
     </div>

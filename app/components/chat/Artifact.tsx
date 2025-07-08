@@ -82,10 +82,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
         <div className="flex">
           <button
             className="flex items-stretch bg-transparent w-full overflow-hidden"
-            onClick={() => {
-              const showWorkbench = workbenchStore.showWorkbench.get();
-              workbenchStore.showWorkbench.set(!showWorkbench);
-            }}
+            
           >
             <div className="px-2 p-2 w-full text-left">
               <div className="w-full text-bolt-elements-textPrimary font-medium leading-5 text-sm">
@@ -93,7 +90,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
                 {dynamicTitle}
               </div>
               <div className="w-full w-full text-bolt-elements-textSecondary text-xs mt-0.5">
-                Click to open Workbench
+                {/* Click to open Workbench */}
               </div>
             </div>
           </button>

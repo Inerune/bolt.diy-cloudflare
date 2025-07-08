@@ -11,6 +11,7 @@ import { createScopedLogger } from '~/utils/logger';
 // icon
 import terminalLine from '../../../../icons/terminal-line.svg'
 import { CaretDoubleUp } from '@phosphor-icons/react';
+import { Tooltip } from '~/components/ui/Tooltip';
 const logger = createScopedLogger('Terminal');
 
 const MAX_TERMINALS = 3;
@@ -92,7 +93,9 @@ export const TerminalTabs = memo(() => {
           <img src={terminalLine} alt="termial-line" className="invert-100 dark:invert-0" />
           <p className='text-sm'>Console</p>
           </div>
+          <Tooltip content="View Console">
           <CaretDoubleUp size={16} />
+          </Tooltip>
         </div>
       }
       <div className="h-full">
