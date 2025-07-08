@@ -73,7 +73,7 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
   return (
     <div className="flex">
       <div className="relative" ref={dropdownRef}>
-        <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden mr-2 text-sm">
+        <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden mr-0 text-sm">
           <Button
             active
             disabled={isDeploying || !activePreview || isStreaming}
@@ -150,7 +150,7 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
           </div>
         )}
       </div>
-      <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden">
+      {/* <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden">
         <Button
           active={showChat}
           disabled={!canHideChat || isSmallViewport} // expand button is disabled on mobile as it's not needed
@@ -163,7 +163,7 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
           <div className="i-bolt:chat text-sm" />
         </Button>
         <div className="w-[1px] bg-bolt-elements-borderColor" />
-      </div>
+      </div> */}
     </div>
   );
 }

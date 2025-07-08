@@ -336,7 +336,7 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
         initial="closed"
         animate={open ? 'open' : 'closed'}
         variants={menuVariants}
-        style={{ width: '320px' }}
+        style={{ width: '340px' }}
         className={classNames(
           'fixed flex selection-accent flex-col side-menu top-0 h-full ',
           'bg-[#E7E2E0] dark:bg-[#292F35] border-gray-100 dark:border-gray-800/50',

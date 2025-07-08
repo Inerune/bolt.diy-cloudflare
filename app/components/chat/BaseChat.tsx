@@ -376,8 +376,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
       >
 
         <ClientOnly>{() => <Menu setOpen={setOpen} open={open} />}</ClientOnly>
-        <div className={`flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] ${chatStarted ? 'p-2.5' : 'px-2.5 pb-2.5'} transition-[margin] duration-200`} style={{
-          marginLeft: open ? '320px' : '0px',
+        <div className={`flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] ${chatStarted ? 'p-2.5' : 'p-0'} transition-[margin] duration-200`} style={{
+          marginLeft: open ? '340px' : '0px',
         }}>
           <SparkTooltip content={open ? `Close Panel` : `Open Panel`} side="right">
             <div className={`px-2.6 py-1 ${!chatStarted && 'z-99'} hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}`} onClick={openSideBar}>
@@ -774,7 +774,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   </div>
                 )}
                   <StickToBottom
-                    className={classNames('pt-0 relative', {
+                    className={classNames('pt-[2px] relative', {
                       'h-full flex flex-col modern-scrollbar  relative': chatStarted,
                     })}
                     resize="smooth"

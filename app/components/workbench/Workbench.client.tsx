@@ -29,6 +29,8 @@ import { usePreviewStore } from '~/lib/stores/previews';
 import { CaretDown, DotsThree } from '@phosphor-icons/react';
 import { Tooltip } from '../ui/Tooltip';
 
+import dotThree from '../../../icons/more-fill.svg'
+
 interface WorkspaceProps {
   chatStarted?: boolean;
   isStreaming?: boolean;
@@ -372,7 +374,7 @@ export const Workbench = memo(
         >
           <div
             className={classNames(
-              'fixed top-[55px] right-0 bottom-2.5 border-t border-b border-r border-[#c9c5c3] dark:border-[#4B525B] rounded-tr-md overflow-hidden rounded-br-md w-[var(--workbench-inner-width)] mr-[.7rem] z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
+              'fixed top-[55px] right-0 bottom-5 border-t border-b border-r border-[#c9c5c3] dark:border-[#4B525B] rounded-tr-md overflow-hidden rounded-br-md w-[var(--workbench-inner-width)] mr-[1rem] z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
               {
                 'w-full': isSmallViewport,
                 'left-0': showWorkbench && isSmallViewport,
@@ -400,7 +402,8 @@ export const Workbench = memo(
                       <DropdownMenu.Root>
                         <DropdownMenu.Trigger className="text-sm flex items-center gap-1 text-bolt-elements-item-contentDefault bg-transparent enabled:hover:text-bolt-elements-item-contentActive rounded-md p-1 enabled:hover:bg-bolt-elements-item-backgroundActive disabled:cursor-not-allowed">
                           <Tooltip content="More Options" side='bottom'>
-                          <DotsThree size={22} />
+                          {/* <DotsThree size={22} /> */}
+                          <img src={dotThree} alt="" className='invert-100 dark:invert-0'/>
                           </Tooltip>
                         </DropdownMenu.Trigger>
                         <DropdownMenu.Content
