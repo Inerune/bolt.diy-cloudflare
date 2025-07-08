@@ -224,7 +224,7 @@
   --chat-max-width: 35rem;
   --chat-min-width: 575px;
   --workbench-width: min(calc(100% - var(--chat-min-width)), 2536px);
-  --workbench-inner-width: var(--workbench-width);
+  --workbench-inner-width: cal(var(--workbench-width) - 2%);
   --workbench-left: calc(100% - var(--workbench-width));
 
   /* Toasts */

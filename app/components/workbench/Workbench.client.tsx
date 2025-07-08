@@ -367,11 +367,11 @@ export const Workbench = memo(
           initial="closed"
           animate={showWorkbench ? 'open' : 'closed'}
           variants={workbenchVariants}
-          className="z-workbench"
+          className="z-workbench rounded-tr-md overflow-hidden rounded-br-md border-t border-b border-r border-[#c9c5c3] dark:border-[#4B525B]   "
         >
           <div
             className={classNames(
-              'fixed top-[55px] border-t border-b border-[#c9c5c3] dark:border-[#4B525B] bottom-2.5  w-[var(--workbench-inner-width)] mr-4 z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
+              'fixed top-[57px] right-0 bottom-3  w-[var(--workbench-inner-width)] mr-[.8rem] z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
               {
                 'w-full': isSmallViewport,
                 'left-0': showWorkbench && isSmallViewport,
