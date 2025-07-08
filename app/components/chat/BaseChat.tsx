@@ -60,6 +60,8 @@ import { BackgroundLines } from '../ui/background-lines';
 
 // unsupportedBrowsers
 import BrowserUnsupportedPopup from './BrowserUnsupportedPopup';
+import { Tooltip as SparkTooltip } from '~/components/ui/Tooltip';
+
 
 const words = [
   {
@@ -375,9 +377,12 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
         <ClientOnly>{() => <Menu setOpen={setOpen} open={open}/>}</ClientOnly>
         <div className="flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] p-2.5">
+          <SparkTooltip content="Open Sidebar" side="right">
           <div className={`px-2.6 py-1 ${!chatStarted && 'z-99'} hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}` } onClick={openSideBar}>
             <img src={layoutLine} alt="sidebar_list" />
           </div>
+          </SparkTooltip>
+
           <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow lg:min-w-[var(--chat-min-width)] h-full`)}>
 
            {
@@ -677,7 +682,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           {enhancingPrompt ? (
                             <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
                           ) : (
+                            <SparkTooltip content="Spark icon tooltip">
                             <img src={sparkIcon} alt="" className='invert-100 dark:invert-0'/>
+                            </SparkTooltip>
                           )}
                         </IconButton>
 
