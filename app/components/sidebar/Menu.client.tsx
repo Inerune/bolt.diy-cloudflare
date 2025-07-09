@@ -23,17 +23,15 @@ import guestUser from '../../../icons/user-6-line.svg'
 
 const menuVariants = {
   closed: {
-    x: '-100%', // Better than using transform manually
+    x: '-100%',
     transition: {
-      duration: .2,
-      ease: cubicEasingFn,
+      x: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }, 
     },
   },
   open: {
     x: '0%',
     transition: {
-      duration: .1,
-      ease: cubicEasingFn,
+      x: { duration: 0.35, ease: [0.22, 1, 0.36, 1] }, // easeOutExpo again
     },
   },
 } satisfies Variants;
@@ -345,7 +343,7 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
         )}
       >
 
-        <div className='flex justify-between p-1 pr-3 mt-12'>
+        <div className='flex justify-between items-center p-1 pr-3 mt-12'>
           <CurrentDateTime />
           <ThemeSwitch />
         </div>

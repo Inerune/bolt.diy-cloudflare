@@ -1,6 +1,7 @@
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
-import { forwardRef, type ForwardedRef, type ReactElement } from 'react';
+import { forwardRef, useState, type ForwardedRef, type ReactElement } from 'react';
 import { classNames } from '~/utils/classNames';
+import { motion, AnimatePresence } from 'framer-motion';
 
 // Original WithTooltip component
 interface WithTooltipProps {
@@ -98,25 +99,52 @@ export function Tooltip({
   delayDuration = 300,
   className,
 }: TooltipProps) {
+  /* controlled open state so AnimatePresence can see it */
+  const [open, setOpen] = useState(false);
+
+  /* tiny directional offset for slide‑in */
+  const offset = {
+    x: side === 'left' ? -4 : side === 'right' ? 4 : 0,
+    y: side === 'top' ? -4 : side === 'bottom' ? 4 : 0,
+  };
+
   return (
     <TooltipPrimitive.Provider>
-      <TooltipPrimitive.Root delayDuration={delayDuration}>
+      <TooltipPrimitive.Root
+        delayDuration={delayDuration}
+        open={open}
+        onOpenChange={setOpen}
+      >
         <TooltipPrimitive.Trigger asChild>{children}</TooltipPrimitive.Trigger>
-        <TooltipPrimitive.Content
-  side={side}
-  align={align}
-  className={classNames(
-    'z-50 overflow-hidden rounded-md bg-[#1D2125] dark:bg-[#EFEAE6] px-3 py-1.5 text-xs text-white dark:text-black shadow-md',
-    'data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:scale-in-100',
-    'data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:scale-out-95',
-    'data-[side=bottom]:slide-in-from-top-1 data-[side=left]:slide-in-from-right-1 data-[side=right]:slide-in-from-left-1 data-[side=top]:slide-in-from-bottom-1',
-    className,
-  )}
-  sideOffset={5}
->
-          {content}
-          <TooltipPrimitive.Arrow className="fill-[#1D2125] dark:fill-[#EFEAE6]" />
-        </TooltipPrimitive.Content>
+
+        <AnimatePresence>
+          {open && (
+            <TooltipPrimitive.Portal forceMount>
+              {/* `asChild` lets us swap in a motion.div while Radix handles popper positioning */}
+              <TooltipPrimitive.Content
+                asChild
+                side={side}
+                align={align}
+                sideOffset={5}
+              >
+                <motion.div
+                  key="tooltip"
+                  initial={{ opacity: 0, scale: 0.95, ...offset }}
+                  animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95, ...offset }}
+                  transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  className={classNames(
+                    'z-50  rounded-md bg-[#1D2125] dark:bg-[#EFEAE6] z-999 px-3 py-1.5 text-xs text-white dark:text-black shadow-md',
+                    className,
+                  )}
+                >
+                  {content}
+                  <TooltipPrimitive.Arrow className="fill-[#1D2125] dark:fill-[#EFEAE6]" />
+                </motion.div>
+              </TooltipPrimitive.Content>
+            </TooltipPrimitive.Portal>
+          )}
+        </AnimatePresence>
       </TooltipPrimitive.Root>
     </TooltipPrimitive.Provider>
   );

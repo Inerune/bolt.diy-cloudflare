@@ -376,11 +376,11 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
       >
 
         <ClientOnly>{() => <Menu setOpen={setOpen} open={open} />}</ClientOnly>
-        <div className={`flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] ${chatStarted ? 'p-2.5' : 'p-0'} transition-[margin] duration-200`} style={{
+        <div className={`flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] ${chatStarted ? 'p-2.5' : 'p-0'} transition-[margin] duration-[350ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]`} style={{
           marginLeft: open ? '340px' : '0px',
         }}>
           <SparkTooltip content={open ? `Close Panel` : `Open Panel`} side="right">
-            <div className={`px-2.6 py-1 ${!chatStarted && 'z-99'} hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}`} onClick={openSideBar}>
+            <div className={`px-2.6 py-1 ${!chatStarted && 'z-99'} hover:bg-[#4B525B] transition-colors duration-[250ms] rounded-md invert-100 dark:invert-0 text-xl ml-3 mt-4 text-white cursor-pointer absolute ${open && 'bg-[#4B525B]'}`} onClick={openSideBar}>
               <img src={layoutLine} alt="sidebar_list" />
             </div>
           </SparkTooltip>
@@ -782,7 +782,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   >
                     {chatStarted && <div className='px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
                       <SparkTooltip content="Open Panel">
-                        <div onClick={openSideBar} className={`cursor-pointer ${open && 'bg-[#4B525B]'} px-3 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0`}>
+                        <div onClick={openSideBar} className={`cursor-pointer ${open && 'bg-[#4B525B]'}  ease-in-out px-3 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0`}>
                           <img src={layoutLine} alt="layoutLine" />
                         </div>
                       </SparkTooltip>
