@@ -226,6 +226,8 @@
   --workbench-width: min(calc(100% - var(--chat-min-width)), 2536px);
   --workbench-inner-width: cal(var(--workbench-width) - 2%);
   --workbench-left: calc(100% - var(--workbench-width));
+  --fix-height: 40px;
+  --fix-height-tab: 42px;
 
   /* Toasts */
   --toastify-color-progress-success: var(--bolt-elements-icon-success);
@@ -252,4 +254,16 @@
   --bolt-elements-terminal-color-brightMagenta: var(--bolt-terminal-brightMagenta);
   --bolt-elements-terminal-color-brightCyan: var(--bolt-terminal-brightCyan);
   --bolt-elements-terminal-color-brightWhite: var(--bolt-terminal-brightWhite);
+}
+
+@media screen and (max-width: 1920px) {
+  :root{
+  --fix-height: 39px;
+  }
+}
+@media screen and (max-width: 1536px) {
+  :root{
+  --fix-height: 40px;
+  --fix-height-tab: 42px
+  }
 }

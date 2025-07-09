@@ -425,14 +425,14 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             </div>
           </SparkTooltip>
 
-          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow lg:min-w-[var(--chat-min-width)] ${chatStarted ? 'fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-bl-md rounded-tr-none rounded-br-none': 'rounded-md'}`)}>
+          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow  ${chatStarted ? 'lg:min-w-[var(--chat-min-width)] fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-bl-md rounded-tr-none rounded-br-none': 'rounded-md lg:min-w-[35rem]'}`)}>
 
             {
               !chatStarted ?
                 <BackgroundLines className=' bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'>
 
                   {!chatStarted && (
-                    <div id="intro" className="mt-[24vh] max-w-chat mx-auto text-center px-4 lg:px-0">
+                    <div id="intro" className="mt-[24vh] max-w-[35rem] mx-auto text-center px-4 lg:px-0">
                       <TypewriterEffectSmooth words={words} />
 
                       <p className="font-[sf-light]  text-md lg:text-[18px] mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
@@ -477,7 +477,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       </ClientOnly>
                     </StickToBottom.Content>
                     <div
-                      className={classNames('my-auto flex flex-col gap-2 w-full max-w-chat mx-auto z-prompt mb-0', {
+                      className={classNames(`my-auto flex flex-col gap-2 w-full max-w-[35rem] mx-auto z-prompt mb-0`, {
                         'sticky bottom-2': chatStarted,
                       })}
                     >
@@ -1177,7 +1177,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             }
 
           </div>
-          <div
+
+          {
+            chatStarted &&  <div
                   onPointerDown={onPointerDown}
                   className="
                     fixed top-[55px]
@@ -1190,6 +1192,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     transition-colors
                     z-[9999]"
                 />
+          }
+         
           <ClientOnly>
             {() => (
               <Workbench
