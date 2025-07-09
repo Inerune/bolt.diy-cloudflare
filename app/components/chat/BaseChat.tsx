@@ -185,7 +185,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
   // 2. handlers --------------------------------------------------------
   const onPointerDown = () => {
     isDragging.current = true;
-    document.body.style.cursor = 'col-resize';
+    document.body.style.cursor = 'e-resize';
   };
 
   const onPointerMove = (e: PointerEvent) => {
@@ -820,7 +820,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     resize="smooth"
                     initial="smooth"
                   >
-                    {chatStarted && <div className='px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
+                    {chatStarted && <div className='px-2 w-full min-h-10 max-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
                       <SparkTooltip content="Open Panel">
                         <div onClick={openSideBar} className={`cursor-pointer ${open && 'bg-[#4B525B]'}  ease-in-out px-3 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0`}>
                           <img src={layoutLine} alt="layoutLine" />
@@ -1184,7 +1184,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     right-0
                     left-[var(--chat-min-width)]
                     w-[6px] ml-[14px]  /* center the hit‑zone */
-                    cursor-col-resize
+                    cursor-e-resize
                     bg-transparent hover:bg-gray-400/40
                     bottom-[1.2rem]
                     transition-colors
