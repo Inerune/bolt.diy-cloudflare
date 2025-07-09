@@ -4,7 +4,7 @@
  */
 
 import type { JSONValue, Message } from 'ai';
-import React, { type RefCallback, useEffect, useState } from 'react';
+import React, { type RefCallback, useEffect, useRef, useState } from 'react';
 import { ClientOnly } from 'remix-utils/client-only';
 import { Menu } from '~/components/sidebar/Menu.client';
 import { IconButton } from '~/components/ui/IconButton';
@@ -169,6 +169,46 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
     const expoUrl = useStore(expoUrlAtom);
     const [qrModalOpen, setQrModalOpen] = useState(false);
     const [open, setOpen] = useState(false);
+
+
+
+    const isDragging = useRef(false);
+
+  // 1. helpers ---------------------------------------------------------
+  const clamp = (val: number, min: number, max: number) =>
+    Math.min(Math.max(val, min), max);
+
+  const setChatWidth = (px: number) => {
+    document.documentElement.style.setProperty('--chat-min-width', `${px}px`);
+  };
+
+  // 2. handlers --------------------------------------------------------
+  const onPointerDown = () => {
+    isDragging.current = true;
+    document.body.style.cursor = 'col-resize';
+  };
+
+  const onPointerMove = (e: PointerEvent) => {
+    if (!isDragging.current) return;
+
+    const newWidth = clamp(e.clientX, 390, 1000); // ⬅️ your min / max
+    setChatWidth(newWidth);
+  };
+
+  const onPointerUp = () => {
+    isDragging.current = false;
+    document.body.style.cursor = '';
+  };
+
+  // 3. add / remove global listeners ----------------------------------
+  useEffect(() => {
+    window.addEventListener('pointermove', onPointerMove);
+    window.addEventListener('pointerup', onPointerUp);
+    return () => {
+      window.removeEventListener('pointermove', onPointerMove);
+      window.removeEventListener('pointerup', onPointerUp);
+    };
+  }, []);
 
     // me
 
@@ -385,7 +425,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             </div>
           </SparkTooltip>
 
-          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow lg:min-w-[var(--chat-min-width)] h-full`)}>
+          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow lg:min-w-[var(--chat-min-width)] ${chatStarted ? 'fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-bl-md rounded-tr-none rounded-br-none': 'rounded-md'}`)}>
 
             {
               !chatStarted ?
@@ -1137,6 +1177,19 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             }
 
           </div>
+          <div
+                  onPointerDown={onPointerDown}
+                  className="
+                    fixed top-[55px]
+                    right-0
+                    left-[var(--chat-min-width)]
+                    w-[6px] ml-[14px]  /* center the hit‑zone */
+                    cursor-col-resize
+                    bg-transparent hover:bg-gray-400/40
+                    bottom-[1.2rem]
+                    transition-colors
+                    z-[9999]"
+                />
           <ClientOnly>
             {() => (
               <Workbench

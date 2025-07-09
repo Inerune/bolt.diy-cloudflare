@@ -374,7 +374,7 @@ export const Workbench = memo(
         >
           <div
             className={classNames(
-              'fixed top-[55px] right-0 bottom-5 border-t border-b border-r border-[#c9c5c3] dark:border-[#4B525B] rounded-tr-md overflow-hidden rounded-br-md w-[var(--workbench-inner-width)] mr-[1rem] z-0 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
+              'fixed top-[55px] right-0 bottom-4.8 border-t border-b border-r border-[#c9c5c3] dark:border-[#4B525B] rounded-tr-md overflow-hidden rounded-br-md w-[var(--workbench-inner-width)] ml-[1.2rem] mr-[1rem] z-5 transition-[left,width] duration-200 bolt-ease-cubic-bezier',
               {
                 'w-full': isSmallViewport,
                 'left-0': showWorkbench && isSmallViewport,
