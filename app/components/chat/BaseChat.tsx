@@ -425,7 +425,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             </div>
           </SparkTooltip>
 
-          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow  ${chatStarted ? 'lg:min-w-[var(--chat-min-width)] fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-bl-md rounded-tr-none rounded-br-none': 'rounded-md lg:min-w-[35rem]'}`)}>
+          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow  ${chatStarted ? 'lg:min-w-[var(--chat-min-width)] lg:max-w-[var(--chat-min-width)] fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-bl-md rounded-tr-none rounded-br-none': 'rounded-md lg:min-w-[35rem]'}`)}>
 
             {
               !chatStarted ?
@@ -478,7 +478,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     </StickToBottom.Content>
                     <div
                       className={classNames(`my-auto flex flex-col gap-2 w-full max-w-[35rem] mx-auto z-prompt mb-0`, {
-                        'sticky bottom-2': chatStarted,
+                        'sticky bottom-2 ': chatStarted,
                       })}
                     >
                       <div className="flex flex-col gap-2">
@@ -615,7 +615,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           <textarea
                             ref={textareaRef}
                             className={classNames(
-                              'w-full pl-4 pt-4 pr-16 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm',
+                              'w-full pl-4 pt-4 pr-16 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm ',
                               'transition-all duration-200',
                               'hover:border-bolt-elements-focus',
                             )}
@@ -895,7 +895,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                       <div
                         className={classNames(
-                          'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0  border border-bolt-elements-borderColor relative w-full max-w-[40rem] mx-auto z-prompt',
+                          'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0  border border-bolt-elements-borderColor rounded-l-md relative w-full max-w-[40rem] mx-auto z-prompt',
 
                           /*
                            * {
@@ -979,7 +979,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           )}
                         </ClientOnly>
                         <div
-                          className={classNames(`relative shadow-xs backdrop-blur ${!chatStarted && 'rounded-lg'}`, )} >
+                          className={classNames(`relative shadow-xs backdrop-blur ${!chatStarted ? 'rounded-lg' : 'rounded-l-md'}`, )} >
                           <GlowingEffect
                             spread={40}
                             glow={true}
@@ -990,7 +990,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           <textarea
                             ref={textareaRef}
                             className={classNames(
-                              'w-full pl-4 pt-4 pr-16 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm',
+                              'w-full pl-4 pt-4 pr-16 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm ',
                               'transition-all duration-200',
                               'hover:border-bolt-elements-focus',
                             )}
@@ -1185,7 +1185,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             chatStarted &&  <div
                   onPointerDown={onPointerDown}
                   style={{touchAction: 'none', userSelect: 'none' }}
-                  className="
+                  className={`
+                    ${open && 'hidden' }
                     fixed top-[55px]
                     right-0
                     left-[var(--chat-min-width)]
@@ -1194,7 +1195,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     bg-transparent hover:bg-gray-400/40
                     bottom-[1.2rem]
                     transition-colors
-                    z-[9999]"
+                    z-[9999]`}
                 />
           }
          

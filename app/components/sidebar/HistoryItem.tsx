@@ -1,7 +1,7 @@
 import { useParams } from '@remix-run/react';
 import { classNames } from '~/utils/classNames';
 import { type ChatHistoryItem } from '~/lib/persistence';
-import WithTooltip from '~/components/ui/Tooltip';
+import WithTooltip, { Tooltip } from '~/components/ui/Tooltip';
 import { useEditChatDescription } from '~/lib/hooks';
 import { useCallback, useEffect, useState } from 'react';
 import { Checkbox } from '~/components/ui/Checkbox';
@@ -126,9 +126,9 @@ export function HistoryItem({
           className="flex w-full relative truncate block"
           onClick={selectionMode ? handleItemClick : undefined}
         >
-          <WithTooltip tooltip={currentDescription}>
+          <Tooltip side="top" content={currentDescription}>
             <span className="truncate pr-10">{currentDescription}</span>
-          </WithTooltip>
+          </Tooltip>
           <div className="absolute right-0 top-0 bottom-0 flex items-center px-1">
             <Dropdown
               open={menuOpen}

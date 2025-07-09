@@ -36,7 +36,7 @@ export function ChatDescription() {
             style={{ width: `${Math.max(currentDescription.length * 8, 100)}px` }}
           />
             <Tooltip content="Save title">
-              <div className="flex justify-between items-center p-2 rounded-md bg-bolt-elements-item-backgroundAccent">
+              <div className="flex justify-between items-center p-2 rounded-md bg-[#DACEC4] dark:bg-[#4B525B]">
                 <button
                   type="submit"
                   className="i-ph:check-bold scale-110 hover:text-bolt-elements-item-contentAccent"
@@ -49,7 +49,7 @@ export function ChatDescription() {
         <>
           {currentDescription}
             <Tooltip content="Rename chat">
-              <div className="flex justify-between items-center px-2 py-1 rounded-md bg-bolt-elements-item-backgroundAccent ml-2">
+              <div className="flex justify-between items-center px-2 py-1 rounded-md dark:bg-[#4B525B] bg-[#DACEC4] ml-2">
                 <img src={pencilLine} alt="" className='invert-100 dark:invert-0 scale-110 hover:text-bolt-elements-item-contentAccent' onClick={(event) => {
                     event.preventDefault();
                     toggleEditMode();

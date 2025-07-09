@@ -633,7 +633,7 @@ export const Preview = memo(() => {
       <div className="bg-bolt-elements-background-depth-2 pt-[0.3rem] pb-[0.2rem] px-[0.4rem] min-h-[var(--fix-height)] max-h-[var(--fix-height)] flex items-center gap-2">
         <div className="flex items-center gap-2">
           {/* <IconButton icon="i-ph:arrow-clockwise" onClick={reloadPreview} /> */}
-          <img src={refreshIcon} alt="refresh_icon" onClick={reloadPreview}  className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/>
+          <img src={refreshIcon} alt="refresh_icon" onClick={reloadPreview}  className='cursor-pointer invert-100 dark:invert-0 transition-colors duration-[250ms]  p-1 hover:bg-[#4B525B] rounded-md'/>
           <IconButton
             icon="i-ph:corners-out"
             onClick={() => setIsSelectionMode(!isSelectionMode)}
@@ -687,7 +687,7 @@ export const Preview = memo(() => {
             title={isDeviceModeOn ? 'Switch to Responsive Mode' : 'Switch to Device Mode'}
           /> */}
           <Tooltip content="View Modes" side='bottom'>
-          <img src={computerIcon} alt="computerIcon" onClick={toggleDeviceMode} className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/></Tooltip>
+          <img src={computerIcon} alt="computerIcon" onClick={toggleDeviceMode} className='cursor-pointer invert-100 dark:invert-0 p-1 hover:bg-[#4B525B] transition-colors duration-[250ms] rounded-md'/></Tooltip>
 
           {expoUrl && <IconButton icon="i-ph:qr-code" onClick={() => setIsExpoQrModalOpen(true)} title="Show QR" />}
 
@@ -714,7 +714,7 @@ export const Preview = memo(() => {
             title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'}
           /> */}
           <Tooltip content="New Window" side='bottom'>
-          <img src={resizeIcon} title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'} onClick={toggleFullscreen} alt="resize-icon" className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/></Tooltip>
+          <img src={resizeIcon} title={isFullscreen ? 'Exit Full Screen' : 'Full Screen'} onClick={toggleFullscreen} alt="resize-icon" className='cursor-pointer invert-100 dark:invert-0 p-1 hover:bg-[#4B525B] rounded-md'/></Tooltip>
 
           <div className="flex items-center relative">
             

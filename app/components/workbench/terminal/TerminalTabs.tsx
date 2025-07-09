@@ -91,7 +91,7 @@ export const TerminalTabs = memo(() => {
         }
       }}
     >
-      {
+      {/* {
         !showTerminal && <div onClick={() => workbenchStore.toggleTerminal(true)} className='py-2 px-4 dark:bg-[#1D2125] bg-[#FAFAFA] dark:text-white text-black w-full border-y dark:border-[#34383B] absolute bottom-0 z-9  cursor-pointer border-[#e2ddd8] flex items-center justify-between '>
           <div className='flex items-center gap-2'>
           <img src={terminalLine} alt="termial-line" className="invert-100 dark:invert-0" />
@@ -101,7 +101,7 @@ export const TerminalTabs = memo(() => {
           <CaretDoubleUp size={16} />
           </Tooltip>
         </div>
-      }
+      } */}
       <div className="h-full">
         <div className="bg-bolt-elements-terminals-background h-full flex flex-col">
           <div className="flex items-center bg-bolt-elements-background-depth-2 border-y border-bolt-elements-borderColor gap-1.5 min-h-[34px] p-2">
