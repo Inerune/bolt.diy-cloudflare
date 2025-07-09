@@ -1078,8 +1078,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     </ClientOnly> */}
                           <div className="flex justify-between items-center text-sm p-4 pt-2">
                             <div className="flex gap-1 items-center">
-                              <IconButton title="Upload file" className="transition-all" onClick={() => handleFileUpload()}>
-                                <img src={attachmentIcon} alt="" className='invert-100 dark:invert-0' />
+                              <IconButton className="transition-all" onClick={() => handleFileUpload()}>
+                                <SparkTooltip content="Attach figma files, screenshots, etc." side='bottom'>
+                                  <img src={attachmentIcon} alt="" className='invert-100 dark:invert-0' />
+                                </SparkTooltip>
                               </IconButton>
                               <SpeechRecognitionButton
                                 isListening={isListening}
@@ -1088,7 +1090,6 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                                 disabled={isStreaming}
                               />
                               <IconButton
-                                title="Enhance prompt"
                                 disabled={input.length === 0 || enhancingPrompt}
                                 className={classNames('transition-all', enhancingPrompt ? 'opacity-100' : '')}
                                 onClick={() => {
@@ -1099,7 +1100,9 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                                 {enhancingPrompt ? (
                                   <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
                                 ) : (
-                                  <img src={sparkIcon} alt="" />
+                                   <SparkTooltip content="Enhance prompt" side='bottom'>
+                                    <img src={sparkIcon} alt="" className='invert-100 dark:invert-0' />
+                                  </SparkTooltip>
                                 )}
                               </IconButton>
 
@@ -1181,6 +1184,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           {
             chatStarted &&  <div
                   onPointerDown={onPointerDown}
+                  style={{touchAction: 'none', userSelect: 'none' }}
                   className="
                     fixed top-[55px]
                     right-0

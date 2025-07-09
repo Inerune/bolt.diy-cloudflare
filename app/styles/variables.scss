@@ -228,6 +228,7 @@
   --workbench-left: calc(100% - var(--workbench-width));
   --fix-height: 40px;
   --fix-height-tab: 42px;
+  --file-height-tab: 41px;
 
   /* Toasts */
   --toastify-color-progress-success: var(--bolt-elements-icon-success);
@@ -259,11 +260,12 @@
 @media screen and (max-width: 1920px) {
   :root{
   --fix-height: 39px;
+  --file-height-tab: 40.2px;
   }
 }
 @media screen and (max-width: 1536px) {
   :root{
   --fix-height: 40px;
-  --fix-height-tab: 42px
+  --fix-height-tab: 42.2px
   }
 }
