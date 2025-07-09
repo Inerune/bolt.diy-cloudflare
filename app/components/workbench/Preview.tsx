@@ -630,7 +630,7 @@ export const Preview = memo(() => {
       {isPortDropdownOpen && (
         <div className="z-iframe-overlay w-full h-full absolute" onClick={() => setIsPortDropdownOpen(false)} />
       )}
-      <div className="bg-bolt-elements-background-depth-2 p-2 flex items-center gap-2">
+      <div className="bg-bolt-elements-background-depth-2 pt-[0.3rem] pb-[0.2rem] px-[0.4rem] flex items-center gap-2">
         <div className="flex items-center gap-2">
           {/* <IconButton icon="i-ph:arrow-clockwise" onClick={reloadPreview} /> */}
           <img src={refreshIcon} alt="refresh_icon" onClick={reloadPreview}  className='cursor-pointer invert-40 dark:invert-60 p-1 hover:bg-[#ffffff40] rounded-md'/>

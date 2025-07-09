@@ -782,17 +782,17 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   >
                     {chatStarted && <div className='px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
                       <SparkTooltip content="Open Panel">
-                        <div onClick={openSideBar} className={`cursor-pointer ${open && 'bg-[#4B525B]'} px-2 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0`}>
+                        <div onClick={openSideBar} className={`cursor-pointer ${open && 'bg-[#4B525B]'} px-3 py-1 hover:bg-[#4B525B] rounded-md invert-100 dark:invert-0`}>
                           <img src={layoutLine} alt="layoutLine" />
                         </div>
                       </SparkTooltip>
                       <SparkTooltip content="Chat Mode">
-                        <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
+                        <div className='cursor-pointer hover:bg-[#4B525B] px-3 py-1 rounded-md invert-100 dark:invert-0'>
                           <img src={chatLine} alt="chat-line" />
                         </div>
                       </SparkTooltip>
                       <SparkTooltip content="Design Mode">
-                        <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
+                        <div className='cursor-pointer hover:bg-[#4B525B] px-3 py-1 rounded-md invert-100 dark:invert-0'>
                           <img src={paintBrush} alt="paint-brush" />
                         </div>
                       </SparkTooltip>
@@ -939,10 +939,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           )}
                         </ClientOnly>
                         <div
-                          className={classNames(
-                            'relative shadow-xs backdrop-blur rounded-lg',
-                          )}
-                        >
+                          className={classNames(`relative shadow-xs backdrop-blur ${!chatStarted && 'rounded-lg'}`, )} >
                           <GlowingEffect
                             spread={40}
                             glow={true}

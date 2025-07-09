@@ -7,6 +7,11 @@ import { cubicEasingFn } from '~/utils/easings';
 import { genericMemo } from '~/utils/react';
 import { Tooltip } from './Tooltip';
 
+// icons
+import codeIcon from '../../../icons/code-s-slash-line.svg'
+import diffCode from '../../../icons/flip-horizontal-fill.svg'
+import imgLine from '../../../icons/image-line.svg'
+
 export type SliderOptions<T> = {
   left: { value: T; text: string };
   middle?: { value: T; text: string };
@@ -26,27 +31,33 @@ export const Slider = genericMemo(<T,>({ selected, options, setSelected }: Slide
 
   return (
     <div className="flex items-center flex-wrap shrink-0 gap-1 overflow-hidden rounded-md p-1">
-      <SliderButton selected={isLeftSelected} setSelected={() => setSelected?.(options.left.value)}>
-        {/* {options.left.text} */}
-        <Tooltip content="Code View">
-        <Code size={20} />
-        </Tooltip>
-      </SliderButton>
-
-      {options.middle && (
-        <SliderButton selected={isMiddleSelected} setSelected={() => setSelected?.(options.middle!.value)}>
-          <GitDiff size={20} />
-        </SliderButton>
-      )}
-
       <SliderButton
         selected={!isLeftSelected && !isMiddleSelected}
         setSelected={() => setSelected?.(options.right.value)}
       >
         <Tooltip content="Preview">
-        <ImageSquare size={20} />
+        {/* <ImageSquare size={20} /> */}
+        <img src={imgLine} alt="" className='invert-100 dark:invert-0'/>
         </Tooltip>
       </SliderButton>
+
+
+      <SliderButton selected={isLeftSelected} setSelected={() => setSelected?.(options.left.value)}>
+        {/* {options.left.text} */}
+        <Tooltip content="Code View">
+        <img src={codeIcon} alt="code_icon" className='invert-100 dark:invert-0' />
+        </Tooltip>
+      </SliderButton>
+
+      {options.middle && (
+        <SliderButton selected={isMiddleSelected} setSelected={() => setSelected?.(options.middle!.value)}>
+          <Tooltip content="Code Changes View">
+          <img src={diffCode} alt="" className='invert-100 dark:invert-0'/>
+          </Tooltip>
+        </SliderButton>
+      )}
+
+      
     </div>
   );
 });

@@ -70,6 +70,10 @@ export const TerminalTabs = memo(() => {
     };
   }, []);
 
+  useEffect(() => {
+     workbenchStore.toggleTerminal(false);
+  }, [])
+
   return (
     <Panel
       ref={terminalPanelRef}
