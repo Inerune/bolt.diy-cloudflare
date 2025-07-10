@@ -25,6 +25,7 @@ import { Preview } from './Preview';
 import useViewport from '~/lib/hooks';
 import { PushToGitHubDialog } from '~/components/@settings/tabs/connections/components/PushToGitHubDialog';
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import { Dropdown, DropdownItem } from '~/components/ui/Dropdown';
 import { usePreviewStore } from '~/lib/stores/previews';
 import { CaretDown, DotsThree } from '@phosphor-icons/react';
 import { Tooltip } from '../ui/Tooltip';
@@ -390,15 +391,6 @@ export const Workbench = memo(
                   <div className="ml-auto" />
                   {selectedView === 'code' && (
                     <div className="flex overflow-y-auto">
-                      {/* <PanelHeaderButton
-                        className="mr-1 text-sm"
-                        onClick={() => {
-                          workbenchStore.toggleTerminal(!workbenchStore.showTerminal.get());
-                        }}
-                      >
-                        <div className="i-ph:terminal" />
-                        Toggle Terminal
-                      </PanelHeaderButton> */}
                       <DropdownMenu.Root>
                         <DropdownMenu.Trigger className="text-sm flex items-center gap-1 text-bolt-elements-item-contentDefault bg-transparent enabled:hover:text-bolt-elements-item-contentActive rounded-md p-1 enabled:hover:bg-bolt-elements-item-backgroundActive disabled:cursor-not-allowed">
                           <Tooltip content="More Options" side='bottom'>
@@ -406,13 +398,14 @@ export const Workbench = memo(
                           <img src={dotThree} alt="" className='invert-100 dark:invert-0'/>
                           </Tooltip>
                         </DropdownMenu.Trigger>
+                        
                         <DropdownMenu.Content
                           className={classNames(
                             'min-w-[240px] z-[250]',
                             'bg-white dark:bg-[#282d33]',
                             'rounded-lg shadow-lg',
                             'border border-gray-200/50 dark:border-gray-800/50',
-                            'animate-in fade-in-0 zoom-in-95',
+                            'data-[state=open]:dropdown-enter',
                             'py-1',
                           )}
                           sideOffset={5}
@@ -456,6 +449,8 @@ export const Workbench = memo(
                           </DropdownMenu.Item>
                         </DropdownMenu.Content>
                       </DropdownMenu.Root>
+
+
                     </div>
                   )}
 

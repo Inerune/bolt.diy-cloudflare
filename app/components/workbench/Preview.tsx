@@ -12,6 +12,7 @@ import refreshIcon from '../../../icons/refresh-line.svg'
 import computerIcon from '../../../icons/computer-line.svg'
 import resizeIcon from '../../../icons/expand-diagonal-2-line.svg'
 import { Tooltip } from '../ui/Tooltip';
+import { motion } from 'framer-motion';
 
 
 type ResizeSide = 'left' | 'right' | null;
@@ -727,7 +728,9 @@ export const Preview = memo(() => {
             {isWindowSizeDropdownOpen && (
               <>
                 <div className="fixed inset-0 z-50" onClick={() => setIsWindowSizeDropdownOpen(false)} />
-                <div className="absolute right-0 top-full mt-2 z-50 min-w-[240px] max-h-[400px] overflow-y-auto bg-[#EFEAE6] dark:bg-[#1D2125] rounded-xl shadow-2xl border border-[#E5E7EB] dark:border-[rgba(255,255,255,0.1)] overflow-hidden">
+                <motion.div  initial={{ opacity: 0, scale: 0.95, y: -6 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -6 }} className="absolute right-0 top-full mt-2 z-50 min-w-[240px] max-h-[400px] overflow-y-auto bg-[#EFEAE6] dark:bg-[#1D2125] rounded-xl shadow-2xl border border-[#E5E7EB] dark:border-[rgba(255,255,255,0.1)] overflow-hidden">
                   <div className="p-3 border-b border-[#E5E7EB] dark:border-[rgba(255,255,255,0.1)]">
                     <div className="flex items-center justify-between mb-2">
                       <span className="text-sm font-medium text-[#111827] dark:text-gray-300">Window Options</span>
@@ -854,7 +857,7 @@ export const Preview = memo(() => {
                       )}
                     </button>
                   ))}
-                </div>
+                </motion.div>
               </>
             )}
           </div>

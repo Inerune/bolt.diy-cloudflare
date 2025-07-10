@@ -14,10 +14,11 @@ import { useNetlifyDeploy } from '~/components/deploy/NetlifyDeploy.client';
 
 // icons
 import puzzleIcon from '../../../icons/puzzle-2-line.svg'
+import { motion } from 'framer-motion';
 
-interface HeaderActionButtonsProps {}
+interface HeaderActionButtonsProps { }
 
-export function HeaderActionButtons({}: HeaderActionButtonsProps) {
+export function HeaderActionButtons({ }: HeaderActionButtonsProps) {
   const showWorkbench = useStore(workbenchStore.showWorkbench);
   const { showChat } = useStore(chatStore);
   const netlifyConn = useStore(netlifyConnection);
@@ -78,9 +79,9 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
             active
             disabled={isDeploying || !activePreview || isStreaming}
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="px-4 text-black dark:text-white hover:bg-bolt-elements-item-backgroundActive flex items-center gap-1"
+            className="px-4 text-black bg-[#FAFAFA] dark:bg-[#1D2125] dark:text-white  dark:hover:bg-[#4A515A] tranisition-colors duration-[250ms] flex items-center gap-1"
           >
-            <img src={puzzleIcon} alt="depoly-icon" className='w-5 invert-50 dark:invert-0'/>
+            <img src={puzzleIcon} alt="depoly-icon" className='w-5 invert-50 dark:invert-0' />
             {isDeploying ? `Deploying to ${deployingTo}...` : 'Deploy'}
             <div
               className={classNames('i-ph:caret-down w-4 h-4 transition-transform', isDropdownOpen ? 'rotate-180' : '')}
@@ -89,7 +90,10 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
         </div>
 
         {isDropdownOpen && (
-          <div className="absolute right-2 flex flex-col gap-1 z-50 p-1 mt-1 min-w-[13.5rem] bg-bolt-elements-background-depth-2 rounded-md shadow-lg bg-bolt-elements-backgroundDefault border border-bolt-elements-borderColor">
+          <motion.div initial={{ opacity: 0, scale: 0.95, y: -6 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.95, y: -6 }}
+            transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }} className="absolute right-2 flex flex-col gap-1 z-50 p-1 mt-1 min-w-[13.5rem] bg-bolt-elements-background-depth-2 rounded-md shadow-lg bg-bolt-elements-backgroundDefault border border-bolt-elements-borderColor">
             <Button
               active
               onClick={() => {
@@ -147,7 +151,7 @@ export function HeaderActionButtons({}: HeaderActionButtonsProps) {
               />
               <span className="mx-auto">Deploy to Cloudflare (Coming Soon)</span>
             </Button>
-          </div>
+          </motion.div>
         )}
       </div>
       {/* <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden">
