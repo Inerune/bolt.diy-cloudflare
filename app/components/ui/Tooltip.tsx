@@ -128,11 +128,18 @@ export function Tooltip({
                 sideOffset={5}
               >
                 <motion.div
-                  key="tooltip"
-                  initial={{ opacity: 0, scale: 0.95, ...offset }}
-                  animate={{ opacity: 1, scale: 1, x: 0, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.95, ...offset }}
-                  transition={{ duration: 0.15, ease: [0.22, 1, 0.36, 1] }}
+                  initial={{ opacity: 0, scale: 0.8, y: -10 }}
+                  animate={{
+                    opacity: 1,
+                    scale: [0.8, 1.05, 0.98, 1],
+                    rotate: [0, -8, 8, 0],
+                    y: [-10, 2, -2, 0],
+                  }}
+                  exit={{ opacity: 0, scale: 0.8, y: -10 }}
+                  transition={{
+                    duration: 0.3,
+                    ease: "easeOut",
+                  }}
                   className={classNames(
                     'z-50  rounded-md bg-[#1D2125] dark:bg-[#EFEAE6] z-999 px-3 py-1.5 text-xs text-white dark:text-black shadow-md',
                     className,
