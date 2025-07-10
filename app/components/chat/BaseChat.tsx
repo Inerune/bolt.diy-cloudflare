@@ -425,7 +425,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             </div>
           </SparkTooltip>
 
-          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow  ${chatStarted ? 'lg:min-w-[var(--chat-min-width)] lg:max-w-[var(--chat-min-width)] fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-bl-md rounded-tr-none rounded-br-none': 'rounded-md lg:min-w-[35rem]'}`)}>
+          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow  ${chatStarted ? 'lg:min-w-[var(--chat-min-width)] lg:max-w-[var(--chat-min-width)] fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-l-md rounded-tr-none rounded-r-none rounded-b-none overflow-hidden': 'rounded-md lg:min-w-[35rem]'}`)}>
 
             {
               !chatStarted ?
@@ -733,7 +733,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                               </IconButton>
 
 
-                              {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>}
+                              {/* {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>} */}
                               {/* <IconButton
                           title="Model Settings"
                           className={classNames('transition-all flex items-center gap-1', {
@@ -1107,7 +1107,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                               </IconButton>
 
 
-                              {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>}
+                              {/* {chatStarted && <ClientOnly>{() => <ExportChatButton exportChat={exportChat} />}</ClientOnly>} */}
                               {/* <IconButton
                           title="Model Settings"
                           className={classNames('transition-all flex items-center gap-1', {
