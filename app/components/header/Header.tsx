@@ -24,16 +24,14 @@ export function Header() {
           <h3 className='text-[18px] font-[franie-regular]'>askblake.</h3>
         </a>
       </div>
-      <div className='text-white mb-1.2'>
+      <div className='text-white mb-1'>
         <Button >
           Sign up / Login
         </Button>
       </div>
-      {chat.started && ( // Display HeaderActionButtons only when the chat has started.
+      {/* {chat.started && ( // Display HeaderActionButtons only when the chat has started.
         <>
-          <span className="flex-1 px-4 truncate text-center text-bolt-elements-textPrimary">
-            {/* <ClientOnly>{() => <ChatDescription />}</ClientOnly> */}
-          </span>
+          
           <ClientOnly>
             {() => (
               <div className="mr-1">
@@ -42,7 +40,7 @@ export function Header() {
             )}
           </ClientOnly>
         </>
-      )}
+      )} */}
     </header>
   );
 }

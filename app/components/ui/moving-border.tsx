@@ -55,7 +55,7 @@ export function Button({
       {/* Button content */}
       <div
         className={cn(
-          "relative z-10 flex items-center justify-center border dark:border-[#4B525B] dark:bg-[#292F35] hover:dark:bg-[#4B525B] transition-colors px-3 py-1 text-xs dark:text-white text-black bg-[#E7E2E0] border-[#b7b3b0] hover:bg-[#EFEAE6]",
+          "relative z-10 flex items-center justify-center border dark:border-[#4B525B] dark:bg-[#292F35] hover:dark:bg-[#4B525B] transition-colors px-3 py-1.5 text-xs dark:text-white text-black bg-[#E7E2E0] border-[#b7b3b0] hover:bg-[#EFEAE6]",
           className
         )}
         style={{

@@ -31,6 +31,7 @@ import { CaretDown, DotsThree } from '@phosphor-icons/react';
 import { Tooltip } from '../ui/Tooltip';
 
 import dotThree from '../../../icons/more-fill.svg'
+import { HeaderActionButtons } from '../header/HeaderActionButtons.client';
 
 interface WorkspaceProps {
   chatStarted?: boolean;
@@ -457,16 +458,10 @@ export const Workbench = memo(
                   {selectedView === 'diff' && (
                     <FileModifiedDropdown fileHistory={fileHistory} onSelectFile={handleSelectFile} />
                   )}
-                  {/* <IconButton
-                    icon="i-ph:x-circle"
-                    className="-mr-1"
-                    size="xl"
-                    onClick={() => {
-                      workbenchStore.showWorkbench.set(false);
-                    }}
-                  /> */}
-                  <div className='px-4 py-1 border border-[#D8D8D8] dark:border-[#34383B] rounded-md flex items-center gap-2 cursor-pointer dark:text-white'>
-                    <p className='text-sm'>V1</p> <CaretDown size={16} /></div>
+                  <div className='px-4 py-1.5 border border-[#D8D8D8] dark:border-[#34383B] rounded-md flex items-center gap-2 cursor-pointer dark:text-white'>
+                    <p className='text-sm'>V1</p> <CaretDown size={16} />
+                  </div>
+                  <HeaderActionButtons />
                 </div>
                 <div className="relative flex-1 overflow-hidden">
                   <View initial={{ x: '0%' }} animate={{ x: selectedView === 'code' ? '0%' : '-100%' }}>

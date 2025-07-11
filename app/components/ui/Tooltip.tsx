@@ -141,12 +141,12 @@ export function Tooltip({
                     ease: "easeOut",
                   }}
                   className={classNames(
-                    'z-50  rounded-md bg-[#1D2125] dark:bg-[#EFEAE6] z-999 px-3 py-1.5 text-xs text-white dark:text-black shadow-md',
+                    'z-50  rounded-md bg-[#1D2125] dark:bg-[#F0F0F0] z-999 px-3 py-1.5 text-xs text-white dark:text-black shadow-md',
                     className,
                   )}
                 >
                   {content}
-                  <TooltipPrimitive.Arrow className="fill-[#1D2125] dark:fill-[#EFEAE6]" />
+                  <TooltipPrimitive.Arrow className="fill-[#1D2125] dark:fill-[#F0F0F0]" />
                 </motion.div>
               </TooltipPrimitive.Content>
             </TooltipPrimitive.Portal>
