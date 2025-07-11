@@ -174,41 +174,41 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
     const isDragging = useRef(false);
 
-  // 1. helpers ---------------------------------------------------------
-  const clamp = (val: number, min: number, max: number) =>
-    Math.min(Math.max(val, min), max);
+    // 1. helpers ---------------------------------------------------------
+    const clamp = (val: number, min: number, max: number) =>
+      Math.min(Math.max(val, min), max);
 
-  const setChatWidth = (px: number) => {
-    document.documentElement.style.setProperty('--chat-min-width', `${px}px`);
-  };
-
-  // 2. handlers --------------------------------------------------------
-  const onPointerDown = () => {
-    isDragging.current = true;
-    document.body.style.cursor = 'e-resize';
-  };
-
-  const onPointerMove = (e: PointerEvent) => {
-    if (!isDragging.current) return;
-
-    const newWidth = clamp(e.clientX, 390, 1000); // ⬅️ your min / max
-    setChatWidth(newWidth);
-  };
-
-  const onPointerUp = () => {
-    isDragging.current = false;
-    document.body.style.cursor = '';
-  };
-
-  // 3. add / remove global listeners ----------------------------------
-  useEffect(() => {
-    window.addEventListener('pointermove', onPointerMove);
-    window.addEventListener('pointerup', onPointerUp);
-    return () => {
-      window.removeEventListener('pointermove', onPointerMove);
-      window.removeEventListener('pointerup', onPointerUp);
+    const setChatWidth = (px: number) => {
+      document.documentElement.style.setProperty('--chat-min-width', `${px}px`);
     };
-  }, []);
+
+    // 2. handlers --------------------------------------------------------
+    const onPointerDown = () => {
+      isDragging.current = true;
+      document.body.style.cursor = 'e-resize';
+    };
+
+    const onPointerMove = (e: PointerEvent) => {
+      if (!isDragging.current) return;
+
+      const newWidth = clamp(e.clientX, 390, 1000); // ⬅️ your min / max
+      setChatWidth(newWidth);
+    };
+
+    const onPointerUp = () => {
+      isDragging.current = false;
+      document.body.style.cursor = '';
+    };
+
+    // 3. add / remove global listeners ----------------------------------
+    useEffect(() => {
+      window.addEventListener('pointermove', onPointerMove);
+      window.addEventListener('pointerup', onPointerUp);
+      return () => {
+        window.removeEventListener('pointermove', onPointerMove);
+        window.removeEventListener('pointerup', onPointerUp);
+      };
+    }, []);
 
     // me
 
@@ -415,6 +415,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         data-chat-visible={showChat}
       >
 
+        
+
         <ClientOnly>{() => <Menu setOpen={setOpen} open={open} />}</ClientOnly>
         <div className={`flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] ${chatStarted ? 'p-2.5' : 'p-0'} transition-[margin] duration-[350ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]`} style={{
           marginLeft: open ? '340px' : '0px',
@@ -425,8 +427,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             </div>
           </SparkTooltip>
 
-          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow  ${chatStarted ? 'lg:min-w-[var(--chat-min-width)] lg:max-w-[var(--chat-min-width)] fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-l-md rounded-tr-none rounded-r-none rounded-b-none overflow-hidden': 'rounded-md lg:min-w-[35rem]'}`)}>
-
+          <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow  ${chatStarted ? 'lg:min-w-[var(--chat-min-width)] lg:max-w-[var(--chat-min-width)] fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-l-md rounded-tr-none rounded-r-none rounded-b-none overflow-hidden' : 'rounded-md lg:min-w-[35rem]'}`)}>
+            
             {
               !chatStarted ?
                 <BackgroundLines className=' bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'>
@@ -439,8 +441,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         bring ideas to life in seconds or get help on existing projects.
                       </p>
                       <BrowserUnsupportedPopup />
+
                     </div>
                   )}
+
                   <StickToBottom
                     className={classNames('pt-0 px-2 sm:px-2 relative', {
                       'h-full flex flex-col modern-scrollbar  relative': chatStarted,
@@ -979,7 +983,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           )}
                         </ClientOnly>
                         <div
-                          className={classNames(`relative shadow-xs backdrop-blur ${!chatStarted ? 'rounded-lg' : 'rounded-l-md'}`, )} >
+                          className={classNames(`relative shadow-xs backdrop-blur ${!chatStarted ? 'rounded-lg' : 'rounded-l-md'}`,)} >
                           <GlowingEffect
                             spread={40}
                             glow={true}
@@ -1100,7 +1104,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                                 {enhancingPrompt ? (
                                   <div className="i-svg-spinners:90-ring-with-bg text-bolt-elements-loader-progress text-xl animate-spin"></div>
                                 ) : (
-                                   <SparkTooltip content="Enhance prompt" side='bottom'>
+                                  <SparkTooltip content="Enhance prompt" side='bottom'>
                                     <img src={sparkIcon} alt="" className='invert-100 dark:invert-0' />
                                   </SparkTooltip>
                                 )}
@@ -1182,23 +1186,12 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           </div>
 
           {
-            chatStarted &&  <div
-                  onPointerDown={onPointerDown}
-                  style={{touchAction: 'none', userSelect: 'none' }}
-                  className={`
-                    ${open && 'hidden' }
-                    fixed top-[55px]
-                    right-0
-                    left-[var(--chat-min-width)]
-                    w-[6px] ml-[14px]  /* center the hit‑zone */
-                    cursor-e-resize
-                    bg-transparent hover:bg-gray-400/40
-                    bottom-[1.2rem]
-                    transition-colors
-                    z-[9999]`}
-                />
+            chatStarted && <div
+              onPointerDown={onPointerDown}
+              style={{ touchAction: 'none', userSelect: 'none' }}
+              className={` ${open && 'hidden'} fixed top-[55px] right-0 left-[var(--chat-min-width)] w-[6px] ml-[14px] cursor-e-resize bg-transparent hover:bg-gray-400/40 bottom-[1.2rem]transition-colors z-[9999]`} />
           }
-         
+
           <ClientOnly>
             {() => (
               <Workbench

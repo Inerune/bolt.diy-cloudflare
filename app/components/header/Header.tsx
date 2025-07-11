@@ -5,7 +5,11 @@ import { classNames } from '~/utils/classNames';
 import { HeaderActionButtons } from './HeaderActionButtons.client';
 import { Button  } from '../ui/moving-border';
 
-export function Header() {
+interface headerProps {
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+export function Header( { setOpen }: headerProps ) {
   const chat = useStore(chatStore);
 
   return (
@@ -24,8 +28,8 @@ export function Header() {
           <h3 className='text-[18px] font-[franie-regular]'>askblake.</h3>
         </a>
       </div>
-      <div className='text-white mb-1'>
-        <Button >
+      <div className='text-white mb-1' onClick={() => setOpen(true)}>
+        <Button>
           Sign up / Login
         </Button>
       </div>
