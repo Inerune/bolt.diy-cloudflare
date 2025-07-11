@@ -120,32 +120,47 @@
   }
 }
 
-@keyframes dropdown-fade-in {
+/* GlowButton.css */
+.button-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.button {
+  display: block;
+  background-color: #1D2125;
+  color: white;
+  /* border-radius: 10px; */
+  border: none;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+.button-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + 3px);
+  height: calc(100% + 3px);
+  background: linear-gradient(90deg, #dd7bbb 0%, #d79f1e 30.43%, #5a922c 68.23%, #4c7894 100%);
+  background-size: 600% 600%;
+  border-radius: 8px;
+  animation: AnimateBorder 4s ease infinite;
+  z-index: 0;
+  transform: translate(-2px, -2px);
+  transition: filter 1s ease-in;
+}
+
+
+@keyframes AnimateBorder {
   0% {
-    opacity: 0;
-    transform: scale(0.95) translateY(-6px);
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
   100% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
+    background-position: 0% 50%;
   }
-}
-
-@keyframes dropdown-fade-out {
-  0% {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.95) translateY(-6px);
-  }
-}
-
-.dropdown-enter {
-  animation: dropdown-fade-in 200ms ease-out forwards;
-}
-
-.dropdown-exit {
-  animation: dropdown-fade-out 150ms ease-in forwards;
 }

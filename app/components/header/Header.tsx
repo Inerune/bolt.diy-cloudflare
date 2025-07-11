@@ -3,14 +3,14 @@ import { ClientOnly } from 'remix-utils/client-only';
 import { chatStore } from '~/lib/stores/chat';
 import { classNames } from '~/utils/classNames';
 import { HeaderActionButtons } from './HeaderActionButtons.client';
-import { ChatDescription } from '~/lib/persistence/ChatDescription.client';
+import { Button  } from '../ui/moving-border';
 
 export function Header() {
   const chat = useStore(chatStore);
 
   return (
     <header
-      className={classNames('flex items-center px-2.5 pt-2.8 bg-[#E7E2E0]  dark:bg-[#292f35]', {
+      className={classNames('flex justify-between items-center px-2.5 pt-2.8 bg-[#E7E2E0]  dark:bg-[#292f35]', {
         'border-transparent': !chat.started,
         '': chat.started,
       })}
@@ -24,7 +24,12 @@ export function Header() {
           <h3 className='text-[18px] font-[franie-regular]'>askblake.</h3>
         </a>
       </div>
-      {chat.started && ( // Display ChatDescription and HeaderActionButtons only when the chat has started.
+      <div className='text-white mb-1.2'>
+        <Button >
+          Sign up / Login
+        </Button>
+      </div>
+      {chat.started && ( // Display HeaderActionButtons only when the chat has started.
         <>
           <span className="flex-1 px-4 truncate text-center text-bolt-elements-textPrimary">
             {/* <ClientOnly>{() => <ChatDescription />}</ClientOnly> */}
