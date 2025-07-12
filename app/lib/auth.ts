@@ -1,29 +1,20 @@
-import { betterAuth } from "better-auth";
-import { mongodbAdapter } from "better-auth/adapters/mongodb";
-import { MongoClient } from "mongodb";
+import { betterAuth } from "better-auth"
+// import { MongoClient } from "mongodb";
+// import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
-let client: MongoClient;
-let db: Awaited<ReturnType<MongoClient["db"]>>;
+// const client = new MongoClient(process.env.MONGO_URL as string);
+// const db = client.db();
 
-async function connectToMongo() {
-  if (!client) {
-    client = new MongoClient(process.env.MONGO_URL as string);
-    await client.connect();
-    db = client.db(); // optional: pass your DB name as arg
-  }
-  return db;
-}
 
 export const auth = betterAuth({
-  sessionSecret: process.env.SESSION_SECRET!,
-  database: mongodbAdapter(await connectToMongo()),
-  emailAndPassword: {
-    enabled: true,
-  },
-  socialProviders: {
-    google: {
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    // database: mongodbAdapter(db),
+    emailAndPassword: {  
+        enabled: true
     },
-  },
+    socialProviders: { 
+        google: { 
+           clientId: process.env.GOOGLE_CLIENT_ID as string, 
+           clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
+        }, 
+    }, 
 });
