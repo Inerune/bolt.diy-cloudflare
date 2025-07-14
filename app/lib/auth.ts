@@ -5,9 +5,6 @@ import * as schema from "./schema";
 
 type Env = {
   DB: D1Database;
-  SESSIONS_KV: KVNamespace;
-  GOOGLE_CLIENT_ID: string;
-  GOOGLE_CLIENT_SECRET: string;
 };
 
 export const auth = (env: Env) =>
@@ -15,6 +12,7 @@ export const auth = (env: Env) =>
     adapter: {
       db: drizzle(env.DB, { schema }) as DrizzleD1Database<Record<string, unknown>>,
     },
+    
     emailAndPassword: {
       enabled: true,
     },

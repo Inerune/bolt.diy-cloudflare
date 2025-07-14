@@ -3,9 +3,6 @@ import type { LoaderFunctionArgs, ActionFunctionArgs } from "@remix-run/cloudfla
 
 type Env = {
   DB: D1Database;
-  SESSIONS_KV: KVNamespace;
-  GOOGLE_CLIENT_ID: string;
-  GOOGLE_CLIENT_SECRET: string;
 };
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
