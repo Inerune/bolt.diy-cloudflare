@@ -1,20 +1,28 @@
-import { betterAuth } from "better-auth"
-import { mongodbAdapter } from "better-auth/adapters/mongodb";
-import { MongoClient } from "mongodb";
+import { betterAuth } from "better-auth";
+import { drizzle } from "drizzle-orm/d1";
+import type { DrizzleD1Database } from "drizzle-orm/d1";
+import * as schema from "./schema";
 
-const client = new MongoClient(process.env.MONGO_URI!);
-const db = client.db();
+type Env = {
+  DB: D1Database;
+  SESSIONS_KV: KVNamespace;
+  GOOGLE_CLIENT_ID: string;
+  GOOGLE_CLIENT_SECRET: string;
+};
 
-
-export const auth = betterAuth({
-    database: mongodbAdapter(db),
-    emailAndPassword: {  
-        enabled: true
+export const auth = (env: Env) =>
+  betterAuth({
+    adapter: {
+      db: drizzle(env.DB, { schema }) as DrizzleD1Database<Record<string, unknown>>,
+      kv: env.SESSIONS_KV,
     },
-    socialProviders: { 
-        google: { 
-           clientId: process.env.GOOGLE_CLIENT_ID as string, 
-           clientSecret: process.env.GOOGLE_CLIENT_SECRET as string, 
-        }, 
-    }, 
-});
+    emailAndPassword: {
+      enabled: true,
+    },
+    socialProviders: {
+      google: {
+        clientId: env.GOOGLE_CLIENT_ID,
+        clientSecret: env.GOOGLE_CLIENT_SECRET,
+      },
+    },
+  });
