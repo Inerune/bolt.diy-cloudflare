@@ -14,15 +14,14 @@ export const auth = (env: Env) =>
   betterAuth({
     adapter: {
       db: drizzle(env.DB, { schema }) as DrizzleD1Database<Record<string, unknown>>,
-      kv: env.SESSIONS_KV,
     },
     emailAndPassword: {
       enabled: true,
     },
     socialProviders: {
       google: {
-        clientId: env.GOOGLE_CLIENT_ID,
-        clientSecret: env.GOOGLE_CLIENT_SECRET,
+        clientId: process.env.GOOGLE_CLIENT_ID as string,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
       },
     },
   });

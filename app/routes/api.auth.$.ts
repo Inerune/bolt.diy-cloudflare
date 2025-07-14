@@ -9,9 +9,9 @@ type Env = {
 };
 
 export async function loader({ request, context }: LoaderFunctionArgs) {
-  return auth(context.env as Env).handleRequest(request); // ✅ still valid
+  return auth(context.env as Env).handler(request); // ✅ use `.handler()`, NOT `.handleRequest()`
 }
 
 export async function action({ request, context }: ActionFunctionArgs) {
-  return auth(context.env as Env).handleRequest(request); // ✅ still valid
+  return auth(context.env as Env).handler(request); // ✅ same here
 }
