@@ -1,7 +1,6 @@
 // app/lib/database.ts
 import { drizzle } from 'drizzle-orm/d1';
 import * as schema from './schema';
-import type { D1Database } from '@cloudflare/workers-types';
 import type { Env } from '../types/env';
 
 
