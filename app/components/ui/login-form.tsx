@@ -2,21 +2,34 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { Label } from "@/components/ui/Label"
-import { authClient } from "@/lib/auth-client";
+import { useEffect } from "react"
 export function LoginForm({
     className,
     ...props
 }: React.ComponentProps<"div">) {
 
-    const handleGoogleLogin = async () => {
-    await authClient.signIn.social({
-      provider: "google",
-      callbackURL: "/", // redirect here after login
-      errorCallbackURL: "/login?error=true", // optional
-      newUserCallbackURL: "/", // optional
-    });
-  };
 
+    const handleGoogleLogin = async () => {
+        try {
+            const response = await fetch(`${process.env.BACKEND_URL}/sign-in/social`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    provider: 'google',
+                    redirectUrl: window.location.origin + '/auth/callback' // Important!
+                }),
+                credentials: 'include' // Needed for cookies/sessions
+            });
+
+            const { redirect, url } = await response.json();
+            if (redirect) window.location.href = url;
+
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
+    };
 
     return (
         <div className={cn("flex flex-col gap-6", className)} {...props}>
