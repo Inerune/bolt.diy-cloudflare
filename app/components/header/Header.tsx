@@ -40,7 +40,7 @@ export function Header({ setOpen }: headerProps) {
 
    const checkAuthStatus = async () => {
         try {
-            const response = await fetch(`${process.env.BACKEND_URL}/get-session`, {
+            const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/get-session`, {
                 credentials: 'include' // Important for cookies
             });
             if (response.ok) {
