@@ -10,6 +10,7 @@ node_modules
 dist
 dist-ssr
 *.local
+wrangler.toml
 
 .vscode/*
 .vscode/launch.json
