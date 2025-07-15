@@ -12,32 +12,8 @@ interface headerProps {
 }
 
 
-export function Header({ setOpen }: headerProps) {
+export function Header({ setOpen, dataAuth }: headerProps) {
   const chat = useStore(chatStore);
-      const [data, setData] = useState()
-
-
-   const checkAuthStatus = async () => {
-        try {
-            const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/get-session`, {
-                credentials: 'include' // Important for cookies
-            });
-            if (response.ok) {
-                const userData = await response.json();
-                console.log("server:", userData)
-                setData(userData)
-            }
-        } catch (error) {
-            console.error('Auth check failed:', error);
-        }
-    };
-
-    useEffect(() => {
-        checkAuthStatus();
-    }, []);
-
-
-    console.log(data)
   return (
     <header
       className={classNames('flex justify-between items-center px-2.5 pt-2.8 bg-[#E7E2E0]  dark:bg-[#292f35]', {
@@ -50,17 +26,17 @@ export function Header({ setOpen }: headerProps) {
           <h3 className='text-[18px] font-[franie-regular]'>askblake.</h3>
         </a>
       </div>
-      {data && data.user ? (
+      {dataAuth && dataAuth.user ? (
         <>
           <div className='text-sm text-white flex items-center gap-1'>
-            {data?.user?.image && (
+            {dataAuth?.user?.image && (
               <img
-                src={data.user.image ?? undefined}
+                src={dataAuth.user.image ?? undefined}
                 alt="User Avatar"
                 className="h-4 w-4 rounded-full border border-white object-cover"
               />
             )}
-            Hello, {data.user.name}
+            Hello, {dataAuth.user.name}
           </div>
         </>
       ) : (
