@@ -35,7 +35,7 @@ interface AuthResponse {
 
 export function Header({ setOpen }: headerProps) {
   const chat = useStore(chatStore);
-      const [data, setData] = useState<AuthResponse | null>()
+      const [data, setData] = useState()
 
 
    const checkAuthStatus = async () => {
@@ -44,7 +44,7 @@ export function Header({ setOpen }: headerProps) {
                 credentials: 'include' // Important for cookies
             });
             if (response.ok) {
-                const userData = await response.json() as AuthResponse;
+                const userData = await response.json();
                 setData(userData)
             }
         } catch (error) {
