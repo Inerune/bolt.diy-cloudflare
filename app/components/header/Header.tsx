@@ -11,27 +11,6 @@ interface headerProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface Session {
-  expiresAt: string;
-  token: string;
-  createdAt: string;
-  updatedAt: string;
-  ipAddress: string;
-}
-
-interface User {
-  name: string;
-  email: string;
-  emailVerified: boolean;
-  image: string;
-  createdAt: string;
-  // Add other user properties you need
-}
-
-interface AuthResponse {
-  session: Session;
-  user: User;
-}
 
 export function Header({ setOpen }: headerProps) {
   const chat = useStore(chatStore);
@@ -45,6 +24,7 @@ export function Header({ setOpen }: headerProps) {
             });
             if (response.ok) {
                 const userData = await response.json();
+                console.log("server:", userData)
                 setData(userData)
             }
         } catch (error) {
