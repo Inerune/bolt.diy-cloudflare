@@ -3,14 +3,17 @@ import { ClientOnly } from 'remix-utils/client-only';
 import { chatStore } from '~/lib/stores/chat';
 import { classNames } from '~/utils/classNames';
 import { HeaderActionButtons } from './HeaderActionButtons.client';
-import { Button  } from '../ui/moving-border';
+import { Button } from '../ui/moving-border';
+import { useSession } from "@/lib/auth-client";
+import userIcon from '../../../icons/user-6-line.svg';
 
 interface headerProps {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function Header( { setOpen }: headerProps ) {
+export function Header({ setOpen }: headerProps) {
   const chat = useStore(chatStore);
+  const { data } = useSession();
 
   return (
     <header
@@ -28,23 +31,28 @@ export function Header( { setOpen }: headerProps ) {
           <h3 className='text-[18px] font-[franie-regular]'>askblake.</h3>
         </a>
       </div>
-      <div className='text-white mb-1' onClick={() => setOpen(true)}>
-        <Button>
-          Sign up / Login
-        </Button>
-      </div>
-      {/* {chat.started && ( // Display HeaderActionButtons only when the chat has started.
+      {data && data.user ? (
         <>
-          
-          <ClientOnly>
-            {() => (
-              <div className="mr-1">
-                <HeaderActionButtons />
-              </div>
+          <div className='text-sm text-white flex items-center gap-1'>
+            {data?.user?.image && (
+              <img
+                src={data.user.image ?? undefined}
+                alt="User Avatar"
+                className="h-5 w-5 rounded-full border border-white object-cover"
+              />
             )}
-          </ClientOnly>
+            Hello, {data.user.name}
+          </div>
         </>
-      )} */}
+      ) : (
+        <>
+          <div className="text-white mb-1" onClick={() => setOpen(true)}>
+            <Button>Sign up / Login</Button>
+          </div>
+        </>
+      )}
+
+
     </header>
   );
 }
