@@ -1,10 +1,16 @@
+// app/lib/database.ts
 import { drizzle } from 'drizzle-orm/d1';
-export interface Env {
-  DB: D1Database;
+import * as schema from './schema';
+import type { D1Database } from '@cloudflare/workers-types';
+import type { Env } from '../types/env';
+
+
+
+export function initializeDB(env: Env) {
+  if (!env.DB) {
+    throw new Error("DB binding is missing from environment");
+  }
+  return drizzle(env.DB, { schema });
 }
 
-export default {
-  async fetch(request: Request, env: Env) {
-    const db = drizzle(env.DB);
-  },
-};
+export type DB = ReturnType<typeof initializeDB>;

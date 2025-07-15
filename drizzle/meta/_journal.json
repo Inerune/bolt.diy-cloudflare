@@ -15,6 +15,13 @@
       "when": 1752536215494,
       "tag": "0001_petite_korg",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1752592541748,
+      "tag": "0002_lowly_celestials",
+      "breakpoints": true
     }
   ]
 }
