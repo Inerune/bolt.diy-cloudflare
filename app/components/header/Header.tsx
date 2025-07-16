@@ -4,7 +4,7 @@ import { chatStore } from '~/lib/stores/chat';
 import { classNames } from '~/utils/classNames';
 import { Button } from '../ui/moving-border';
 import userIcon from '../../../icons/user-6-line.svg';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { SettingsButton } from '../ui/SettingsButton';
 import { profileStore, updateProfile, } from '~/lib/stores/profile';
 
@@ -41,6 +41,10 @@ export function Header({ setOpen }: headerProps) {
     checkAuthStatus();
   }, []);
 
+  const printHello = () => {
+    console.log("hello")
+  }
+
   return (
     <header
       className={classNames('flex justify-between items-center px-2.5 pt-2.8 bg-[#E7E2E0]  dark:bg-[#292f35]', {
@@ -64,7 +68,7 @@ export function Header({ setOpen }: headerProps) {
             />
             <p className='text-[15px] dark:text-white text-black'>{profile.username}</p>
             <p className='w-[1px] h-3 bg-[#4B525B]'></p>
-            <SettingsButton/>
+            <SettingsButton onClick={printHello}/>
           </div>
         </>
       ) : (
