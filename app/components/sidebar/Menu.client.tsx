@@ -15,6 +15,7 @@ import { classNames } from '~/utils/classNames';
 import { useStore } from '@nanostores/react';
 import { profileStore } from '~/lib/stores/profile';
 import { Button as MovingBorder } from '../ui/moving-border';
+import { useSettingsContext } from '@/lib/context/SettingsContext';
 
 
 // icons
@@ -74,7 +75,8 @@ export const Menu = ({ setOpen, open }: menuProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<ChatHistoryItem[]>([]);
   const [dialogContent, setDialogContent] = useState<DialogContent>(null);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  // const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const { isSettingsOpen, setIsSettingsOpen } = useSettingsContext();
   const profile = useStore(profileStore);
   const [selectionMode, setSelectionMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);

@@ -5,7 +5,7 @@ import { BaseChat } from '~/components/chat/BaseChat';
 import { Chat } from '~/components/chat/Chat.client';
 import { Header } from '~/components/header/Header';
 import BackgroundRays from '~/components/ui/BackgroundRays';
-
+import { SettingsProvider } from '~/lib/context/SettingsContext';
 import { LoginForm } from '~/components/ui/login-form';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -34,6 +34,7 @@ export default function Index() {
   };
 
   return (
+    <SettingsProvider>
     <div className="flex flex-col h-full w-full bg-[#E7E2E0] dark:bg-[#292F35] px-2.5 pb-2.5">
       <AnimatePresence>
         {isOpen && (
@@ -74,5 +75,6 @@ export default function Index() {
       <Header setOpen={setOpen} />
       <ClientOnly fallback={<BaseChat />}>{() => <Chat />}</ClientOnly>
     </div>
+    </SettingsProvider>
   );
 }

@@ -7,6 +7,7 @@ import userIcon from '../../../icons/user-6-line.svg';
 import { useEffect } from 'react';
 import { SettingsButton } from '../ui/SettingsButton';
 import { profileStore, updateProfile, } from '~/lib/stores/profile';
+import { useSettingsContext } from '@/lib/context/SettingsContext';
 
 
 interface headerProps {
@@ -17,11 +18,13 @@ interface headerProps {
 export function Header({ setOpen }: headerProps) {
   const chat = useStore(chatStore);
   const profile = useStore(profileStore);
+  const { setIsSettingsOpen } = useSettingsContext();
 
 
   const checkAuthStatus = async () => {
     try {
       const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/get-session`, {
+      // const response = await fetch(`http://localhost:3000/api/auth/get-session`, {
         credentials: 'include'
       });
 
@@ -68,7 +71,7 @@ export function Header({ setOpen }: headerProps) {
             />
             <p className='text-[15px] dark:text-white text-black'>{profile.username}</p>
             <p className='w-[1px] h-3 bg-[#4B525B]'></p>
-            <SettingsButton onClick={printHello}/>
+            <SettingsButton onClick={() => setIsSettingsOpen(true)}/>
           </div>
         </>
       ) : (
