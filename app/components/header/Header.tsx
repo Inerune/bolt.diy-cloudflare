@@ -8,17 +8,16 @@ import { useEffect } from 'react';
 import { SettingsButton } from '../ui/SettingsButton';
 import { profileStore, updateProfile, } from '~/lib/stores/profile';
 import { useSettingsContext } from '@/lib/context/SettingsContext';
+import {  useSignIn  } from '~/lib/context/SignInContext';
 
 
-interface headerProps {
-  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
 
-export function Header({ setOpen }: headerProps) {
+export function Header() {
   const chat = useStore(chatStore);
   const profile = useStore(profileStore);
   const { setIsSettingsOpen } = useSettingsContext();
+  const { openLogin } = useSignIn();
 
 
   const checkAuthStatus = async () => {
@@ -76,7 +75,7 @@ export function Header({ setOpen }: headerProps) {
         </>
       ) : (
         <>
-          <div className="text-white mb-1" onClick={() => setOpen(true)}>
+          <div className="text-white mb-1" onClick={() => openLogin(true)}>
             <Button>Sign up / Login</Button>
           </div>
         </>
