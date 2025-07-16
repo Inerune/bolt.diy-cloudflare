@@ -22,7 +22,7 @@ export function Header({ setOpen }: headerProps) {
 
   const checkAuthStatus = async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/auth/get-session`, {
+      const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/get-session`, {
         credentials: 'include'
       });
 
