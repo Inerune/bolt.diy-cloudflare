@@ -31,6 +31,10 @@ body {
   font-family: 'franie-regular';
   src: url('/assets/fonts/Pranie-Regular.otf');
 }
+@font-face {
+  font-family: "SF-Pro-Text";
+  src: url('/assets/fonts/SF-Pro-Text-Regular.otf');
+}
 
 @layer base {
   html, body {
