@@ -36,7 +36,11 @@ export default function Index() {
   const checkAuthStatus = async () => {
     try {
       const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/get-session`, {
-        credentials: 'include' // Important for cookies
+        method: "GET",
+        credentials: 'include', // Important for cookies
+        headers: {
+                    'Content-Type': 'application/json',
+        },
       });
 
       if (response.ok) {
