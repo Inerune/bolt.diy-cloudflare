@@ -16,7 +16,6 @@ import { useStore } from '@nanostores/react';
 import { profileStore } from '~/lib/stores/profile';
 import { Button as MovingBorder } from '../ui/moving-border';
 import { useSettingsContext } from '@/lib/context/SettingsContext';
-import { useSignIn  } from '~/lib/context/SignInContext';
 
 
 // icons
@@ -78,7 +77,6 @@ export const Menu = ({ setOpen, open }: menuProps) => {
   const [dialogContent, setDialogContent] = useState<DialogContent>(null);
   // const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { isSettingsOpen, setIsSettingsOpen } = useSettingsContext();
-  const { openLogin } = useSignIn();
   const profile = useStore(profileStore);
   const [selectionMode, setSelectionMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -513,7 +511,7 @@ export const Menu = ({ setOpen, open }: menuProps) => {
                   </div>
                 </div>
               ) : (
-                <div className="text-white mb-1" onClick={() => openLogin(true)}>
+                <div className="text-white mb-1" >
                   <MovingBorder>Sign up / Login</MovingBorder>
                 </div>
               )
