@@ -17,7 +17,7 @@ export function Header() {
   const chat = useStore(chatStore);
   const profile = useStore(profileStore);
   const { setIsSettingsOpen } = useSettingsContext();
-  const { setOpen } = useSignIn();
+  const { openLogin } = useSignIn();
 
 
   const checkAuthStatus = async () => {
@@ -70,7 +70,7 @@ export function Header() {
         </>
       ) : (
         <>
-          <div className="text-white mb-1" onClick={() => setOpen(true)}>
+          <div className="text-white mb-1" onClick={() => openLogin(true)}>
             <Button>Sign up / Login</Button>
           </div>
         </>

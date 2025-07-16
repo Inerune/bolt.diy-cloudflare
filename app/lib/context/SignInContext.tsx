@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, useRef, useEffect } from 'r
 
 interface SignInContextType {
   isOpen: boolean;
-  setOpen: (open: boolean) => void;
+  openLogin: (open: boolean) => void;
   toggle: () => void;
   modalRef: React.RefObject<HTMLDivElement>;
   handleClickOutside: (e: React.MouseEvent<HTMLDivElement>) => void;
@@ -12,20 +12,20 @@ interface SignInContextType {
 const SignInContext = createContext<SignInContextType | null>(null);
 
 export const SignInProvider = ({ children }: { children: React.ReactNode }) => {
-  const [isOpen, setOpen] = useState(false);
+  const [isOpen, openLogin] = useState(false);
   const modalRef = useRef<HTMLDivElement>(null);
 
-  const toggle = () => setOpen(prev => !prev);
+  const toggle = () => openLogin(prev => !prev);
 
   const handleClickOutside = (e: React.MouseEvent<HTMLDivElement>) => {
     if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
-      setOpen(false);
+      openLogin(false);
     }
   };
 
   return (
     <SignInContext.Provider
-      value={{ isOpen, setOpen, toggle, modalRef, handleClickOutside }}
+      value={{ isOpen, openLogin, toggle, modalRef, handleClickOutside }}
     >
       {children}
     </SignInContext.Provider>

@@ -78,7 +78,7 @@ export const Menu = ({ setOpen, open }: menuProps) => {
   const [dialogContent, setDialogContent] = useState<DialogContent>(null);
   // const [isSettingsOpen, setIsSettingsOpen] = useState(false);
   const { isSettingsOpen, setIsSettingsOpen } = useSettingsContext();
-  const { toggle } = useSignIn();
+  const { openLogin } = useSignIn();
   const profile = useStore(profileStore);
   const [selectionMode, setSelectionMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -513,7 +513,7 @@ export const Menu = ({ setOpen, open }: menuProps) => {
                   </div>
                 </div>
               ) : (
-                <div className="text-white mb-1" onClick={() => toggle()}>
+                <div className="text-white mb-1" onClick={() => openLogin(true)}>
                   <MovingBorder>Sign up / Login</MovingBorder>
                 </div>
               )

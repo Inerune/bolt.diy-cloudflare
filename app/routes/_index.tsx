@@ -6,7 +6,7 @@ import { Chat } from '~/components/chat/Chat.client';
 import { Header } from '~/components/header/Header';
 import BackgroundRays from '~/components/ui/BackgroundRays';
 import { SettingsProvider } from '~/lib/context/SettingsContext';
-import { SignInProvider  } from '~/lib/context/SignInContext';
+import { SignInProvider } from '~/lib/context/SignInContext';
 import FinalForm from '~/components/ui/FinalForm';
 
 export const meta: MetaFunction = () => {
@@ -25,15 +25,15 @@ export default function Index() {
 
 
   return (
-    <SignInProvider>
-      <SettingsProvider>
-        <div className="flex flex-col h-full w-full bg-[#E7E2E0] dark:bg-[#292F35] px-2.5 pb-2.5">
+    <SettingsProvider>
+      <div className="flex flex-col h-full w-full bg-[#E7E2E0] dark:bg-[#292F35] px-2.5 pb-2.5">
+        <SignInProvider>
           <FinalForm />
           <BackgroundRays />
-          <Header/>
+          <Header />
           <ClientOnly fallback={<BaseChat />}>{() => <Chat />}</ClientOnly>
-        </div>
-      </SettingsProvider>
-    </SignInProvider>
+        </SignInProvider>
+      </div>
+    </SettingsProvider>
   );
 }
