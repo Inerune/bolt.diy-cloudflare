@@ -82,6 +82,7 @@ export default function ProfileTab() {
                 <img
                   src={profile.avatar}
                   alt="Profile"
+                  crossOrigin='anonymous'
                   className={classNames(
                     'w-full h-full object-cover',
                     'transition-all duration-300 ease-out',

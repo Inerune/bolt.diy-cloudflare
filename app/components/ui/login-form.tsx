@@ -11,7 +11,7 @@ export function LoginForm({
 
     const handleGoogleLogin = async () => {
         try {
-            const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/sign-in/social`, {
+            const response = await fetch(`http://localhost:3000/api/auth/sign-in/social`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

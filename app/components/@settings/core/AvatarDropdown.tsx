@@ -29,6 +29,7 @@ export const AvatarDropdown = ({ onSelectTab }: AvatarDropdownProps) => {
           {profile?.avatar ? (
             <img
               src={profile.avatar}
+              crossOrigin='anonymous'
               alt={profile?.username || 'Profile'}
               className="w-full h-full rounded-full object-cover"
               loading="eager"

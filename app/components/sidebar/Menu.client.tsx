@@ -283,30 +283,6 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
     }
   }, [open, selectionMode]);
 
-  // useEffect(() => {
-  //   const enterThreshold = 40;
-  //   const exitThreshold = 40;
-
-  //   function onMouseMove(event: MouseEvent) {
-  //     if (isSettingsOpen) {
-  //       return;
-  //     }
-
-  //     if (event.pageX < enterThreshold) {
-  //       setOpen(true);
-  //     }
-
-  //     if (menuRef.current && event.clientX > menuRef.current.getBoundingClientRect().right + exitThreshold) {
-  //       setOpen(false);
-  //     }
-  //   }
-
-  //   window.addEventListener('mousemove', onMouseMove);
-
-  //   return () => {
-  //     window.removeEventListener('mousemove', onMouseMove);
-  //   };
-  // }, [isSettingsOpen]);
 
   const handleDuplicate = async (id: string) => {
     await duplicateCurrentChat(id);
@@ -343,7 +319,7 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
         )}
       >
 
-        <div className='flex justify-between items-center p-1 pr-3 mt-12'>
+        <div className='flex justify-between items-center z-40 p-1 pr-3 mt-12'>
           <CurrentDateTime />
           <ThemeSwitch />
         </div>
@@ -358,18 +334,6 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
                 <img src={chatStartIcon} alt="" />
                 <span className="text-sm font-medium">Start new chat</span>
               </a>
-              {/* <button
-                onClick={toggleSelectionMode}
-                className={classNames(
-                  'flex gap-1 items-center rounded-lg px-3 py-2 transition-colors',
-                  selectionMode
-                    ? 'bg-purple-600 dark:bg-purple-500 text-white border border-purple-700 dark:border-purple-600'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 border border-gray-200 dark:border-gray-700',
-                )}
-                aria-label={selectionMode ? 'Exit selection mode' : 'Enter selection mode'}
-              >
-                <span className={selectionMode ? 'i-ph:x h-4 w-4' : 'i-ph:check-square h-4 w-4'} />
-              </button> */}
             </div>
             <div className="relative w-full">
               <div className="absolute left-3 top-1/2 -translate-y-1/2">
@@ -527,6 +491,7 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
                     <img
                       src={profile.avatar}
                       alt={profile?.username || 'User'}
+                      crossOrigin="anonymous"
                       className="w-full h-full object-cover"
                       loading="eager"
                       decoding="sync"
