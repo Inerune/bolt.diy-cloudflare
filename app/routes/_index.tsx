@@ -39,9 +39,11 @@ export default function Index() {
         method: "GET",
         credentials: 'include', // Important for cookies
         headers: {
-                    'Content-Type': 'application/json',
+           'Content-Type': 'application/json',
         },
       });
+
+      console.log(response);
 
       if (response.ok) {
         const userData = await response.json();
