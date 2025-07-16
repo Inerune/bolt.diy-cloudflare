@@ -14,6 +14,9 @@ import { useSearchFilter } from '~/lib/hooks/useSearchFilter';
 import { classNames } from '~/utils/classNames';
 import { useStore } from '@nanostores/react';
 import { profileStore } from '~/lib/stores/profile';
+import { Button as MovingBorder } from '../ui/moving-border';
+import { useSettingsContext } from '@/lib/context/SettingsContext';
+import { useSignIn  } from '~/lib/context/SignInContext';
 
 
 // icons
@@ -25,7 +28,7 @@ const menuVariants = {
   closed: {
     x: '-100%',
     transition: {
-      x: { duration: 0.4, ease: [0.22, 1, 0.36, 1] }, 
+      x: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
     },
   },
   open: {
@@ -68,13 +71,14 @@ interface menuProps {
   open: boolean
 }
 
-export const Menu = ({ setOpen, open }: menuProps ) => {
+export const Menu = ({ setOpen, open }: menuProps) => {
   const { duplicateCurrentChat, exportChat } = useChatHistory();
   const menuRef = useRef<HTMLDivElement>(null);
   const [list, setList] = useState<ChatHistoryItem[]>([]);
-  // const [open, setOpen] = useState(false);
   const [dialogContent, setDialogContent] = useState<DialogContent>(null);
-  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  // const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const { isSettingsOpen, setIsSettingsOpen } = useSettingsContext();
+  const { toggle } = useSignIn();
   const profile = useStore(profileStore);
   const [selectionMode, setSelectionMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
@@ -483,29 +487,38 @@ export const Menu = ({ setOpen, open }: menuProps ) => {
             </DialogRoot>
           </div>
           <div className="flex items-center justify-between px-4 py-3">
-            <div className=" flex items-center justify-between px-0 dark:border-gray-800/50 dark:bg-[#292F35]">
-              <div className="text-gray-900 dark:text-white font-medium"></div>
-              <div className="flex items-center gap-3">
-                <div className="flex items-center justify-center w-[32px] h-[32px] overflow-hidden bg-white dark:bg-white text-gray-600 dark:text-gray-500 rounded-full shrink-0">
-                  {profile?.avatar ? (
-                    <img
-                      src={profile.avatar}
-                      alt={profile?.username || 'User'}
-                      crossOrigin="anonymous"
-                      className="w-full h-full object-cover"
-                      loading="eager"
-                      decoding="sync"
-                    />
-                  ) : (
-                    <img src={guestUser} alt="" />
-                  )}
-                </div>
-                <span className="font-medium text-sm text-gray-900 dark:text-white truncate">
-                  {profile?.username || 'Guest User'}
-                </span>
+            {
+              profile?.username ? (
+                <div className=" flex items-center justify-between px-0 dark:border-gray-800/50 dark:bg-[#292F35]">
+                  <div className="text-gray-900 dark:text-white font-medium"></div>
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center justify-center w-[32px] h-[32px] overflow-hidden bg-white dark:bg-white text-gray-600 dark:text-gray-500 rounded-full shrink-0">
+                      {profile?.avatar ? (
+                        <img
+                          src={profile.avatar}
+                          alt={profile?.username || 'User'}
+                          crossOrigin="anonymous"
+                          className="w-full h-full object-cover"
+                          loading="eager"
+                          decoding="sync"
+                        />
+                      ) : (
+                        <img src={guestUser} alt="" />
+                      )}
+                    </div>
+                    <span className="font-medium text-sm text-gray-900 dark:text-white truncate">
+                      {profile?.username || 'Guest User'}
+                    </span>
 
-              </div>
-            </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="text-white mb-1" onClick={() => toggle()}>
+                  <MovingBorder>Sign up / Login</MovingBorder>
+                </div>
+              )
+            }
+
             <SettingsButton onClick={handleSettingsClick} />
           </div>
         </div>

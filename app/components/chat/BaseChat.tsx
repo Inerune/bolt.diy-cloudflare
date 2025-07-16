@@ -61,6 +61,7 @@ import { BackgroundLines } from '../ui/background-lines';
 // unsupportedBrowsers
 import BrowserUnsupportedPopup from './BrowserUnsupportedPopup';
 import { Tooltip as SparkTooltip } from '~/components/ui/Tooltip';
+import CookiePopup from '../ui/cookiesPopup';
 
 
 const words = [
@@ -441,6 +442,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         bring ideas to life in seconds or get help on existing projects.
                       </p>
                       <BrowserUnsupportedPopup />
+                      <CookiePopup />
 
                     </div>
                   )}
