@@ -76,6 +76,7 @@ export const Messages = forwardRef<HTMLDivElement, MessagesProps>(
                         <img
                           src={profile.avatar}
                           alt={profile?.username || 'User'}
+                          crossOrigin='anonymous'
                           className="w-full h-full object-cover"
                           loading="eager"
                           decoding="sync"
