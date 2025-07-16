@@ -61,7 +61,7 @@ import { BackgroundLines } from '../ui/background-lines';
 // unsupportedBrowsers
 import BrowserUnsupportedPopup from './BrowserUnsupportedPopup';
 import { Tooltip as SparkTooltip } from '~/components/ui/Tooltip';
-import CookiePopup from '../ui/cookiesPopup';
+import CookiePopup from '../ui/CookiePopup';
 
 
 const words = [

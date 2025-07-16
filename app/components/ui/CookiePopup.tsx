@@ -22,16 +22,6 @@ const CookiePopup = () => {
   const handleResponse = (accepted: boolean) => {
     // Save preference
     localStorage.setItem('cookieConsent', String(accepted));
-    
-    // Set cookies if accepted
-    if (accepted) {
-      document.cookie = `necessary=true; max-age=${30*24*60*60}; path=/; Secure; SameSite=Lax`;
-      document.cookie = `analytics=true; max-age=${30*24*60*60}; path=/; Secure; SameSite=Lax`;
-    } else {
-      document.cookie = `necessary=true; max-age=${30*24*60*60}; path=/; Secure; SameSite=Lax`;
-      document.cookie = `analytics=; max-age=0; path=/`; // Clear if exists
-    }
-
     setOpen(false);
   };
 
