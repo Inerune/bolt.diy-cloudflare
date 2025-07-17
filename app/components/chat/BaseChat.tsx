@@ -438,7 +438,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     <div id="intro" className="mt-[24vh] max-w-[35rem] mx-auto text-center px-4 lg:px-0">
                       <TypewriterEffectSmooth words={words} />
 
-                      <p className="font-[sf-light]  text-md lg:text-[18px] mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
+                      <p className="text-md lg:text-[18px] mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
                         bring ideas to life in seconds or get help on existing projects.
                       </p>
                       <BrowserUnsupportedPopup />
@@ -621,7 +621,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           <textarea
                             ref={textareaRef}
                             className={classNames(
-                              'w-full pl-4 pt-4 pr-16 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm ',
+                              'w-full pl-4 pt-4 pr-4 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm ',
                               'transition-all duration-200',
                               'hover:border-bolt-elements-focus',
                             )}
@@ -813,7 +813,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                   <div id="intro" className="mt-[24vh] max-w-chat mx-auto text-center px-4 lg:px-0">
                     <TypewriterEffectSmooth words={words} />
 
-                    <p className="font-[sf-light] tracking-[1px] text-md lg:text-[18px] mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
+                    <p className=" tracking-[1px] text-md lg:text-[18px] mb-8 text-bolt-elements-textSecondary animate-fade-in animation-delay-200">
                       bring ideas to life in seconds or get help on existing projects.
                     </p>
                     <BrowserUnsupportedPopup />
@@ -901,7 +901,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                       <div
                         className={classNames(
-                          'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0  border border-bolt-elements-borderColor rounded-l-md relative w-full max-w-[40rem] mx-auto z-prompt',
+                          'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0  border border-bolt-elements-borderColor rounded-lb-md relative w-full max-w-[40rem] mx-auto z-prompt',
 
                           /*
                            * {
@@ -985,7 +985,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           )}
                         </ClientOnly>
                         <div
-                          className={classNames(`relative shadow-xs backdrop-blur ${!chatStarted ? 'rounded-lg' : 'rounded-l-md'}`,)} >
+                          className={classNames(`relative shadow-xs backdrop-blur ${!chatStarted ? 'rounded-lg' : 'rounded-lb-md'}`,)} >
                           <GlowingEffect
                             spread={40}
                             glow={true}
@@ -996,7 +996,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           <textarea
                             ref={textareaRef}
                             className={classNames(
-                              'w-full pl-4 pt-4 pr-16 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm ',
+                              'w-full pl-4 pt-4 pr-4 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm ',
                               'transition-all duration-200',
                               'hover:border-bolt-elements-focus',
                             )}
@@ -1191,7 +1191,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             chatStarted && <div
               onPointerDown={onPointerDown}
               style={{ touchAction: 'none', userSelect: 'none' }}
-              className={` ${open ? 'hidden' : 'flex'} fixed top-[55px] right-0 left-[var(--chat-min-width)] w-[6px] ml-[14px] cursor-e-resize bg-transparent hover:bg-gray-400/40 bottom-[1.2rem]transition-colors z-[9999] h-full`} />
+              className={` ${open ? 'hidden' : 'flex'} fixed top-[55px] right-0 left-[var(--chat-min-width)] w-[6px] ml-[14px] cursor-e-resize bg-transparent hover:bg-gray-400/40 bottom-[1.2rem]transition-colors z-[9999] h-[90vh]`} />
           }
 
           <ClientOnly>

@@ -56,7 +56,7 @@ export function LoginForm({
                                 required
                             />
                         </div>
-                        <Button type="submit" className="w-full dark:bg-[#07ceb9] bg-[#FFD6A7] dark:hover:opacity-80 text-black font-[sf-regular]">
+                        <Button type="submit" className="w-full dark:bg-[#07ceb9] bg-[#FFD6A7] dark:hover:opacity-80 text-black">
                             Login
                         </Button>
                     </div>
@@ -79,8 +79,8 @@ export function LoginForm({
                 </div>
             </form>
             <div className="text-black dark:text-white  *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-                By clicking continue, you agree to our <br /> <a href="#" className="underline font-[sf-light]">Terms of Service</a>{" "}
-                and <a href="#" className="underline font-[sf-light]">Privacy Policy</a>.
+                By clicking continue, you agree to our <br /> <a href="#" className="underline ">Terms of Service</a>{" "}
+                and <a href="#" className="underline">Privacy Policy</a>.
             </div>
         </div>
     )

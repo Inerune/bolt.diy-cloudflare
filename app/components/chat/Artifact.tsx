@@ -78,7 +78,7 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
 
   return (
     <>
-      <div className="artifact flex flex-col overflow-hidden rounded-lg w-full transition-border font-[sf-light] text-[14px] duration-150">
+      <div className="artifact flex flex-col overflow-hidden rounded-lg w-full transition-border text-[14px] duration-150">
         <div className="flex">
           <button
             className="flex items-stretch bg-transparent w-full overflow-hidden"

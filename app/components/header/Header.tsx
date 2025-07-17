@@ -104,7 +104,7 @@ export function Header() {
         <>
           <div ref={dropdownRef} className='relative'>
 
-            <div onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='  text-sm text-white flex items-center dark:bg-[#292F35] justify-center gap-3 border border-[#c9c5c3] dark:hover:bg-[#363c44] dark:border-[#4B525B] w-[158px] py-1.2 mb-1 rounded-md cursor-pointer'>
+            <div onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='  text-sm text-white flex items-center dark:bg-[#292F35] justify-center gap-3 border border-[#c9c5c3] dark:hover:bg-[#363c44] dark:border-[#4B525B] px-4 py-1.2 mb-1 rounded-md cursor-pointer'>
               <img
                 src={ineruneIcon || userIcon}
                 alt="User Avatar"
