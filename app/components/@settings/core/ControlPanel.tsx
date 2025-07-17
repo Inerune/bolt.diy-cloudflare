@@ -13,6 +13,7 @@ import { useConnectionStatus } from '~/lib/hooks/useConnectionStatus';
 import { useDebugStatus } from '~/lib/hooks/useDebugStatus';
 import {
   tabConfigurationStore,
+  useSettingsStore,
   developerModeStore,
   setDeveloperMode,
   resetTabConfiguration,

@@ -323,7 +323,7 @@ export const Menu = ({ setOpen, open }: menuProps) => {
         )}
       >
 
-        <div className='flex justify-between items-center z-40 p-1 pr-3 mt-12'>
+        <div className='flex justify-between items-center z-40 p-1 pr-3 mt-14'>
           <CurrentDateTime />
           <ThemeSwitch />
         </div>
@@ -486,7 +486,7 @@ export const Menu = ({ setOpen, open }: menuProps) => {
               </Dialog>
             </DialogRoot>
           </div>
-          <div className="flex items-center justify-between px-4 py-3">
+          {/* <div className="flex items-center justify-between px-4 py-3">
             {
               profile?.username ? (
                 <div className=" flex items-center justify-between px-0 dark:border-gray-800/50 dark:bg-[#292F35]">
@@ -520,7 +520,7 @@ export const Menu = ({ setOpen, open }: menuProps) => {
             }
 
             <SettingsButton onClick={handleSettingsClick} />
-          </div>
+          </div> */}
         </div>
       </motion.div>
 

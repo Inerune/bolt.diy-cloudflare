@@ -64,19 +64,19 @@ export const AssistantMessage = memo(({ content, annotations, messageId, onRewin
   return (
     <div className="overflow-hidden w-full">
       <>
-        <div className=" flex gap-2 items-center text-sm text-bolt-elements-textSecondary mb-2 font-[sf-light]">
+        <div className=" flex gap-2 items-center text-sm text-bolt-elements-textSecondary mb-2 text-[14px]">
           {(codeContext || chatSummary) && (
             <Popover side="right" align="start" trigger={<div className="i-ph:info" />}>
               {chatSummary && (
                 <div className="max-w-chat">
                   <div className="summary max-h-96 flex flex-col">
                     <h2 className=" rounded-md p4">Summary</h2>
-                    <div style={{ zoom: 0.7 }} className="overflow-y-auto m4">
+                    <div style={{ zoom: 0.7 }} className="overflow-y-auto m4 text-[14px]">
                       <Markdown>{chatSummary}</Markdown>
                     </div>
                   </div>
                   {codeContext && (
-                    <div className="code-context flex flex-col p4  rounded-md font-[sf-light]">
+                    <div className="code-context flex flex-col p4  rounded-md text-[14px]">
                       <h2>Context</h2>
                       <div className="flex gap-4 mt-4 bolt" style={{ zoom: 0.6 }}>
                         {codeContext.map((x) => {

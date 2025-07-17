@@ -16,7 +16,7 @@ const FinalForm = () => {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-[#858382b3] dark:bg-[#1c1e22c4] items-center flex-col justify-center w-full h-screen absolute left-0 top-0 z-[999] flex"
+                    className="bg-[#858382b3] dark:bg-black/70 items-center flex-col justify-center w-full h-screen absolute left-0 top-0 z-[999] flex"
                 >
                     <motion.h3
                         initial={{ opacity: 0, y: -8 }}

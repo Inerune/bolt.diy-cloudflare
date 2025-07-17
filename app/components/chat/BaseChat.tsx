@@ -442,7 +442,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         bring ideas to life in seconds or get help on existing projects.
                       </p>
                       <BrowserUnsupportedPopup />
-                      <CookiePopup />
+                      {/* <CookiePopup /> */}
 
                     </div>
                   )}
@@ -1191,7 +1191,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
             chatStarted && <div
               onPointerDown={onPointerDown}
               style={{ touchAction: 'none', userSelect: 'none' }}
-              className={` ${open && 'hidden'} fixed top-[55px] right-0 left-[var(--chat-min-width)] w-[6px] ml-[14px] cursor-e-resize bg-transparent hover:bg-gray-400/40 bottom-[1.2rem]transition-colors z-[9999]`} />
+              className={` ${open ? 'hidden' : 'flex'} fixed top-[55px] right-0 left-[var(--chat-min-width)] w-[6px] ml-[14px] cursor-e-resize bg-transparent hover:bg-gray-400/40 bottom-[1.2rem]transition-colors z-[9999] h-full`} />
           }
 
           <ClientOnly>

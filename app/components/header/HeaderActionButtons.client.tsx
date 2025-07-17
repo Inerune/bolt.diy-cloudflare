@@ -79,7 +79,7 @@ export function HeaderActionButtons({ }: HeaderActionButtonsProps) {
             active
             disabled={isDeploying || !activePreview || isStreaming}
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="px-4 text-black bg-[#FAFAFA] dark:bg-[#1D2125] dark:text-white  dark:hover:bg-[#4A515A] tranisition-colors duration-[250ms] flex items-center gap-1"
+            className="px-4 text-black bg-[#FAFAFA] dark:bg-[#292F35] dark:text-white  dark:hover:bg-[#4A515A] tranisition-colors duration-[250ms] flex items-center gap-1"
           >
             <img src={puzzleIcon} alt="depoly-icon" className='w-5 invert-50 dark:invert-0' />
             {isDeploying ? `Deploying to ${deployingTo}...` : 'Deploy'}
@@ -154,20 +154,6 @@ export function HeaderActionButtons({ }: HeaderActionButtonsProps) {
           </motion.div>
         )}
       </div>
-      {/* <div className="flex border border-bolt-elements-borderColor rounded-md overflow-hidden">
-        <Button
-          active={showChat}
-          disabled={!canHideChat || isSmallViewport} // expand button is disabled on mobile as it's not needed
-          onClick={() => {
-            if (canHideChat) {
-              chatStore.setKey('showChat', !showChat);
-            }
-          }}
-        >
-          <div className="i-bolt:chat text-sm" />
-        </Button>
-        <div className="w-[1px] bg-bolt-elements-borderColor" />
-      </div> */}
     </div>
   );
 }

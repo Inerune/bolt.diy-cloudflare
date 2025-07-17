@@ -60,7 +60,7 @@ export const Markdown = memo(({ children, html = false, limitedMarkdown = false 
           return <CodeBlock code={firstChild.children[0].value} language={language as BundledLanguage} {...rest} />;
         }
 
-        return <pre {...rest}>{children}</pre>;
+        return <pre className='text-[14px]' {...rest}>{children}</pre>;
       },
     } satisfies Components;
   }, []);
@@ -68,7 +68,7 @@ export const Markdown = memo(({ children, html = false, limitedMarkdown = false 
   return (
     <ReactMarkdown
       allowedElements={allowedHTMLElements}
-      className={styles.MarkdownContent}
+      className={` ${styles.MarkdownContent} text-[14px]`}
       components={components}
       remarkPlugins={remarkPlugins(limitedMarkdown)}
       rehypePlugins={rehypePlugins(html)}

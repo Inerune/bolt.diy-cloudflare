@@ -137,16 +137,16 @@ export function Tooltip({
                   }}
                   exit={{ opacity: 0, scale: 0.8, y: -10 }}
                   transition={{
-                    duration: 0.3,
+                    duration: 0.1,
                     ease: "easeOut",
                   }}
                   className={classNames(
-                    ' rounded-md bg-[#1D2125] dark:bg-[#F0F0F0] z-999 px-3 py-1.5 text-xs text-white dark:text-black shadow-md',
+                    ' rounded-md bg-[#1D2125] dark:bg-[#000] z-999 px-3 py-1.5 text-xs text-white  shadow-md',
                     className,
                   )}
                 >
                   {content}
-                  <TooltipPrimitive.Arrow className="fill-[#1D2125] dark:fill-[#F0F0F0]" />
+                  <TooltipPrimitive.Arrow className="fill-[#1D2125] dark:fill-[#000]" />
                 </motion.div>
               </TooltipPrimitive.Content>
             </TooltipPrimitive.Portal>

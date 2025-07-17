@@ -17,7 +17,7 @@ export function UserMessage({ content }: UserMessageProps) {
 
     return (
       <div className="overflow-hidden flex items-center">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 text-[14px]">
           {textContent && <Markdown html>{textContent}</Markdown>}
           {images.map((item, index) => (
             <img

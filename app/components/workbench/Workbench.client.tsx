@@ -458,7 +458,7 @@ export const Workbench = memo(
                   {selectedView === 'diff' && (
                     <FileModifiedDropdown fileHistory={fileHistory} onSelectFile={handleSelectFile} />
                   )}
-                  <div className='px-4 py-1.5 border border-[#D8D8D8] dark:border-[#34383B] rounded-md flex items-center gap-2 cursor-pointer dark:text-white'>
+                  <div className='px-4 py-1.5 border dark:bg-[#292F35] border-[#D8D8D8] dark:border-[#34383B] rounded-md flex items-center gap-2 cursor-pointer dark:text-white'>
                     <p className='text-sm'>V1</p> <CaretDown size={16} />
                   </div>
                   <HeaderActionButtons />
