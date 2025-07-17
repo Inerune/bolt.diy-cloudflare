@@ -442,7 +442,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         bring ideas to life in seconds or get help on existing projects.
                       </p>
                       <BrowserUnsupportedPopup />
-                      {/* <CookiePopup /> */}
+                      <CookiePopup />
 
                     </div>
                   )}
@@ -623,7 +623,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                             className={classNames(
                               'w-full pl-4 pt-4 pr-4 outline-none resize-none text-bolt-elements-textPrimary placeholder-bolt-elements-textTertiary bg-transparent text-sm ',
                               'transition-all duration-200',
-                              'hover:border-bolt-elements-focus',
+                              'hover:border-bolt-elements-focus ',
                             )}
                             onDragEnter={(e) => {
                               e.preventDefault();
@@ -843,7 +843,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         </div>
                       </SparkTooltip>
                     </div>}
-                    {chatStarted && <div className=' px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm shadow-[0px_40px_40px_2px_#efeae6]  dark:shadow-[0px_40px_40px_2px_#1D2125]'>
+                    {chatStarted && <div className=' px-2 w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm shadow-[-13px_24px_19px_0px_#efeae6]  dark:shadow-[-13px_24px_19px_0px_#1D2125]'>
                       <ClientOnly>{() => <ChatDescription />}</ClientOnly>
                     </div>}
 
@@ -985,7 +985,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                           )}
                         </ClientOnly>
                         <div
-                          className={classNames(`relative shadow-xs backdrop-blur ${!chatStarted ? 'rounded-lg' : 'rounded-lb-md'}`,)} >
+                          className={classNames(`relative  backdrop-blur ${!chatStarted ? 'rounded-lg' : 'rounded-lb-md shadow-[0px_0px_40px_50px_#efeae6] dark:shadow-[0px_0px_40px_50px_#1D2125]'}`,)} >
                           <GlowingEffect
                             spread={40}
                             glow={true}
