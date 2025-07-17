@@ -99,7 +99,7 @@ export function Header() {
 
   return (
     <header
-      className={classNames(`flex justify-between items-center ${chat.started ? 'px-2.5' : 'pl-2.5 pr-0'}  pt-2.8 bg-[#E7E2E0]  dark:bg-[#292f35]`, {
+      className={classNames(`flex justify-between items-center ${chat.started ? 'px-2.5' : 'pl-2.5 pr-0 mb-1'}  pt-2.8 bg-[#E7E2E0]  dark:bg-[#292f35]`, {
         'border-transparent': !chat.started,
         '': chat.started,
       })}
