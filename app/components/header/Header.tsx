@@ -33,8 +33,8 @@ export function Header() {
 
   const checkAuthStatus = async () => {
     try {
-      // const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/get-session`, {
-      const response = await fetch(`http://localhost:3000/api/auth/get-session`, {
+      const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/get-session`, {
+      // const response = await fetch(`http://localhost:3000/api/auth/get-session`, {
         credentials: 'include'
       });
 
@@ -55,8 +55,8 @@ export function Header() {
 
   const logoutRoute = async () => {
     try {
-      // const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/sign-out`, {
-      const response = await fetch(`http://localhost:3000/api/auth/sign-out`, {
+      const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/sign-out`, {
+      // const response = await fetch(`http://localhost:3000/api/auth/sign-out`, {
         credentials: 'include',
         method: "POST"
       });
