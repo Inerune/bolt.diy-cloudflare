@@ -5,7 +5,6 @@ import { classNames } from '~/utils/classNames';
 import { Button } from '../ui/moving-border';
 import userIcon from '../../../icons/user-6-line.svg';
 import { useEffect, useRef, useState } from 'react';
-import { SettingsButton } from '../ui/SettingsButton';
 import { profileStore, updateProfile, } from '~/lib/stores/profile';
 import { useSettingsContext } from '@/lib/context/SettingsContext';
 import { useSignIn } from '~/lib/context/SignInContext';
@@ -17,6 +16,7 @@ import userIcon2 from '../../../icons/user-3-line.svg'
 import settingIcon from '../../../icons/settings-4-line.svg'
 import logoutIcon from '../../../icons/logout-teal.svg'
 import logoutOrange from '../../../icons/logout-orange.svg'
+import { useTab } from '~/lib/context/ProfileContext';
 
 
 
@@ -29,6 +29,7 @@ export function Header() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const theme = useStore(themeStore);
+  const { activeTab, setActiveTab } = useTab();
 
 
   const checkAuthStatus = async () => {
@@ -49,6 +50,10 @@ export function Header() {
       console.error('Auth check failed:', error);
     }
   };
+
+  useEffect(() => {
+    console.log('current tab', activeTab);
+  }, [activeTab])
 
 
   // for logout
@@ -106,7 +111,7 @@ export function Header() {
 
             <div onClick={() => setIsDropdownOpen(!isDropdownOpen)} className='  text-sm text-white flex items-center dark:bg-[#292F35] justify-center gap-3 border border-[#c9c5c3] dark:hover:bg-[#363c44] dark:border-[#4B525B] px-4 py-1.2 mb-1 rounded-md cursor-pointer'>
               <img
-                src={ineruneIcon || userIcon}
+                src={profile.avatar || userIcon}
                 alt="User Avatar"
                 crossOrigin="anonymous"
                 className="h-5 w-5 rounded-full object-cover"
@@ -124,10 +129,14 @@ export function Header() {
               <motion.div initial={{ opacity: 0, scale: 0.95, y: -6 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: -6 }}
-                transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }} className="absolute right-0 flex flex-col gap-1 z-50 p-1 mt-1 min-w-[9.5rem] dark:bg-[#292e35] rounded-md bg-[#fff] shadow-lg bg-bolt-elements-backgroundDefault border border-bolt-elements-borderColor">
+                transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }} className="absolute right-0 flex flex-col gap-1 z-50 p-1 mt-1 min-w-[9.5rem] dark:bg-[#292e35] rounded-md bg-[#EFEAE6] shadow-lg bg-bolt-elements-backgroundDefault border border-bolt-elements-borderColor">
                 <div
                   onClick={() => {
                     setIsDropdownOpen(false);
+                    setIsSettingsOpen(true);
+                    setTimeout(() => {
+                      setActiveTab('profile')
+                    }, 100)
                   }}
                   className="flex items-center w-full px-4 py-2 text-sm text-bolt-elements-textPrimary hover:bg-bolt-elements-item-backgroundActive gap-1 rounded-md group relative cursor-pointer"
                 >

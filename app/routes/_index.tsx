@@ -6,7 +6,7 @@ import { Chat } from '~/components/chat/Chat.client';
 import { Header } from '~/components/header/Header';
 import BackgroundRays from '~/components/ui/BackgroundRays';
 import { SettingsProvider } from '~/lib/context/SettingsContext';
-import { motion, AnimatePresence } from 'framer-motion';
+import { TabProvider } from '~/lib/context/ProfileContext';
 import { SignInProvider  } from '~/lib/context/SignInContext';
 import FinalForm from '~/components/ui/FinalForm';
 
@@ -26,6 +26,7 @@ export default function Index() {
 
  
   return (
+    <TabProvider>
     <SignInProvider>
       <SettingsProvider>
         <div className="flex flex-col h-full w-full bg-[#E7E2E0] dark:bg-[#292F35] px-2.5 pb-2.5">
@@ -36,5 +37,6 @@ export default function Index() {
         </div>
       </SettingsProvider>
     </SignInProvider>
+    </TabProvider>
   );
 }

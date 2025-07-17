@@ -11,9 +11,9 @@ import { useFeatures } from '~/lib/hooks/useFeatures';
 import { useNotifications } from '~/lib/hooks/useNotifications';
 import { useConnectionStatus } from '~/lib/hooks/useConnectionStatus';
 import { useDebugStatus } from '~/lib/hooks/useDebugStatus';
+import { useTab } from '~/lib/context/ProfileContext';
 import {
   tabConfigurationStore,
-  useSettingsStore,
   developerModeStore,
   setDeveloperMode,
   resetTabConfiguration,
@@ -155,7 +155,7 @@ const AnimatedSwitch = ({ checked, onCheckedChange, id, label }: AnimatedSwitchP
 
 export const ControlPanel = ({ open, onClose }: ControlPanelProps) => {
   // State
-  const [activeTab, setActiveTab] = useState<TabType | null>(null);
+  const { activeTab, setActiveTab } = useTab();
   const [loadingTab, setLoadingTab] = useState<TabType | null>(null);
   const [showTabManagement, setShowTabManagement] = useState(false);
 
