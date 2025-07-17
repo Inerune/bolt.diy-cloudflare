@@ -51,21 +51,18 @@ export function Header() {
     }
   };
 
-  useEffect(() => {
-    console.log('current tab', activeTab);
-  }, [activeTab])
-
 
   // for logout
 
   const logoutRoute = async () => {
+    
     try {
       const response = await fetch(`https://the-backend-production.up.railway.app/api/auth/sign-out`, {
       // const response = await fetch(`http://localhost:3000/api/auth/sign-out`, {
         credentials: 'include',
         method: "POST"
       });
-
+      
       if (response.ok) {
         updateProfile({
           username: '',
@@ -74,8 +71,15 @@ export function Header() {
         });
       }
     } catch (error) {
+      
       console.error('Sign-Out failed:', error);
     }
+
+    updateProfile({
+          username: '',
+          avatar: '',
+          bio: '',
+        });
   }
 
   useEffect(() => {
