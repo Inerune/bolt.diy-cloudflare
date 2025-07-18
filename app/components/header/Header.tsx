@@ -42,7 +42,7 @@ export function Header() {
       if (response.ok) {
         const userData = await response.json();
         updateProfile({
-          username: userData.user.name,
+          username: userData.user.name ? userData.user.name : userData.user.email,
           avatar: userData.user.image,
         });
       }
