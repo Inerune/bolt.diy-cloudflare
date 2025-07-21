@@ -132,7 +132,7 @@ export const Menu = ({ setOpen, open }: menuProps) => {
       deleteChat(item.id)
         .then(() => {
           toast.success('Chat deleted successfully', {
-            position: 'bottom-right',
+            position: 'top-center',
             autoClose: 3000,
           });
 

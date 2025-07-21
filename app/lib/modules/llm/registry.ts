@@ -16,9 +16,11 @@ import XAIProvider from './providers/xai';
 import HyperbolicProvider from './providers/hyperbolic';
 import AmazonBedrockProvider from './providers/amazon-bedrock';
 import GithubProvider from './providers/github';
+import KimiAIProvider from './providers/kimi';
 
 export {
-  OpenAIProvider,
+  // OpenAIProvider,
+  KimiAIProvider
   // AnthropicProvider,
   // CohereProvider,
   // DeepseekProvider,

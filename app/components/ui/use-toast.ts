@@ -23,7 +23,7 @@ export function useToast() {
     const { type = 'info', duration = 3000 } = options;
 
     toastify[type](message, {
-      position: 'bottom-right',
+      position: 'top-center',
       autoClose: duration,
       hideProgressBar: false,
       closeOnClick: true,

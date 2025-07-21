@@ -811,8 +811,8 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                             <ExpoQrModal open={qrModalOpen} onClose={() => setQrModalOpen(false)} />
                           </div>
                         </div>
-                      <div className='w-full py-2 px-4 dark:text-white bg-black rounded-lb-md z-10 rounded-rb-md flex items-center justify-between'>
-                        <p className='underline text-[14px] cursor-pointer'>Prompt Library</p>
+                      <div className='w-full py-2 px-4 text-white bg-black rounded-lb-md z-10 rounded-rb-md flex items-center justify-between'>
+                        <p className='underline text-[14px]  cursor-pointer'>Prompt Library</p>
                         <img src={addFill} alt="plus" className='cursor-pointer'/>
                       </div>
                       </div>
