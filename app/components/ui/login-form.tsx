@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
 import { useState } from "react";
 import { updateProfile } from "~/lib/stores/profile";
+import { InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot } from "./input-otp";
 
 export function LoginForm({
     className,
@@ -134,16 +135,24 @@ export function LoginForm({
                         </div>
 
                         {isSignup && emailSubmitted && (
-                            <div className="grid gap-3">
+                            <div className="grid gap-6 flex items-center">
                                 <Label htmlFor="otp">Verification Code</Label>
-                                <Input
-                                    id="otp"
-                                    type="text"
-                                    placeholder="Enter the 6-digit code"
+                                <InputOTP maxLength={6}
                                     value={otp}
-                                    onChange={(e) => setOtp(e.target.value)}
-                                    required
-                                />
+                                    onChange={(value) => setOtp(value)}
+                                >
+                                    <InputOTPGroup>
+                                        <InputOTPSlot index={0} />
+                                        <InputOTPSlot index={1} />
+                                        <InputOTPSlot index={2} />
+                                    </InputOTPGroup>
+                                    <InputOTPSeparator />
+                                    <InputOTPGroup>
+                                        <InputOTPSlot index={3} />
+                                        <InputOTPSlot index={4} />
+                                        <InputOTPSlot index={5} />
+                                    </InputOTPGroup>
+                                </InputOTP>
                             </div>
                         )}
 
