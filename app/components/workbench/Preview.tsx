@@ -13,6 +13,7 @@ import computerIcon from '../../../icons/computer-line.svg'
 import resizeIcon from '../../../icons/expand-diagonal-2-line.svg'
 import { Tooltip } from '../ui/Tooltip';
 import { motion } from 'framer-motion';
+import LoaderForPreview from '../ui/LoaderForPreview';
 
 
 type ResizeSide = 'left' | 'right' | null;
@@ -978,8 +979,9 @@ export const Preview = memo(() => {
               />
             </>
           ) : (
-            <div className="flex w-full h-full justify-center items-center bg-bolt-elements-background-depth-1 text-bolt-elements-textPrimary">
-              No preview available
+            <div className="flex flex-col relative w-full h-full justify-center items-center bg-[#1D2125] text-bolt-elements-textPrimary">
+             <LoaderForPreview />
+             <p className='absolute bottom-22 text-[16px] text-[#8e8c99]'>Switch to code view, and watch code being written</p>
             </div>
           )}
 
