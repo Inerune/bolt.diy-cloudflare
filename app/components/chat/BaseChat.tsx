@@ -57,11 +57,19 @@ import layoutLine from '../../../icons/layout-left-2-line.svg';
 import attachmentIcon from '../../../icons/attachment-2.svg'
 import sparkIcon from '../../../icons/sparkling-line.svg'
 import { BackgroundLines } from '../ui/background-lines';
+import addFill from '../../../icons/add-fill.svg'
 
 // unsupportedBrowsers
 import BrowserUnsupportedPopup from './BrowserUnsupportedPopup';
 import { Tooltip as SparkTooltip } from '~/components/ui/Tooltip';
 import CookiePopup from '../ui/CookiePopup';
+import { AnimatedTooltip } from '../ui/Animated-tooltip';
+
+// team
+import Greg from '../../../assets/icons/Greg.svg'
+import Mak from '../../../assets/icons/Mak.svg'
+import Kevin from '../../../assets/icons/Kevin.svg'
+import Abdeil from '../../../assets/icons/Abdeil.svg'
 
 
 const words = [
@@ -76,6 +84,61 @@ const words = [
   },
   {
     text: "for you?",
+  }
+];
+
+const people = [
+  {
+    id: 1,
+    name: "Greg W",
+    designation: "Does Nothing",
+    image: Greg,
+  },
+  {
+    id: 2,
+    name: "Mak M",
+    designation: "Develops Something",
+    image: Mak,
+  },
+  {
+    id: 3,
+    name: "Kevin S",
+    designation: "Markets Something",
+    image: Kevin,
+  },
+  {
+    id: 4,
+    name: "Abdeil W",
+    designation: "AI Consults Something",
+    image: Abdeil,
+  }
+];
+
+
+const homeList = [
+  {
+    text: "Pricing",
+    to: '#'
+  },
+  {
+    text: "FAQ",
+    to: "#"
+  },
+  {
+    text: "Human Support",
+    to: "#"
+  },
+  {
+    text: "Terms",
+    to: "#"
+  },
+  {
+    text: "Privacy",
+    to: "#"
+  },
+  {
+    text: "Jobs",
+    to: "#"
   }
 ];
 
@@ -432,7 +495,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
 
             {
               !chatStarted ?
-                <BackgroundLines className=' bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'>
+                <BackgroundLines className='bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'>
 
                   {!chatStarted && (
                     <div id="intro" className="mt-[24vh] max-w-[35rem] mx-auto text-center px-4 lg:px-0">
@@ -443,7 +506,6 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       </p>
                       <BrowserUnsupportedPopup />
                       <CookiePopup />
-
                     </div>
                   )}
 
@@ -455,9 +517,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     initial="smooth"
                   >
 
-                    {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm'>
-                      <ClientOnly>{() => <ChatDescription />}</ClientOnly>
-                    </div>}
+
 
                     <StickToBottom.Content className="flex flex-col gap-4">
                       <ClientOnly>
@@ -513,7 +573,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                       {progressAnnotations && <ProgressCompilation data={progressAnnotations} />}
                       <div
                         className={classNames(
-                          'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0 rounded-lg border border-bolt-elements-borderColor relative w-full max-w-[40rem] mx-auto z-prompt',
+                          'relative bg-[#FAF7F5] dark:bg-[#292e35] p-0 rounded-lg border border-bolt-elements-borderColor p-[1px] relative w-full max-w-[40rem] mx-auto z-prompt',
 
                           /*
                            * {
@@ -522,32 +582,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                            */
                         )}
                       >
-                        {/* <svg className={classNames(styles.PromptEffectContainer)}>
-                    <defs>
-                      <linearGradient
-                        id="line-gradient"
-                        x1="20%"
-                        y1="0%"
-                        x2="-14%"
-                        y2="10%"
-                        gradientUnits="userSpaceOnUse"
-                        gradientTransform="rotate(-45)"
-                      >
-                        <stop offset="0%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#b44aff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="#b44aff" stopOpacity="0%"></stop>
-                      </linearGradient>
-                      <linearGradient id="shine-gradient">
-                        <stop offset="0%" stopColor="white" stopOpacity="0%"></stop>
-                        <stop offset="40%" stopColor="#ffffff" stopOpacity="80%"></stop>
-                        <stop offset="50%" stopColor="#ffffff" stopOpacity="80%"></stop>
-                        <stop offset="100%" stopColor="white" stopOpacity="0%"></stop>
-                      </linearGradient>
-                    </defs>
-                    <rect className={classNames(styles.PromptEffectLine)} pathLength="100" strokeLinecap="round"></rect>
-                    <rect className={classNames(styles.PromptShine)} x="48" y="24" width="70" height="1"></rect>
-                  </svg> */}
+                       
                         <div>
                           <ClientOnly>
                             {() => (
@@ -598,7 +633,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         </ClientOnly>
                         <div
                           className={classNames(
-                            'relative shadow-xs backdrop-blur rounded-lg',
+                            'relative shadow-xs backdrop-blur rounded-lg rounded-lb-none rounded-rb-none border-b border-bolt-elements-borderColor',
                           )}
                         >
                           <GlowingEffect
@@ -776,6 +811,10 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                             <ExpoQrModal open={qrModalOpen} onClose={() => setQrModalOpen(false)} />
                           </div>
                         </div>
+                      <div className='w-full py-2 px-4 dark:text-white bg-black rounded-lb-md z-10 rounded-rb-md flex items-center justify-between'>
+                        <p className='underline text-[14px] cursor-pointer'>Prompt Library</p>
+                        <img src={addFill} alt="plus" className='cursor-pointer'/>
+                      </div>
                       </div>
                     </div>
                   </StickToBottom>
@@ -798,6 +837,20 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                         })}
                       {/* {!chatStarted && <StarterTemplates />} */}
                     </div>
+                  </div>
+
+                  <div className='absolute bottom-5 left-5'>
+                    <div className='flex items-center'>
+                      <AnimatedTooltip items={people} />
+                    </div>
+                  </div>
+                  <div className='absolute right-8 bottom-5 flex items-center gap-6 text-black dark:text-white '>
+                    {homeList.map((item, index) => (
+                      <div className='flex items-center gap-2' key={item.text}>
+                        <p className='cursor-pointer'>{item.text}</p>
+                        {index < homeList.length - 1 && <span className="text-[#C9C5C3] dark:text-[#4B525B]">|</span>}
+                      </div>
+                    ))}
                   </div>
                 </BackgroundLines> : <>{!chatStarted && (
                   <div id="intro" className="mt-[24vh] max-w-chat mx-auto text-center px-4 lg:px-0">

@@ -24,6 +24,7 @@ import chatStartIcon from '../../../icons/chat-new-fill.svg'
 import searchIcon from '../../../icons/search-2-line.svg'
 import guestUser from '../../../icons/user-6-line.svg'
 import { GlowingEffect } from '../ui/glowing-effect';
+import ThemeSwitch2 from '../ui/ThemeSwitchv2';
 
 const menuVariants = {
   closed: {
@@ -326,7 +327,8 @@ export const Menu = ({ setOpen, open }: menuProps) => {
 
         <div className='flex justify-between items-center z-40 p-1 pr-3 mt-14'>
           <CurrentDateTime />
-          <ThemeSwitch />
+          {/* <ThemeSwitch /> */}
+          <ThemeSwitch2 />
         </div>
         <div className="flex-1 flex flex-col h-full w-full overflow-hidden">
           <div className="p-4 space-y-3">

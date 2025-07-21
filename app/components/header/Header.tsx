@@ -109,6 +109,9 @@ export function Header() {
           <h3 className='text-[18px] font-[franie-regular]'>askblake.</h3>
         </a>
       </div>
+
+      <div className='flex items-center gap-3'>
+        
       {profile?.username ? (
         <>
           <div ref={dropdownRef} className='relative'>
@@ -195,11 +198,14 @@ export function Header() {
         </>
       ) : (
         <>
-          <div className="text-white mb-1" onClick={() => openLogin(true)}>
+          <div className="text-white" onClick={() => openLogin(true)}>
             <Button>Sign up / Login</Button>
           </div>
         </>
       )}
+      <button className='bg-[#FFD6A7] dark:bg-[#00d5bf] px-3 py-1.2 text-sm rounded-md '>Feedback</button>
+      </div>
+      
 
 
     </header>
