@@ -8,7 +8,7 @@ const GeneratingLoader = () => {
   const delayIncrement = 4 / text.length * 0.25;
   
   // Animation configuration for each character
-  const charAnimation = (char, i) => {
+  const charAnimation = (char: string, i: number) => {
     const isSpace = char === ' ';
     
     return {
@@ -36,7 +36,7 @@ const GeneratingLoader = () => {
             <motion.h3
               key={i}
               animate={charAnimation(char, i)}
-              className={`inline-block ${char === ' ' ? 'min-w-[0.3em]' : ''} text-[10px] tracking-[0.7px]`}
+              className={`inline-block ${char === ' ' ? 'min-w-[0.3em]' : ''} text-[10px] tracking-[0.7px] dark:text-white text-black`}
             >
               {char}
             </motion.h3>

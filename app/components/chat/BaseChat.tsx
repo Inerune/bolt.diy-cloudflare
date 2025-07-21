@@ -416,7 +416,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
         data-chat-visible={showChat}
       >
 
-        
+
 
         <ClientOnly>{() => <Menu setOpen={setOpen} open={open} />}</ClientOnly>
         <div className={`flex flex-col lg:flex-row overflow-y-auto w-full h-full bg-[#E7E2E0]  dark:bg-[#292F35] ${chatStarted ? 'p-2.5' : 'p-0'} transition-[margin] duration-[350ms] [transition-timing-function:cubic-bezier(0.22,1,0.36,1)]`} style={{
@@ -429,7 +429,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
           </SparkTooltip>
 
           <div className={classNames(styles.Chat, `flex flex-col ${chatStarted && 'bg-[#EFEAE6] dark:bg-[#1d2125]  border border-[#c9c5c3] dark:border-[#4B525B]'}  flex-grow  ${chatStarted ? 'lg:min-w-[var(--chat-min-width)] lg:max-w-[var(--chat-min-width)] fixed top-13.8 bottom-[1.2rem] z-4 rounded-tl-md rounded-l-md rounded-tr-none rounded-r-none rounded-b-none overflow-hidden' : 'rounded-md lg:min-w-[35rem]'}`)}>
-            
+
             {
               !chatStarted ?
                 <BackgroundLines className=' bg-[#EFEAE6] dark:bg-[#1d2125] rounded-md border border-[#c9c5c3] dark:border-[#4B525B]'>
@@ -454,17 +454,7 @@ export const BaseChat = React.forwardRef<HTMLDivElement, BaseChatProps>(
                     resize="smooth"
                     initial="smooth"
                   >
-                    {/* {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125]'>
-                <div className={`cursor-pointer px-2 py-1 hover:bg-[#4B525B] rounded-md ${open && 'bg-[#4B525B]'} invert-100 dark:invert-0`}>
-                <img src={layoutLine} alt="layoutLine" />
-                </div>
-                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
-                  <img src={chatLine} alt="chat-line" />
-                </div>
-                <div className='cursor-pointer hover:bg-[#4B525B] px-2 py-1 rounded-md invert-100 dark:invert-0'>
-                  <img src={paintBrush} alt="paint-brush" />
-                </div>
-              </div>} */}
+
                     {chatStarted && <div className='w-full min-h-10 z-2 flex items-center border-b border-bolt-elements-borderColor bg-[#EFEAE6] dark:bg-[#1D2125] text-bolt-elements-textPrimary text-sm'>
                       <ClientOnly>{() => <ChatDescription />}</ClientOnly>
                     </div>}
@@ -1217,12 +1207,27 @@ function ScrollToBottom() {
   return (
     !isAtBottom && (
       <SparkTooltip content="Jump to Recent">
-        <button
-          className="absolute z-50 top-[0%] translate-y-[-100%]  rounded-full left-[50%] translate-x-[-50%] px-1.5 py-1.5 flex items-center gap-2 bg-transparent border-2 border-[#00D5BF] text-bolt-elements-textPrimary text-sm"
-          onClick={() => scrollToBottom()}
-        >
-          <span className="i-ph:arrow-down animate-bounce text-[#00D5BF]" />
-        </button>
+        <div className='flex items-center justify-center z-50 bg-transparent'>
+          <button
+            className="cursor-pointer dark:bg-gray-800 px-3 w-10  py-2 rounded-md text-white tracking-wider shadow-xl animate-bounce hover:animate-none"
+            onClick={() => scrollToBottom()}
+          >
+            <svg
+              className="w-4 h-4"
+              stroke="#00d5bf"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"
+                stroke-linejoin="round"
+                stroke-linecap="round"
+              ></path>
+            </svg>
+          </button>
+        </div>
       </SparkTooltip>
     )
   );

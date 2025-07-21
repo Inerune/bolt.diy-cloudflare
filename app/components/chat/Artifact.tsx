@@ -8,6 +8,7 @@ import { workbenchStore } from '~/lib/stores/workbench';
 import { classNames } from '~/utils/classNames';
 import { cubicEasingFn } from '~/utils/easings';
 import { WORK_DIR } from '~/utils/constants';
+import ThreeBodyLoader from '../ui/ThreeBodyLoader';
 
 const highlighterOptions = {
   langs: ['shell'],
@@ -118,7 +119,8 @@ export const Artifact = memo(({ messageId }: ArtifactProps) => {
               {allActionFinished ? (
                 <div className="i-ph:check"></div>
               ) : (
-                <div className="i-svg-spinners:90-ring-with-bg"></div>
+                // <div className="i-svg-spinners:90-ring-with-bg"></div>
+                <ThreeBodyLoader />
               )}
             </div>
             <div className="text-bolt-elements-textPrimary font-medium leading-5 text-sm">
@@ -213,7 +215,8 @@ const ActionList = memo(({ actions }: ActionListProps) => {
                   {status === 'running' ? (
                     <>
                       {type !== 'start' ? (
-                        <div className="i-svg-spinners:90-ring-with-bg"></div>
+                        // <div className="i-svg-spinners:90-ring-with-bg"></div>
+                        <ThreeBodyLoader />
                       ) : (
                         <div className="i-ph:terminal-window-duotone"></div>
                       )}

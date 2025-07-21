@@ -979,7 +979,7 @@ export const Preview = memo(() => {
               />
             </>
           ) : (
-            <div className="flex flex-col relative w-full h-full justify-center items-center bg-[#1D2125] text-bolt-elements-textPrimary">
+            <div className="flex flex-col relative w-full h-full justify-center items-center bg-[#fff] dark:bg-[#1D2125] text-bolt-elements-textPrimary">
              <LoaderForPreview />
              <p className='absolute bottom-22 text-[16px] text-[#8e8c99]'>Switch to code view, and watch code being written</p>
             </div>
