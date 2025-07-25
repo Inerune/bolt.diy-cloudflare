@@ -9,6 +9,7 @@ import { SettingsProvider } from '~/lib/context/SettingsContext';
 import { TabProvider } from '~/lib/context/ProfileContext';
 import { SignInProvider  } from '~/lib/context/SignInContext';
 import FinalForm from '~/components/ui/FinalForm';
+// import { Context7Panel } from '~/components/mcp-panel';
 
 export const meta: MetaFunction = () => {
   return [{ title: 'AskBlake' }, { name: 'description', content: 'Talk with askblake, an AI assistant' }];
@@ -32,6 +33,7 @@ export default function Index() {
         <div className="flex flex-col h-full w-full bg-[#E7E2E0] dark:bg-[#292F35] px-2.5 pb-2.5">
           <FinalForm />
           <BackgroundRays />
+          {/* <Context7Panel /> */}
           <Header/>
           <ClientOnly fallback={<BaseChat />}>{() => <Chat />}</ClientOnly>
         </div>

@@ -3,6 +3,8 @@ import type { ModelInfo } from '~/lib/modules/llm/types';
 import type { IProviderSetting } from '~/types/model';
 import type { LanguageModelV1 } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai'; // assuming Kimi is OpenAI-compatible
+import { mcpClient } from '~/components/shadcn-mcp';
+
 
 export default class KimiAIProvider extends BaseProvider {
   name = 'KimiAI';
@@ -48,6 +50,8 @@ export default class KimiAIProvider extends BaseProvider {
     const kimi = createOpenAI({
       apiKey,
       baseURL: 'https://api.moonshot.ai/v1', // Kimi's endpoint (custom)
+      // tools: mcpClient.getRegisteredTools(),
+      // callTool: mcpClient.callTool,
     });
 
     return kimi(model);

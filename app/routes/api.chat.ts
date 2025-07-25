@@ -11,7 +11,6 @@ import type { ContextAnnotation, ProgressAnnotation } from '~/types/context';
 import { WORK_DIR } from '~/utils/constants';
 import { createSummary } from '~/lib/.server/llm/create-summary';
 import { extractPropertiesFromMessage } from '~/lib/.server/llm/utils';
-
 export async function action(args: ActionFunctionArgs) {
   return chatAction(args);
 }
@@ -35,6 +34,7 @@ function parseCookies(cookieHeader: string): Record<string, string> {
 
   return cookies;
 }
+
 
 async function chatAction({ context, request }: ActionFunctionArgs) {
   const { messages, files, promptId, contextOptimization, supabase } = await request.json<{
@@ -189,7 +189,8 @@ async function chatAction({ context, request }: ActionFunctionArgs) {
 
         const options: StreamingOptions = {
           supabaseConnection: supabase,
-          toolChoice: 'none',
+          toolCallStreaming: true,
+          toolChoice: 'auto',
           onFinish: async ({ text: content, finishReason, usage }) => {
             logger.debug('usage', JSON.stringify(usage));
 

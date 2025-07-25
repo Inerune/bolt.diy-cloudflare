@@ -312,7 +312,6 @@ export const ChatImpl = memo(
 
       // If no locked items, proceed normally with the original message
       const finalMessageContent = messageContent;
-
       runAnimation();
 
       if (!chatStarted) {
@@ -355,6 +354,7 @@ export const ChatImpl = memo(
                   id: `2-${new Date().getTime()}`,
                   role: 'assistant',
                   content: assistantMessage,
+                  toolInvocations: []
                 },
                 {
                   id: `3-${new Date().getTime()}`,

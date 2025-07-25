@@ -17,6 +17,8 @@ import { profileStore } from '~/lib/stores/profile';
 import { Button as MovingBorder } from '../ui/moving-border';
 import { useSettingsContext } from '@/lib/context/SettingsContext';
 import { useSignIn } from '~/lib/context/SignInContext';
+import { toast as newToast } from "sonner"
+
 
 
 // icons

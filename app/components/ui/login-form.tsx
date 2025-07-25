@@ -26,7 +26,8 @@ export function LoginForm({
 
         if (isSignup && !emailSubmitted) {
             try {
-                await fetch("https://the-backend-production.up.railway.app/api/auth/email-otp/send-verification-otp", {
+                // await fetch("https://the-backend-production.up.railway.app/api/auth/email-otp/send-verification-otp", {
+                await fetch("http://localhost:3000/api/auth/email-otp/send-verification-otp", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ email, type: "sign-in" }),
@@ -42,6 +43,8 @@ export function LoginForm({
             // Verify OTP
             try {
                 const res = await fetch("https://the-backend-production.up.railway.app/api/auth/sign-in/email-otp", {
+                // const res = await fetch("http://localhost:3000/api/auth/sign-in/email-otp", {
+                
                     method: "POST",
                     credentials: 'include',
                     headers: { "Content-Type": "application/json" },

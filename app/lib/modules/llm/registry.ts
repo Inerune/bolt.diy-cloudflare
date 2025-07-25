@@ -19,8 +19,8 @@ import GithubProvider from './providers/github';
 import KimiAIProvider from './providers/kimi';
 
 export {
-  // OpenAIProvider,
-  KimiAIProvider
+  OpenAIProvider,
+  // KimiAIProvider
   // AnthropicProvider,
   // CohereProvider,
   // DeepseekProvider,

@@ -1,8 +1,9 @@
 import { BaseProvider } from '~/lib/modules/llm/base-provider';
 import type { ModelInfo } from '~/lib/modules/llm/types';
 import type { IProviderSetting } from '~/types/model';
-import type { LanguageModelV1 } from 'ai';
+import { tool, type LanguageModelV1 } from 'ai';
 import { createOpenAI } from '@ai-sdk/openai';
+import { mcpClient } from '~/components/shadcn-mcp';
 
 export default class OpenAIProvider extends BaseProvider {
   name = 'OpenAI';
