@@ -17,7 +17,9 @@ import { profileStore } from '~/lib/stores/profile';
 import { Button as MovingBorder } from '../ui/moving-border';
 import { useSettingsContext } from '@/lib/context/SettingsContext';
 import { useSignIn } from '~/lib/context/SignInContext';
-import { toast as newToast } from "sonner"
+
+import { useToast } from "@/lib/context/ToastProvider";
+
 
 
 
@@ -86,6 +88,7 @@ export const Menu = ({ setOpen, open }: menuProps) => {
   const profile = useStore(profileStore);
   const [selectionMode, setSelectionMode] = useState(false);
   const [selectedItems, setSelectedItems] = useState<string[]>([]);
+  const { showToast } = useToast();
 
   const { filteredItems: filteredList, handleSearchChange } = useSearchFilter({
     items: list,
@@ -133,10 +136,14 @@ export const Menu = ({ setOpen, open }: menuProps) => {
 
       deleteChat(item.id)
         .then(() => {
-          toast.success('Chat deleted successfully', {
-            position: 'top-center',
-            autoClose: 3000,
+          showToast({
+            title: "Chat deleted successfully",
+            description: "this chat is deleted"
           });
+          // toast.success('Chat deleted successfully', {
+          //   position: 'top-center',
+          //   autoClose: 3000,
+          // });
 
           // Always refresh the list
           loadEntries();

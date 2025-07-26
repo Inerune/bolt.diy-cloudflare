@@ -10,6 +10,8 @@ import { TabProvider } from '~/lib/context/ProfileContext';
 import { SignInProvider  } from '~/lib/context/SignInContext';
 import FinalForm from '~/components/ui/FinalForm';
 // import { Context7Panel } from '~/components/mcp-panel';
+import { ToastProvider } from "@/lib/context/ToastProvider";
+
 
 export const meta: MetaFunction = () => {
   return [{ title: 'AskBlake' }, { name: 'description', content: 'Talk with askblake, an AI assistant' }];
@@ -27,6 +29,7 @@ export default function Index() {
 
  
   return (
+    <ToastProvider>
     <TabProvider>
     <SignInProvider>
       <SettingsProvider>
@@ -40,5 +43,6 @@ export default function Index() {
       </SettingsProvider>
     </SignInProvider>
     </TabProvider>
+    </ToastProvider>
   );
 }
